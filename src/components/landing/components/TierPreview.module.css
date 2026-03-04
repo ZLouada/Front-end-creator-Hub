@@ -1,0 +1,107 @@
+/* TierPreview.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.toggleContainer {
+  display: flex;
+  background: #FFF9E0;
+  border: 1px solid rgba(255, 221, 0, 0.2);
+  border-radius: 999px;
+  padding: 0.25rem;
+  width: fit-content;
+  margin: 0 auto 3rem;
+  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.08);
+}
+
+.toggleBtn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.activeToggle {
+  background: linear-gradient(135deg, #FFDD00, #F5C800);
+  color: #1A1A1A;
+  box-shadow: 0 4px 12px rgba(255, 221, 0, 0.25);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+.tierCard {
+  border: 1px solid rgba(255, 221, 0, 0.15);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  cursor: pointer;
+  position: relative;
+}
+
+.tierCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 221, 0, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.activeCard {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.18), 0 0 0 2px #FFDD00;
+  background: #FFFEF5;
+}
+
+.phoneMockup {
+  width: 100%;
+  max-width: 320px;
+  height: 600px;
+  border: 2px solid rgba(255, 221, 0, 0.3);
+  border-radius: 3rem;
+  background: #FFFFFF;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(255, 221, 0, 0.15), 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.phoneScreen {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutBtn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #FFDD00, #F5C800);
+  color: #1A1A1A;
+  font-weight: 700;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.3);
+  margin-top: auto;
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  cursor: pointer;
+}
+
+.checkoutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 221, 0, 0.4);
+}

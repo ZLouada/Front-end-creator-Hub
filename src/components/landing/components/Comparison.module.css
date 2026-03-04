@@ -1,0 +1,53 @@
+/* Comparison.module.css */
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 221, 0, 0.15);
+  border-radius: 1.5rem;
+  background: #FFFFFF;
+  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.th {
+  padding: 1.5rem;
+  background: #FFFEF5;
+  border-bottom: 1px solid rgba(255, 221, 0, 0.15);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.td {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f8f8f0;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.highlightRow {
+  background: #FFFEF5;
+}
+
+.brandCol {
+  background: linear-gradient(180deg, #FFF9E0, #FFFEF5);
+  border-left: 1px solid rgba(255, 221, 0, 0.2);
+  border-right: 1px solid rgba(255, 221, 0, 0.2);
+  text-align: center;
+}
+
+.checkIcon {
+  color: #00C853;
+  display: inline-block;
+}
+
+.xIcon {
+  color: #ef4444;
+  display: inline-block;
+}

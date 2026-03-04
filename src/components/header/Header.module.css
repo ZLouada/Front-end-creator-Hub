@@ -1,0 +1,84 @@
+/* Header.module.css */
+.header {
+  background-color: #FFFFFF;
+  border-bottom: 4px solid #1A1A1A;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoBadge {
+  background-color: #FFDD00;
+  border: 2px solid #1A1A1A;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  transform: rotate(-2deg);
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #1A1A1A;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.1s ease;
+  padding: 4px 8px;
+}
+
+.navLink:hover {
+  background-color: #FFDD00;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  transform: translate(-2px, -2px);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dashboardBtn {
+  background-color: #FFDD00;
+  border: 3px solid #1A1A1A;
+  padding: 0.6rem 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.dashboardBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #1A1A1A;
+}

@@ -1,0 +1,44 @@
+/* LocalAdvantage.module.css */
+
+.pleaseSpeed {
+  background-color: yellow;
+}
+.card {
+  border: 1px solid rgba(255, 221, 0, 0.15);
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.iconBox {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 221, 0, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 221, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+}
+
+.card:hover .iconBox {
+  transform: rotate(0deg) scale(1.08);
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  background-color: #FFF9E0;
+  border: 1px solid rgba(255, 221, 0, 0.2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  color: #B08900;
+}

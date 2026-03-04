@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Root styles ──────────────────────────────────────────────── */
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #F0F0F0;
+  color: #1A1A1A;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+button { cursor: pointer; }
+
+/* ─── Keyframes ─────────────────────────────────────────────────── */
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+  33%       { transform: translateY(-30px) translateX(15px) scale(1.04); }
+  66%       { transform: translateY(20px) translateX(-10px) scale(0.97); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-22px) rotate(8deg); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  25%       { transform: translateX(12px) translateY(-18px); }
+  50%       { transform: translateX(-8px) translateY(-30px); }
+  75%       { transform: translateX(-14px) translateY(-10px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes coffee-bounce {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%       { transform: translateY(-10px) rotate(4deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.7); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 18px rgba(255, 221, 0, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0  rgba(255, 221, 0, 0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gradient-bg {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes particle-rise {
+  0%   { opacity: 0;   transform: translateY(0) scale(0.5); }
+  20%  { opacity: 0.7; }
+  100% { opacity: 0;   transform: translateY(-120px) scale(1.2); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 16px rgba(255, 221, 0, 0.3); }
+  50%      { box-shadow: 0 0 32px rgba(255, 221, 0, 0.6); }
+}
+
+/* ─── Utility classes ───────────────────────────────────────────── */
+
+.animate-float-slow  { animation: float-slow  8s ease-in-out infinite; }
+.animate-float-fast  { animation: float-fast  5s ease-in-out infinite; }
+.animate-drift       { animation: drift       10s ease-in-out infinite; }
+.animate-fade-up     { animation: fade-up     0.6s cubic-bezier(.22,1,.36,1) both; }
+.animate-slide-left  { animation: slide-in-left  0.5s cubic-bezier(.22,1,.36,1) both; }
+.animate-slide-right { animation: slide-in-right 0.5s cubic-bezier(.22,1,.36,1) both; }
+.animate-coffee      { animation: coffee-bounce 3s ease-in-out infinite; }
+.animate-pulse-ring  { animation: pulse-ring  2s cubic-bezier(.455,.03,.515,.955) infinite; }
+.animate-spin-slow   { animation: spin-slow   20s linear infinite; }
+.animate-gradient-bg {
+  background-size: 200% 200%;
+  animation: gradient-bg 8s ease infinite;
+}
+
+/* ─── Shimmer button ────────────────────────────────────────────── */
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.45) 50%,
+    transparent 60%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+/* ─── Glass card ────────────────────────────────────────────────── */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 221, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.glass-card-dark {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 221, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Input modern ──────────────────────────────────────────────── */
+
+.input-modern {
+  transition: border-color 0.3s cubic-bezier(.22,1,.36,1),
+              box-shadow 0.3s cubic-bezier(.22,1,.36,1),
+              background 0.3s cubic-bezier(.22,1,.36,1),
+              transform 0.3s cubic-bezier(.22,1,.36,1);
+}
+.input-modern:focus {
+  background: #fff;
+  border-color: #FFDD00;
+  box-shadow: 0 0 0 4px rgba(255, 221, 0, 0.15), 0 4px 16px rgba(255, 221, 0, 0.08);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* ─── Card hover ────────────────────────────────────────────────── */
+
+.card-hover {
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1),
+              box-shadow 0.3s cubic-bezier(.22,1,.36,1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Gradient text ─────────────────────────────────────────────── */
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFDD00 0%, #D4A800 50%, #B08900 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Delay helpers ─────────────────────────────────────────────── */
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #FFE88A, #FFDD00);
+  border-radius: 99px;
+}

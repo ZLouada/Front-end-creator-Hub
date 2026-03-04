@@ -1,0 +1,73 @@
+/* FinalCTA.module.css */
+
+.section {
+  background: linear-gradient(135deg, #FFDD00 0%, #F5C800 50%, #FFE88A 100%);
+  border-top: none;
+  border-bottom: none;
+  padding: 8rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heading {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1A1A1A;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 5rem;
+  }
+}
+
+.button {
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1.25rem 2.5rem;
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+  background-color: #111111;
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.subtextContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  font-size: 1.125rem;
+}
+
+.checkIcon {
+  color: #00C853;
+  background: white;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

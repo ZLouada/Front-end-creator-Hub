@@ -1,0 +1,178 @@
+/* FeedPost.module.css */
+
+.card {
+  background: #FFFFFF;
+  border: 4px solid #1A1A1A;
+  border-radius: 0px; /* Sharper corners feel more 'zine' like */
+  overflow: hidden;
+  /* Heavier, more aggressive shadow */
+  box-shadow: 12px 12px 0px 0px #1A1A1A;
+  margin-bottom: 3.5rem;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 16px 16px 0px 0px #FFDD00; /* Shadow changes color on hover */
+}
+
+/* --- Header Section --- */
+.header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Add a subtle background color to the header to separate it from the body */
+  background-color: #f9f9f9; 
+  border-bottom: 4px solid #1A1A1A;
+}
+
+.body {
+  padding: 2rem;
+}
+
+.creatorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.creatorName {
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #1A1A1A;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #666;
+}
+
+.tierBadge {
+  background: #FFDD00;
+  border: 2px solid #1A1A1A;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0px 0px #1A1A1A;
+}
+
+/* --- Content & Media Area --- */
+.body {
+  padding: 1.5rem;
+}
+
+.postText {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #1A1A1A;
+  /* Highlight important text like a marker */
+  line-height: 1.4;
+}
+
+.mediaContainer {
+  position: relative;
+  border: 4px solid #1A1A1A;
+  border-radius: 4px;
+  /* Inner shadow makes the media feel 'recessed' into the card */
+  box-shadow: inset 4px 4px 0px rgba(0,0,0,0.1);
+  background: #e9e9e9; /* Darker placeholder background */
+  overflow: hidden;
+}
+
+/* --- Media Types --- */
+.videoPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playButton {
+  background: #FFDD00;
+  border: 4px solid #1A1A1A;
+  padding: 1.5rem;
+  border-radius: 50%;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.playButton:hover {
+  transform: scale(1.1);
+}
+
+.audioWaveform {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.waveformBar {
+  flex: 1;
+  background: #1A1A1A;
+  border-radius: 4px;
+  transition: height 0.2s;
+}
+
+.pdfDownload {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+}
+
+/* --- Locked State --- */
+.lockedOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 2rem;
+  text-align: center;
+}
+
+.upgradeBtn {
+  margin-top: 1rem;
+  background: #1A1A1A;
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px #00C853; /* Success Green Shadow */
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 1rem 1.5rem;
+  border-top: 2px solid #EEE;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+}

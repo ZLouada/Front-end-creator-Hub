@@ -1,0 +1,78 @@
+/* Footer.module.css */
+.footer {
+  background-color: #FFFFFF;
+  border-top: 4px solid #1A1A1A;
+  padding: 5rem 2rem 2rem 2rem;
+  margin-top: auto;
+}
+
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-cols: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.brandDesc {
+  font-weight: 700;
+  color: #666;
+  max-width: 300px;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.columnTitle {
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: #1A1A1A;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #1A1A1A;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #FFDD00;
+}
+
+.bottom {
+  border-top: 4px solid #1A1A1A;
+  padding-top: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.regionalBadge {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.flag {
+  width: 20px;
+  height: 14px;
+  border: 1px solid #1A1A1A;
+}

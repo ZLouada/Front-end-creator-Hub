@@ -1,0 +1,72 @@
+/* StudioPreview.module.css */
+
+.dashboardFrame {
+  border: 1px solid rgba(255, 221, 0, 0.15);
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(180deg, #111111, #1A1A1A);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 70px;
+    height: auto;
+    flex-direction: column;
+    padding: 2rem 0;
+    justify-content: flex-start;
+  }
+}
+
+.chartBar {
+  flex: 1;
+  background: linear-gradient(to top, #F5C800, #FFDD00);
+  border: none;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  min-width: 12px;
+  box-shadow: 0 -2px 8px rgba(255, 221, 0, 0.15);
+}
+
+.chartBar:hover {
+  box-shadow: 0 -4px 16px rgba(255, 221, 0, 0.3);
+  transform: scaleY(1.03);
+  transform-origin: bottom;
+}
+
+.statCard {
+  border: 1px solid rgba(255, 221, 0, 0.12);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.06);
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+}
+
+.statCard:hover {
+  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.12);
+}
+
+.successBadge {
+  background: #00C853;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  border: none;
+}
