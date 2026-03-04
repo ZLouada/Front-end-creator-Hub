@@ -1,0 +1,84 @@
+.heroSection {
+  background-color: #FFDD00;
+  border-bottom: 8px solid #1A1A1A;
+  padding: 4rem 1rem;
+  width: 100%;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 2.5rem;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  /* Padding-right is large to prevent text from going under the button */
+  padding: 1.25rem 100px 1.25rem 1.5rem; 
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 4px solid #1A1A1A;
+  border-radius: 1.25rem;
+  background: white;
+  box-shadow: 6px 6px 0px 0px #1A1A1A;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px 0px #1A1A1A;
+}
+
+.searchButton {
+  position: absolute;
+  right: 10px;
+  /* This keeps the button centered inside the input */
+  top: 10px;
+  bottom: 10px;
+  background: #1A1A1A;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.searchButton:hover {
+  background: #00C853;
+  color: #1A1A1A;
+}
+
+/* Responsive Fix: Hide "Search" text on small screens to keep button small */
+@media (max-width: 480px) {
+  .searchButton span {
+    display: none;
+  }
+  .searchButton {
+    padding: 0 1rem;
+  }
+  .searchInput {
+    padding-right: 70px; /* Less padding needed when button is just an icon */
+  }
+}

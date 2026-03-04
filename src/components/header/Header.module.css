@@ -1,0 +1,162 @@
+.header {
+  background-color: #FFFFFF;
+  border-bottom: 5px solid #1A1A1A;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
+}
+
+.logoBadge {
+  background-color: #FFDD00;
+  border: 3px solid #1A1A1A;
+  padding: 0px 8px;
+  font-size: 0.7rem;
+  transform: rotate(-3deg);
+  box-shadow: 2px 2px 0px #1A1A1A;
+}
+
+/* Navigation - Desktop vs Mobile */
+.nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #1A1A1A;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border: 3px solid transparent;
+  transition: all 0.1s;
+}
+
+.navLink:hover {
+  background-color: #FFDD00;
+  border-color: #1A1A1A;
+  box-shadow: 4px 4px 0px #1A1A1A;
+  transform: translate(-2px, -2px);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.dashboardBtn {
+  background-color: #FFDD00;
+  border: 3px solid #1A1A1A;
+  padding: 0.6rem 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  box-shadow: 4px 4px 0px #1A1A1A;
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  border: 4px solid #1A1A1A;
+  width: 220px;
+  box-shadow: 8px 8px 0px #1A1A1A;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.dropdownItem:hover {
+  background: #f0f0f0;
+}
+
+/* Responsive Mobile Handling */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+
+  .navActive {
+    left: 0;
+  }
+
+  .navLink {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .iconGroup, .dashboardBtn {
+    display: none; /* Hide minor actions on small mobile to avoid clutter */
+  }
+}

@@ -1,0 +1,96 @@
+/* TierPreview.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.toggleContainer {
+  display: flex;
+  background: #f3f4f6;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 0.25rem;
+  width: fit-content;
+  margin: 0 auto 3rem;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+}
+
+.toggleBtn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.activeToggle {
+  background: #FFDD00;
+  color: #1A1A1A;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+.tierCard {
+  border: 4px solid #1A1A1A;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  background: white;
+  box-shadow: 8px 8px 0px 0px #1A1A1A;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.activeCard {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px 0px #1A1A1A;
+  background: #fffbeb; /* Slight yellow tint */
+}
+
+.phoneMockup {
+  width: 100%;
+  max-width: 320px;
+  height: 600px;
+  border: 8px solid #1A1A1A;
+  border-radius: 3rem;
+  background: #f9fafb;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 12px 12px 0px 0px #1A1A1A;
+}
+
+.phoneScreen {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutBtn {
+  width: 100%;
+  padding: 1rem;
+  background: #00C853;
+  color: white;
+  font-weight: 900;
+  border: 3px solid #1A1A1A;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  text-transform: uppercase;
+  margin-top: auto;
+}

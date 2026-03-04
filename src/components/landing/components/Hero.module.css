@@ -1,0 +1,55 @@
+/* Hero.module.css */
+
+/* Custom Shadow for the Neubrutalist look */
+.claimBar {
+  box-shadow: 8px 8px 0px 0px #1a1a1a;
+  transition: all 0.2s ease-in-out;
+}
+
+.claimBar:focus-within {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px 0px #1a1a1a;
+}
+
+/* Floating Animation for the Creator Collage */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floatingDelayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(2deg); }
+  50% { transform: translateY(-20px) rotate(0deg); }
+  100% { transform: translateY(0px) rotate(2deg); }
+}
+
+/* Shine effect for the "Start Free" button */
+.btnShine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btnShine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.btnShine:hover::after {
+  left: 120%;
+}
