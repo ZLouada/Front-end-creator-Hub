@@ -1,7 +1,6 @@
 import React from 'react';
 import { Wallet, Smartphone, Coins } from 'lucide-react';
 import styles from './LocalAdvantage.module.css';
-import ScrollReveal from '../../ui/ScrollReveal';
 
 const LocalAdvantage = () => {
   const advantages = [
@@ -29,31 +28,30 @@ const LocalAdvantage = () => {
   ];
 
   return (
-    <section className="py-12 md:py-24 bg-surface dark:bg-[#0A0A0A] border-t border-brand-300/20 dark:border-gray-700">
+    <section className="py-12 md:py-24 bg-surface border-t border-brand-300/20">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-3xl mb-10 md:mb-16">
-          <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-brand-900 dark:text-gray-100 leading-tight">
-            Built for the <span className="bg-brand-100 dark:bg-yellow-900/20 px-2 rounded-md">South Asian</span> economy.
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-brand-900 leading-tight">
+            Built for the <span className="bg-brand-100 px-2 rounded-md">South Asian</span> economy.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {advantages.map((item, index) => (
-            <ScrollReveal key={index} animation="fade-up" delay={index * 0.1}>
-              <div className={styles.card + " p-5 sm:p-8 flex flex-col h-full"}>
+            <div key={index} className={styles.card + " p-5 sm:p-8 flex flex-col h-full"}>
                 <div className={`${styles.iconBox} ${item.accent} mb-8`}>
                   {item.icon}
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-900 dark:text-gray-100 mb-4">
+                <h3 className="text-2xl font-bold text-brand-900 mb-4">
                   {item.title}
                 </h3>
 
-                <p className="text-lg text-gray-500 dark:text-gray-400 font-medium leading-relaxed mb-8 grow">
+                <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8 grow">
                   {item.desc}
                 </p>
 
-                <div className="flex flex-wrap gap-2 pt-6 border-t border-brand-300/15 dark:border-gray-700">
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-brand-300/15">
                   {item.labels.map((label, lIndex) => (
                     <span key={lIndex} className={styles.tag}>
                       {label}
@@ -61,7 +59,6 @@ const LocalAdvantage = () => {
                   ))}
                 </div>
               </div>
-            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -1,24 +1,5 @@
 /* Hero.module.css */
 
-/* Grid-line abstract background */
-.gridBg {
-  position: relative;
-}
-
-.gridBg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 221, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 221, 0, 0.08) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* Smooth claim bar with soft shadow */
 .claimBar {
   box-shadow: 0 4px 16px rgba(255, 221, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
@@ -71,16 +52,4 @@
 
 .btnShine:hover::after {
   left: 120%;
-}
-
-/* ─── Dark Mode ───────────────────────────────────────────────── */
-:global(.dark) .gridBg::before {
-  background-image:
-    linear-gradient(rgba(255, 221, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 221, 0, 0.04) 1px, transparent 1px);
-}
-
-:global(.dark) .claimBar {
-  background-color: #141414;
-  border-color: rgba(255, 221, 0, 0.08);
 }

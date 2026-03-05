@@ -2,23 +2,19 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard, Sun, Moon } from 'lucide-react';
+import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard } from 'lucide-react';
 import styles from './Header.module.css';
-import useScrolled from '../../hooks/useScrolled';
-import { useTheme } from '../../context/ThemeContext';
 
 export const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const scrolled = useScrolled(20);
-  const { isDark, toggleTheme } = useTheme();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleProfile = () => setIsProfileOpen(!isProfileOpen);
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
+    <header className={styles.header}>
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/home" className={styles.logo}>
@@ -49,21 +45,18 @@ export const Header = () => {
           <div className={styles.iconGroup}>
             <Search size={22} strokeWidth={3} className="cursor-pointer hover:text-[#FFDD00]" />
             <Bell size={22} strokeWidth={3} className="cursor-pointer hover:text-[#FFDD00]" />
-            <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
-              {isDark ? <Sun size={22} strokeWidth={3} /> : <Moon size={22} strokeWidth={3} />}
-            </button>
           </div>
-          
-          <button 
+
+          <button
             onClick={() => navigate('/feed')}
             className={styles.dashboardBtn}
           >
             My Feed
           </button>
-          
+
           {/* Profile Section */}
           <div className="relative">
-            <div 
+            <div
               onClick={toggleProfile}
               className="w-11 h-11 border-[3px] border-[#1A1A1A] rounded-full overflow-hidden bg-[#FFDD00] flex items-center justify-center cursor-pointer hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform shadow-[3px_3px_0px_#1A1A1A]"
             >

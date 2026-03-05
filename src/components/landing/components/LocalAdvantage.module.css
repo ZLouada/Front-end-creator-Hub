@@ -42,24 +42,3 @@
   border-radius: 9999px;
   color: #B08900;
 }
-
-/* ─── Dark Mode ───────────────────────────────────────────────── */
-:global(.dark) .card {
-  background-color: #141414;
-  border-color: rgba(255, 221, 0, 0.06);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-:global(.dark) .card:hover {
-  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-:global(.dark) .iconBox {
-  border-color: rgba(255, 221, 0, 0.1);
-}
-
-:global(.dark) .tag {
-  background-color: #1A1A00;
-  border-color: rgba(255, 221, 0, 0.1);
-  color: #FFDD00;
-}

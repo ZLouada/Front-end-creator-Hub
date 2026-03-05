@@ -1,23 +1,12 @@
 .header {
-  background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  background-color: #FFFFFF;
+  border-bottom: 5px solid #1A1A1A;
   height: 90px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease,
-              box-shadow 0.3s ease,
-              border-color 0.3s ease;
-}
-
-.headerScrolled {
-  background-color: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  border-bottom-color: rgba(26, 26, 26, 0.12);
 }
 
 .container {
@@ -85,23 +74,6 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-.themeToggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  color: inherit;
-}
-
-.themeToggle:hover {
-  background-color: rgba(255, 221, 0, 0.2);
 }
 
 .dashboardBtn {
@@ -210,61 +182,5 @@
 
   .iconGroup, .dashboardBtn {
     display: none;
-  }
-}
-
-/* ─── Dark Mode ───────────────────────────────────────────────── */
-
-:global(.dark) .header {
-  background-color: rgba(10, 10, 10, 0.75);
-  border-bottom-color: rgba(255, 255, 255, 0.06);
-}
-
-:global(.dark) .headerScrolled {
-  background-color: rgba(10, 10, 10, 0.92);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-}
-
-:global(.dark) .logo {
-  color: #F0F0F0;
-}
-
-:global(.dark) .logoBadge {
-  border-color: #2A2A2A;
-  box-shadow: 2px 2px 0px #2A2A2A;
-}
-
-:global(.dark) .navLink {
-  color: #F0F0F0;
-}
-
-:global(.dark) .navLink:hover {
-  border-color: #2A2A2A;
-  box-shadow: 4px 4px 0px #2A2A2A;
-}
-
-:global(.dark) .dashboardBtn {
-  border-color: #2A2A2A;
-  box-shadow: 4px 4px 0px #2A2A2A;
-  color: #1A1A1A;
-}
-
-:global(.dark) .dropdown {
-  background: #141414;
-  border-color: #2A2A2A;
-  box-shadow: 8px 8px 0px #2A2A2A;
-}
-
-:global(.dark) .dropdownItem {
-  color: #F0F0F0;
-}
-
-:global(.dark) .dropdownItem:hover {
-  background: #1E1E1E;
-}
-
-@media (max-width: 1024px) {
-  :global(.dark) .nav {
-    background: #0A0A0A;
   }
 }

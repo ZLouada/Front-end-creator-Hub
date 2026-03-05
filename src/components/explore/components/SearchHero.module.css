@@ -122,32 +122,3 @@
     font-size: 1rem;
   }
 }
-
-/* ─── Dark Mode ───────────────────────────────────────────────── */
-:global(.dark) .heroSection {
-  background: linear-gradient(135deg, #0A0A00 0%, #0F0E00 40%, #141200 100%);
-  border-bottom-color: rgba(255, 221, 0, 0.06);
-}
-
-:global(.dark) .heroSection::before {
-  background: radial-gradient(circle, rgba(255, 221, 0, 0.06) 0%, transparent 70%);
-}
-
-:global(.dark) .heading {
-  color: #F0F0F0;
-}
-
-:global(.dark) .searchInput {
-  background: rgba(20, 20, 20, 0.85);
-  border-color: rgba(255, 221, 0, 0.12);
-  color: #F0F0F0;
-}
-
-:global(.dark) .searchInput:focus {
-  background: #141414;
-}
-
-:global(.dark) .searchButton {
-  background: linear-gradient(135deg, #FFDD00 0%, #F5C800 100%);
-  color: #1A1A1A;
-}

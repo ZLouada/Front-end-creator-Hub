@@ -99,29 +99,3 @@
     gap: 1.5rem;
   }
 }
-
-/* ─── Dark Mode ───────────────────────────────────────────────── */
-:global(.dark) .footer {
-  background-color: #0A0A0A;
-  border-top-color: #2A2A2A;
-}
-
-:global(.dark) .brandDesc {
-  color: #A1A1AA;
-}
-
-:global(.dark) .columnTitle {
-  color: #F0F0F0;
-}
-
-:global(.dark) .link {
-  color: #D4D4D8;
-}
-
-:global(.dark) .bottom {
-  border-top-color: #2A2A2A;
-}
-
-:global(.dark) .flag {
-  border-color: #2A2A2A;
-}

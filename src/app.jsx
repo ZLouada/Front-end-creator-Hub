@@ -1,8 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { useAuthContext } from './context/AuthContext';
-import ScrollToTop from './hooks/useScrollToTop';
 import AuthModal from './components/auth/AuthModal';
 import ForgotPasswordPage from './components/auth/ForgotPasswordPage';
 import ResetPasswordPage from './components/auth/ResetPasswordPage';
@@ -13,19 +12,16 @@ import CheckoutPage from './app/checkout/page';
 import LandingPage from './components/landing/LandingPage';
 import ExplorePage from './components/explore/ExplorePage';
 import SubscriberFeed from './components/subscriberDashboard/subscriberDashboard';
-import NotFound from './components/NotFound';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuthContext();
   return user ? children : <Navigate to="/" replace />;
 }
 
-function AnimatedRoutes() {
-  const location = useLocation();
-
+function App() {
   return (
-    <div key={location.pathname} className="page-transition">
-      <Routes location={location}>
+    <BrowserRouter>
+      <Routes>
         <Route path="/" element={<AuthModal />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
@@ -47,17 +43,8 @@ function AnimatedRoutes() {
           <Route path="checkout"  element={<CheckoutPage />} />
         </Route>
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <AnimatedRoutes />
     </BrowserRouter>
   );
 }

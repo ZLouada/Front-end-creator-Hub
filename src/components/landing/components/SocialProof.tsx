@@ -1,7 +1,6 @@
 import React from 'react';
 import { Quote, Star, CheckCircle } from 'lucide-react';
 import styles from './SocialProof.module.css';
-import ScrollReveal from '../../ui/ScrollReveal';
 
 const CREATORS = [
   {
@@ -39,8 +38,7 @@ const SocialProof = () => {
 
       <div className={styles.grid}>
         {CREATORS.map((creator, index) => (
-          <ScrollReveal key={index} animation="fade-up" delay={index * 0.1}>
-            <div className={styles.card}>
+            <div key={index} className={styles.card}>
               <Quote size={40} className={styles.quoteIcon} fill="currentColor" />
 
               <p className={styles.quoteText}>
@@ -59,7 +57,6 @@ const SocialProof = () => {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
         ))}
       </div>
 

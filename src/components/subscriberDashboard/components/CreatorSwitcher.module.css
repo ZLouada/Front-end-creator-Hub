@@ -116,28 +116,3 @@
     max-width: 60px;
   }
 }
-
-/* ─── Dark Mode ───────────────────────────────────────────────── */
-:global(.dark) .wrapper {
-  background-color: #0A0A0A;
-  border-bottom-color: #2A2A2A;
-}
-
-:global(.dark) .avatarContainer {
-  background: #141414;
-  border-color: #2A2A2A;
-}
-
-:global(.dark) .activeAvatar {
-  border-color: #2A2A2A;
-  box-shadow: 4px 4px 0px 0px #2A2A2A;
-}
-
-:global(.dark) .newBadge {
-  border-color: #2A2A2A;
-  box-shadow: 2px 2px 0px 0px #2A2A2A;
-}
-
-:global(.dark) .creatorName {
-  color: #D4D4D8;
-}
