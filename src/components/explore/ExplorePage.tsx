@@ -69,7 +69,7 @@ export default function ExplorePage() {
 
       {/* 2. Main Content Container */}
       <div className="container mx-auto px-4 md:px-6 mt-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12">
 
           {/* LEFT SIDE: Feed & Filters (8 Columns) */}
           <div className="lg:col-span-8 space-y-8">
@@ -81,7 +81,7 @@ export default function ExplorePage() {
             </div>
 
             {/* Responsive Creator Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8">
               {filteredCreators.length > 0 ? (
                 filteredCreators.map((creator, index) => (
                   <ExploreCard key={index} {...creator} />
@@ -126,7 +126,7 @@ export default function ExplorePage() {
                 />
 
                 {/* The Drawer Content */}
-                <div className="absolute right-0 top-0 h-full w-80 bg-surface border-l border-brand-200 p-6 shadow-soft-xl overflow-y-auto">
+                <div className="absolute right-0 top-0 h-full w-full sm:w-80 bg-surface border-l border-brand-200 p-6 shadow-soft-xl overflow-y-auto">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="font-bold text-xl text-brand-900">Live Activity</h2>
                     <button

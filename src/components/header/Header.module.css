@@ -129,6 +129,9 @@
 }
 
 @media (max-width: 1024px) {
+  .header {
+    height: 70px;
+  }
   .nav {
     position: fixed;
     top: 0;
@@ -148,8 +151,8 @@
   }
 
   .navLink {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .menuToggle {

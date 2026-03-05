@@ -105,3 +105,21 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255, 221, 0, 0.4);
 }
+
+@media (max-width: 767px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+  .toggleContainer {
+    margin-bottom: 2rem;
+  }
+  .mainGrid {
+    gap: 2rem;
+  }
+  .tierCard {
+    padding: 1.25rem;
+  }
+  .phoneMockup {
+    height: 500px;
+  }
+}

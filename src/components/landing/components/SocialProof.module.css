@@ -122,3 +122,19 @@
   font-weight: 700;
   color: #1A1A1A;
 }
+
+@media (max-width: 767px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+  .header {
+    margin-bottom: 2rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .statsBar {
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+}

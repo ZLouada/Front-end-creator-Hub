@@ -139,7 +139,7 @@ export default function AnalyticsDashboard() {
                 6 months
               </span>
             </div>
-            <div className="h-64">
+            <div className="h-48 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={revenueData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                   <defs>
@@ -173,7 +173,7 @@ export default function AnalyticsDashboard() {
                 +42% avg
               </span>
             </div>
-            <div className="h-64">
+            <div className="h-48 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={subscriberData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />

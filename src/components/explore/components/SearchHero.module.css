@@ -104,14 +104,21 @@
 }
 
 /* Responsive Fix: Hide "Search" text on small screens */
+@media (max-width: 767px) {
+  .heroSection {
+    padding: 2.5rem 1rem;
+  }
+}
+
 @media (max-width: 480px) {
   .searchButton span {
     display: none;
   }
   .searchButton {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
   }
   .searchInput {
-    padding-right: 70px;
+    padding-right: 55px;
+    font-size: 1rem;
   }
 }

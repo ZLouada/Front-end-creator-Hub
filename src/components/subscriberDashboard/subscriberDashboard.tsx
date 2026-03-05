@@ -53,9 +53,9 @@ export default function SubscriberFeed() {
       <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
         
         {/* CENTER: Main Feed Area */}
-        <main className="flex-1 py-12 px-6">
-          <header className="mb-10">
-            <h1 className="text-4xl font-black uppercase italic">Your Feed</h1>
+        <main className="flex-1 py-6 px-4 sm:py-12 sm:px-6">
+          <header className="mb-6 sm:mb-10">
+            <h1 className="text-2xl sm:text-4xl font-black uppercase italic">Your Feed</h1>
             <p className="font-bold text-gray-500">Updates from the creators you support.</p>
           </header>
 

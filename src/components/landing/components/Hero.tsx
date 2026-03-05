@@ -8,7 +8,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full min-h-[90vh] bg-surface overflow-hidden flex items-center">
-      <div className="container mx-auto px-6 py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="container mx-auto px-6 py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center relative z-10">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col space-y-8">
@@ -17,11 +17,11 @@ const Hero = () => {
             <span className="text-sm font-bold tracking-wider">Built for South Asia</span>
           </div>
 
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-brand-900 leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-brand-900 leading-tight">
             Monetize Your Craft in <span className="text-gradient-gold">South Asia.</span>
           </h1>
 
-          <p className="text-lg lg:text-xl text-gray-600 max-w-lg leading-relaxed">
+          <p className="text-base lg:text-xl text-gray-600 max-w-lg leading-relaxed">
             The only subscription platform built for <span className="font-bold text-brand-900">JazzCash, bKash, and Razorpay.</span> Keep 90% of what you earn.
           </p>
 
@@ -49,7 +49,7 @@ const Hero = () => {
         </div>
 
         {/* RIGHT CONTENT - Floating Images */}
-        <div className="relative h-[500px] lg:h-[650px] w-full flex justify-center items-center">
+        <div className="relative h-[350px] sm:h-[500px] lg:h-[650px] w-full flex justify-center items-center">
 
           {/* Center Main Image */}
           <div className="absolute z-20 w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden shadow-soft-lg border-2 border-white/80 animate-float-slow">
@@ -61,7 +61,7 @@ const Hero = () => {
           </div>
 
           {/* Top Left Floating Image */}
-          <div className="absolute top-4 left-0 z-10 w-40 h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden shadow-soft border-2 border-white/80 animate-float-delayed transform -rotate-6">
+          <div className="absolute top-4 left-0 z-10 w-28 h-36 sm:w-40 sm:h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden shadow-soft border-2 border-white/80 animate-float-delayed transform -rotate-6">
               <img
                 src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400"
                 alt="Artist Creator"
@@ -70,11 +70,11 @@ const Hero = () => {
           </div>
 
           {/* Bottom Right Floating Card */}
-          <div className="absolute bottom-10 right-0 z-30 w-48 h-48 md:w-56 md:h-56 bg-gradient-to-br from-brand-400 to-brand-500 rounded-3xl p-6 flex flex-col justify-between shadow-soft-lg transform rotate-3 animate-float-fast">
+          <div className="absolute bottom-10 right-0 z-30 w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-gradient-to-br from-brand-400 to-brand-500 rounded-3xl p-4 sm:p-6 flex flex-col justify-between shadow-soft-lg transform rotate-3 animate-float-fast">
             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-soft-sm">
               <span className="text-xl">✨</span>
             </div>
-            <p className="text-brand-900 font-bold text-xl leading-tight">
+            <p className="text-brand-900 font-bold text-sm sm:text-xl leading-tight">
               "Finally, a platform that understands my audience."
             </p>
           </div>
