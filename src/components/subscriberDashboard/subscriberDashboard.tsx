@@ -2,7 +2,7 @@ import CreatorSwitcher from './components/CreatorSwitcher';
 import FeedPost from './components/FeedPost';
 import SubStatus from './components/SubStatus';
 import LocalDiscovery from './components/LocalDiscovery';
-// import { Header } from '../header/Header';
+import { Header} from '../header/Header';
 
 
 export default function SubscriberFeed() {
@@ -38,7 +38,7 @@ export default function SubscriberFeed() {
 
   return (
     <div className="min-h-screen bg-[#F0F0F0]">
-      {/* <Header /> */}
+      <Header /> 
       
       {/* 1. TOP BAR: Sticky Header Switcher */}
       {/* Pulling this out of the 'flex-row' fixes the layout squishing */}
