@@ -7,14 +7,35 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 4px 16px rgba(255, 221, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
   height: 100%;
+  position: relative;
+}
+
+/* Glow spotlight that follows cursor */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    350px circle at var(--glow-x, -100px) var(--glow-y, -100px),
+    rgba(255, 221, 0, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-4px);
   box-shadow: 0 16px 48px rgba(255, 221, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -134,4 +155,39 @@
     padding: 0.7rem;
     border-radius: 10px;
   }
+}
+
+/* ─── Dark Mode ───────────────────────────────────────────────── */
+:global(.dark) .card {
+  background-color: #141414;
+  border-color: rgba(255, 221, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .imageWrapper {
+  background-color: #1E1E1E;
+  border-bottom-color: rgba(255, 221, 0, 0.06);
+}
+
+:global(.dark) .name {
+  color: #F0F0F0;
+}
+
+:global(.dark) .statItem {
+  color: #71717A;
+}
+
+:global(.dark) .ctaButton {
+  background: linear-gradient(135deg, #1E1E1E, #1A1A00);
+  border-color: rgba(255, 221, 0, 0.12);
+  color: #F0F0F0;
+}
+
+:global(.dark) .ctaButton:hover {
+  background: linear-gradient(135deg, #FFDD00, #F5C800);
+  color: #1A1A1A;
 }

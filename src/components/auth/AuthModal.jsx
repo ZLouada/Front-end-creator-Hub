@@ -26,7 +26,7 @@ const Blob = ({ className, style }) => (
 const SocialBtn = ({ icon, label }) => (
   <button
     type="button"
-    className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl border border-brand-200/50 bg-brand-50/50 hover:bg-white hover:border-brand-400 text-sm font-semibold text-brand-900 transition-all duration-300 ease-smooth hover:shadow-soft hover:-translate-y-0.5 active:scale-95"
+    className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl border border-brand-200/50 bg-brand-50/50 hover:bg-white hover:border-brand-400 text-sm font-semibold text-brand-900 dark:text-gray-100 transition-all duration-300 ease-smooth hover:shadow-soft hover:-translate-y-0.5 active:scale-95"
   >
     {icon}
     {label}
@@ -72,7 +72,7 @@ const AuthModal = () => {
 
   return (
     <div
-      className="relative min-h-screen flex items-center justify-center overflow-hidden font-sans bg-surface"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden font-sans bg-surface dark:bg-[#0A0A0A]"
       style={{ background: 'linear-gradient(135deg, #FFFEF5 0%, #FFF3C4 30%, #FFE88A 60%, #FFDD00 100%)' }}
     >
       <div
@@ -155,10 +155,10 @@ const AuthModal = () => {
               </span>
             </div>
 
-            <h1 className="text-[1.7rem] font-bold text-brand-900 tracking-tight leading-tight">
+            <h1 className="text-[1.7rem] font-bold text-brand-900 dark:text-gray-100 tracking-tight leading-tight">
               {isLogin ? 'Welcome back!' : 'Join for free'}
             </h1>
-            <p className="text-sm text-gray-500 mt-1 font-medium">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium">
               {isLogin
                 ? 'Sign in to your account'
                 : 'Start sharing your work with the world'}
@@ -240,7 +240,7 @@ const AuthModal = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-brand-50/50 border-2 border-brand-200/50 focus:bg-white focus:border-brand-400 focus:shadow-[0_0_0_4px_rgba(255,221,0,0.12),0_4px_16px_rgba(255,221,0,0.06)] focus:-translate-y-px placeholder-gray-400 text-brand-900 px-5 py-3.5 text-base rounded-2xl pr-12"
+                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-brand-50/50 border-2 border-brand-200/50 focus:bg-white focus:border-brand-400 focus:shadow-[0_0_0_4px_rgba(255,221,0,0.12),0_4px_16px_rgba(255,221,0,0.06)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-2xl pr-12"
                 />
                 <button
                   type="button"
@@ -287,12 +287,12 @@ const AuthModal = () => {
             </div>
           </form>
 
-          <p className="text-center text-sm font-medium text-gray-500 mt-5">
+          <p className="text-center text-sm font-medium text-gray-500 dark:text-gray-400 mt-5">
             {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
             <button
               type="button"
               onClick={switchMode}
-              className="font-bold text-brand-900 hover:text-brand-600 transition-colors duration-300 ease-smooth underline underline-offset-2"
+              className="font-bold text-brand-900 dark:text-gray-100 hover:text-brand-600 transition-colors duration-300 ease-smooth underline underline-offset-2"
             >
               {isLogin ? 'Sign up free' : 'Log in'}
             </button>

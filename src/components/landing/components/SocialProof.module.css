@@ -138,3 +138,47 @@
     gap: 1rem;
   }
 }
+
+/* ─── Dark Mode ───────────────────────────────────────────────── */
+:global(.dark) .section {
+  background-color: #0A0A0A;
+  border-top-color: rgba(255, 221, 0, 0.08);
+}
+
+:global(.dark) .title {
+  color: #F0F0F0;
+}
+
+:global(.dark) .highlight {
+  background: linear-gradient(135deg, rgba(255, 221, 0, 0.15), rgba(255, 221, 0, 0.08));
+}
+
+:global(.dark) .card {
+  background-color: #141414;
+  border-color: rgba(255, 221, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .quoteText {
+  color: #E4E4E7;
+}
+
+:global(.dark) .name {
+  color: #F0F0F0;
+}
+
+:global(.dark) .location {
+  color: #71717A;
+}
+
+:global(.dark) .avatar {
+  background-color: #1E1E1E;
+}
+
+:global(.dark) .statItem {
+  color: #D4D4D8;
+}

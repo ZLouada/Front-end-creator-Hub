@@ -2,37 +2,46 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
 import styles from './Hero.module.css';
+import useTypewriter from '../../../hooks/useTypewriter';
+
+const TYPEWRITER_PHRASES = [
+  "Build your community.",
+  "Earn in local currency.",
+  "Grow without barriers.",
+  "Keep 90% of revenue.",
+];
 
 const Hero = () => {
   const [username, setUsername] = useState('');
+  const typewriterText = useTypewriter(TYPEWRITER_PHRASES);
 
   return (
-    <section className="relative w-full min-h-[90vh] bg-surface overflow-hidden flex items-center">
+    <section className={`${styles.gridBg} relative w-full min-h-[90vh] bg-surface dark:bg-[#0A0A0A] overflow-hidden flex items-center`}>
       <div className="container mx-auto px-6 py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center relative z-10">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col space-y-8">
-          <div className="inline-flex items-center space-x-2 bg-brand-100 text-brand-900 px-4 py-2 rounded-full w-fit">
+          <div className="inline-flex items-center space-x-2 bg-brand-100 dark:bg-yellow-900/20 text-brand-900 dark:text-yellow-100 px-4 py-2 rounded-full w-fit">
             <Globe size={18} className="text-brand-600" />
             <span className="text-sm font-bold tracking-wider">Built for South Asia</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-brand-900 leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-brand-900 dark:text-gray-100 leading-tight">
             Monetize Your Craft in <span className="text-gradient-gold">South Asia.</span>
           </h1>
 
-          <p className="text-base lg:text-xl text-gray-600 max-w-lg leading-relaxed">
-            The only subscription platform built for <span className="font-bold text-brand-900">JazzCash, bKash, and Razorpay.</span> Keep 90% of what you earn.
+          <p className="text-base lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed h-[3.5rem]">
+            {typewriterText}<span className="typewriter-cursor" />
           </p>
 
           {/* THE CLAIM BAR */}
-          <form className={`${styles.claimBar} flex flex-col sm:flex-row items-center p-2 bg-white border border-brand-300/20 rounded-2xl max-w-xl`}>
+          <form className={`${styles.claimBar} flex flex-col sm:flex-row items-center p-2 bg-white dark:bg-[#141414] border border-brand-300/20 dark:border-gray-700 rounded-2xl max-w-xl`}>
             <div className="flex items-center flex-1 px-4 py-3 w-full">
-              <span className="text-gray-400 font-medium mr-1">creatorhub.sa/</span>
+              <span className="text-gray-400 dark:text-gray-500 font-medium mr-1">creatorhub.sa/</span>
               <input
                 type="text"
                 placeholder="yourname"
-                className="w-full bg-transparent outline-none text-brand-900 font-bold text-lg"
+                className="w-full bg-transparent outline-none text-brand-900 dark:text-gray-100 font-bold text-lg"
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
@@ -42,7 +51,7 @@ const Hero = () => {
           </form>
 
           <div className="flex flex-wrap gap-6 items-center pt-4">
-            <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
               <CheckCircle2 size={18} className="text-success" /> No credit card required
             </div>
           </div>

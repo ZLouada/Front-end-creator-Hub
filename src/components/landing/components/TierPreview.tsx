@@ -36,12 +36,12 @@ const TierPreview = () => {
   const [selectedTier, setSelectedTier] = useState(TIER_DATA[1]);
 
   return (
-    <section className="bg-surface py-24">
+    <section className="bg-surface dark:bg-[#0A0A0A] py-24">
       <div className={styles.container}>
         
         {/* Toggle Switch */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-brand-900 mb-6">Experience the Flow</h2>
+          <h2 className="text-4xl font-extrabold text-brand-900 dark:text-gray-100 mb-6">Experience the Flow</h2>
           <div className={styles.toggleContainer}>
             <button 
               className={`${styles.toggleBtn} ${view === 'subscriber' ? styles.activeToggle : ''}`}
@@ -69,8 +69,8 @@ const TierPreview = () => {
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-2xl font-bold text-brand-900">{tier.name}</h3>
-                    <p className="text-gray-500 font-semibold">{tier.price} / month</p>
+                    <h3 className="text-2xl font-bold text-brand-900 dark:text-gray-100">{tier.name}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 font-semibold">{tier.price} / month</p>
                   </div>
                   {selectedTier.id === tier.id && (
                     <span className="bg-success p-1 rounded-full">
@@ -78,7 +78,7 @@ const TierPreview = () => {
                     </span>
                   )}
                 </div>
-                <p className="mt-4 text-gray-600">{tier.desc}</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">{tier.desc}</p>
               </div>
             ))}
           </div>
@@ -91,7 +91,7 @@ const TierPreview = () => {
             <div className={styles.phoneMockup}>
               <div className={styles.phoneScreen}>
                 {/* Status Bar */}
-                <div className="flex justify-between text-[10px] font-bold mb-6 text-gray-400">
+                <div className="flex justify-between text-[10px] font-bold mb-6 text-gray-400 dark:text-gray-500">
                     <span>9:41</span>
                     <div className="flex gap-1">
                     <span>LTE</span>
@@ -105,16 +105,16 @@ const TierPreview = () => {
                         <p className="text-[10px] font-bold text-success uppercase mb-1">Secure Checkout</p>
                         <h4 className="text-xl font-bold leading-tight">Join the Club</h4>
                         
-                        <div className="mt-4 p-4 border border-brand-300/20 rounded-xl bg-white shadow-soft-sm">
-                        <p className="text-xs font-semibold text-gray-400">Selected Tier</p>
+                        <div className="mt-4 p-4 border border-brand-300/20 dark:border-gray-700 rounded-xl bg-white dark:bg-[#141414] shadow-soft-sm">
+                        <p className="text-xs font-semibold text-gray-400 dark:text-gray-500">Selected Tier</p>
                         <p className="text-sm font-bold">{selectedTier.name}</p>
-                        <p className="text-lg font-bold text-brand-900">{selectedTier.price}</p>
+                        <p className="text-lg font-bold text-brand-900 dark:text-gray-100">{selectedTier.price}</p>
                         </div>
 
                         <div className="mt-6 space-y-2">
-                        <p className="text-[10px] font-semibold uppercase text-gray-500">Pay via Local Wallet</p>
+                        <p className="text-[10px] font-semibold uppercase text-gray-500 dark:text-gray-400">Pay via Local Wallet</p>
                         {['JazzCash', 'bKash', 'EasyPaisa'].map((pay) => (
-                            <div key={pay} className="flex items-center justify-between p-2 border border-brand-300/20 rounded-lg bg-white">
+                            <div key={pay} className="flex items-center justify-between p-2 border border-brand-300/20 dark:border-gray-700 rounded-lg bg-white dark:bg-[#141414]">
                             <span className="text-xs font-bold">{pay}</span>
                             <div className={`w-3 h-3 border-2 border-brand-300 rounded-full ${pay === 'JazzCash' ? 'bg-brand-400' : ''}`} />
                             </div>
@@ -127,25 +127,25 @@ const TierPreview = () => {
                         <h4 className="text-xl font-bold leading-tight">Your {selectedTier.name} Stats</h4>
                         
                         <div className="mt-4 grid grid-cols-2 gap-2">
-                        <div className="p-3 border border-brand-300/20 rounded-xl bg-white">
-                            <p className="text-[10px] font-semibold text-gray-400 uppercase">Subscribers</p>
+                        <div className="p-3 border border-brand-300/20 dark:border-gray-700 rounded-xl bg-white dark:bg-[#141414]">
+                            <p className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase">Subscribers</p>
                             <p className="text-lg font-bold">
                                 {selectedTier.id === 'chai' ? '840' : selectedTier.id === 'lassi' ? '310' : '92'}
                             </p>
                         </div>
                         <div className="p-3 border border-brand-300/20 rounded-xl bg-gradient-to-br from-brand-400 to-brand-500">
-                            <p className="text-[10px] font-semibold text-brand-900 uppercase">Monthly</p>
+                            <p className="text-[10px] font-semibold text-brand-900 dark:text-gray-100 uppercase">Monthly</p>
                             <p className="text-lg font-bold">{selectedTier.price.replace('PKR ', 'Rs ')}</p>
                         </div>
                         </div>
 
                         <div className="mt-6">
-                        <p className="text-[10px] font-semibold uppercase text-gray-500 mb-2">Recent {selectedTier.name} Payouts</p>
+                        <p className="text-[10px] font-semibold uppercase text-gray-500 dark:text-gray-400 mb-2">Recent {selectedTier.name} Payouts</p>
                         <div className="space-y-2">
                             {[1, 2, 3].map((i) => (
-                            <div key={i} className="flex items-center justify-between p-2 border-b border-brand-300/10">
+                            <div key={i} className="flex items-center justify-between p-2 border-b border-brand-300/10 dark:border-gray-700">
                                 <span className="text-xs font-bold text-success">+ {selectedTier.price}</span>
-                                <span className="text-[10px] font-medium text-gray-400">{i}h ago</span>
+                                <span className="text-[10px] font-medium text-gray-400 dark:text-gray-500">{i}h ago</span>
                             </div>
                             ))}
                         </div>

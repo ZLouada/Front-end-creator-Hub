@@ -186,7 +186,7 @@ export default function DashboardLayout() {
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto bg-surface">
+        <main className="flex-1 overflow-y-auto bg-surface dark:bg-[#0A0A0A]">
           <Outlet />
         </main>
       </div>

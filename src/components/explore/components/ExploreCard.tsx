@@ -3,6 +3,8 @@
 import React from 'react';
 import { Users, Coffee, Star } from 'lucide-react';
 import styles from './ExploreCard.module.css';
+import useCardGlow from '../../../hooks/useCardGlow';
+import useCardTilt from '../../../hooks/useCardTilt';
 
 interface ExploreCardProps {
   name: string;
@@ -21,8 +23,25 @@ const ExploreCard = ({
   imageUrl,
   startingPrice
 }: ExploreCardProps) => {
+  const glow = useCardGlow();
+  const tilt = useCardTilt(6);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    glow.onMouseMove(e);
+    tilt.onMouseMove(e);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    glow.onMouseLeave(e);
+    tilt.onMouseLeave(e);
+  };
+
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       {/* Top Image Section */}
       <div className={styles.imageWrapper}>
         <span className={styles.categoryBadge}>{category}</span>

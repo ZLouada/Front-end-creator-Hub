@@ -206,3 +206,66 @@
     gap: 1rem;
   }
 }
+
+/* ─── Dark Mode ───────────────────────────────────────────────── */
+:global(.dark) .card {
+  background: #141414;
+  border-color: #2A2A2A;
+  box-shadow: 12px 12px 0px 0px #2A2A2A;
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 16px 16px 0px 0px #FFDD00;
+}
+
+:global(.dark) .header {
+  background-color: #1E1E1E;
+  border-bottom-color: #2A2A2A;
+}
+
+:global(.dark) .creatorName {
+  color: #F0F0F0;
+}
+
+:global(.dark) .timestamp {
+  color: #71717A;
+}
+
+:global(.dark) .tierBadge {
+  border-color: #2A2A2A;
+  box-shadow: 2px 2px 0px 0px #2A2A2A;
+}
+
+:global(.dark) .postText {
+  color: #E4E4E7;
+}
+
+:global(.dark) .mediaContainer {
+  border-color: #2A2A2A;
+  background: #1E1E1E;
+}
+
+:global(.dark) .waveformBar {
+  background: #FFDD00;
+}
+
+:global(.dark) .playButton {
+  border-color: #2A2A2A;
+  box-shadow: 4px 4px 0px 0px #2A2A2A;
+}
+
+:global(.dark) .pdfDownload {
+  background: #1E1E1E;
+}
+
+:global(.dark) .lockedOverlay {
+  background: rgba(10, 10, 10, 0.6);
+}
+
+:global(.dark) .footer {
+  border-top-color: #2A2A2A;
+}
+
+:global(.dark) .interaction {
+  color: #A1A1AA;
+}

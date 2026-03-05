@@ -123,3 +123,38 @@
     height: 500px;
   }
 }
+
+/* ─── Dark Mode ───────────────────────────────────────────────── */
+:global(.dark) .toggleContainer {
+  background: #1E1E1E;
+  border-color: rgba(255, 221, 0, 0.1);
+}
+
+:global(.dark) .toggleBtn {
+  color: #A1A1AA;
+}
+
+:global(.dark) .activeToggle {
+  color: #1A1A1A;
+}
+
+:global(.dark) .tierCard {
+  background: #141414;
+  border-color: rgba(255, 221, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .activeCard {
+  background: #1A1A00;
+}
+
+:global(.dark) .phoneMockup {
+  background: #141414;
+  border-color: rgba(255, 221, 0, 0.15);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+
+:global(.dark) .statCard {
+  background: #141414;
+  border-color: rgba(255, 221, 0, 0.06);
+}

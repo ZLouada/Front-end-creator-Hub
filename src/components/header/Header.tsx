@@ -2,19 +2,23 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard } from 'lucide-react';
+import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard, Sun, Moon } from 'lucide-react';
 import styles from './Header.module.css';
+import useScrolled from '../../hooks/useScrolled';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const scrolled = useScrolled(20);
+  const { isDark, toggleTheme } = useTheme();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleProfile = () => setIsProfileOpen(!isProfileOpen);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/home" className={styles.logo}>
@@ -45,6 +49,9 @@ export const Header = () => {
           <div className={styles.iconGroup}>
             <Search size={22} strokeWidth={3} className="cursor-pointer hover:text-[#FFDD00]" />
             <Bell size={22} strokeWidth={3} className="cursor-pointer hover:text-[#FFDD00]" />
+            <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
+              {isDark ? <Sun size={22} strokeWidth={3} /> : <Moon size={22} strokeWidth={3} />}
+            </button>
           </div>
           
           <button 

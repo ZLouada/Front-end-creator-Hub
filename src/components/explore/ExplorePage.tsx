@@ -62,7 +62,7 @@ export default function ExplorePage() {
     });
 
   return (
-    <main className="min-h-screen bg-surface pb-20">
+    <main className="min-h-screen bg-surface dark:bg-[#0A0A0A] pb-20">
       <Header />
       {/* 1. Full-Width Search Header */}
       <SearchHero onSearchChange={setSearchQuery} />
@@ -74,7 +74,7 @@ export default function ExplorePage() {
           {/* LEFT SIDE: Feed & Filters (8 Columns) */}
           <div className="lg:col-span-8 space-y-8">
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-brand-900">
+              <h2 className="text-2xl font-bold text-brand-900 dark:text-gray-100">
                 {searchQuery ? `Results for "${searchQuery}"` : "Browse Categories"}
               </h2>
               <CategoryPills />
@@ -111,7 +111,7 @@ export default function ExplorePage() {
             {/* Mobile FAB */}
             <button
             onClick={() => setIsSidebarOpen(true)}
-            className="lg:hidden fixed bottom-6 right-6 bg-gradient-to-br from-brand-400 to-brand-500 text-brand-900 p-4 rounded-full shadow-soft-md hover:shadow-glow transition-all duration-300 ease-smooth z-50 border border-brand-300"
+            className="lg:hidden fixed bottom-6 right-6 bg-gradient-to-br from-brand-400 to-brand-500 text-brand-900 dark:text-gray-100 p-4 rounded-full shadow-soft-md hover:shadow-glow transition-all duration-300 ease-smooth z-50 border border-brand-300"
             >
             <Zap size={24} />
             </button>
@@ -126,9 +126,9 @@ export default function ExplorePage() {
                 />
 
                 {/* The Drawer Content */}
-                <div className="absolute right-0 top-0 h-full w-full sm:w-80 bg-surface border-l border-brand-200 p-6 shadow-soft-xl overflow-y-auto">
+                <div className="absolute right-0 top-0 h-full w-full sm:w-80 bg-surface dark:bg-[#0A0A0A] border-l border-brand-200 p-6 shadow-soft-xl overflow-y-auto">
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="font-bold text-xl text-brand-900">Live Activity</h2>
+                    <h2 className="font-bold text-xl text-brand-900 dark:text-gray-100">Live Activity</h2>
                     <button
                     onClick={() => setIsSidebarOpen(false)}
                     className="p-2 border border-brand-200 rounded-xl hover:bg-brand-50 transition-colors duration-300"

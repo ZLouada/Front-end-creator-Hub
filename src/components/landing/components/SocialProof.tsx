@@ -1,6 +1,7 @@
 import React from 'react';
 import { Quote, Star, CheckCircle } from 'lucide-react';
 import styles from './SocialProof.module.css';
+import ScrollReveal from '../../ui/ScrollReveal';
 
 const CREATORS = [
   {
@@ -38,25 +39,27 @@ const SocialProof = () => {
 
       <div className={styles.grid}>
         {CREATORS.map((creator, index) => (
-          <div key={index} className={styles.card}>
-            <Quote size={40} className={styles.quoteIcon} fill="currentColor" />
-            
-            <p className={styles.quoteText}>
-              "{creator.quote}"
-            </p>
+          <ScrollReveal key={index} animation="fade-up" delay={index * 0.1}>
+            <div className={styles.card}>
+              <Quote size={40} className={styles.quoteIcon} fill="currentColor" />
 
-            <div className={styles.creatorInfo}>
-              <img 
-                src={creator.image} 
-                alt={creator.name} 
-                className={styles.avatar}
-              />
-              <div>
-                <h4 className={styles.name}>{creator.name}</h4>
-                <p className={styles.location}>{creator.location} • {creator.handle}</p>
+              <p className={styles.quoteText}>
+                "{creator.quote}"
+              </p>
+
+              <div className={styles.creatorInfo}>
+                <img
+                  src={creator.image}
+                  alt={creator.name}
+                  className={styles.avatar}
+                />
+                <div>
+                  <h4 className={styles.name}>{creator.name}</h4>
+                  <p className={styles.location}>{creator.location} • {creator.handle}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
 
