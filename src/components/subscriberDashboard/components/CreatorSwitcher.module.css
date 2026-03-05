@@ -98,3 +98,21 @@
   text-overflow: ellipsis;
   max-width: 80px;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+  .creatorItem {
+    min-width: 65px;
+  }
+  .avatarContainer {
+    width: 52px;
+    height: 52px;
+  }
+  .creatorName {
+    font-size: 9px;
+    max-width: 60px;
+  }
+}

@@ -116,3 +116,22 @@
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(255, 221, 0, 0.12);
 }
+
+@media (max-width: 767px) {
+  .card {
+    border-radius: 16px;
+  }
+  .content {
+    padding: 1rem;
+  }
+  .name {
+    font-size: 1.1rem;
+  }
+  .footer {
+    padding: 0 1rem 1rem 1rem;
+  }
+  .ctaButton {
+    padding: 0.7rem;
+    border-radius: 10px;
+  }
+}

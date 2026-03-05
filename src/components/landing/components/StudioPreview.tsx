@@ -76,7 +76,7 @@ const StudioPreview = () => {
                   </div>
                 </div>
 
-                <div className={`${styles.statCard} sm:col-span-2 md:col-span-1`}>
+                <div className={styles.statCard}>
                   <p className="text-[10px] font-semibold text-gray-400 uppercase mb-1">Churn Rate</p>
                   <div className="flex items-end justify-between">
                     <h3 className="text-xl md:text-2xl font-bold text-brand-900">1.2%</h3>

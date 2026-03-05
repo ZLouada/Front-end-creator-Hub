@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck } from 'lucide-react';
+import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard } from 'lucide-react';
 import styles from './Header.module.css';
 
 export const Header = () => {
@@ -23,10 +23,21 @@ export const Header = () => {
 
         {/* Desktop Navigation (Hidden on Mobile) */}
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navActive : ''}`}>
-          <Link to="/explore" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Explore</Link>
-          <Link to="/dashboard" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
-          <Link to="/analytics" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Analytics</Link>
-          <Link to="/billing" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Billing</Link>
+          <Link to="/explore" className={`${styles.navLink} ${styles.desktopOnly}`} onClick={() => setIsMenuOpen(false)}>Explore</Link>
+          <Link to="/dashboard" className={`${styles.navLink} ${styles.desktopOnly}`} onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
+          <Link to="/analytics" className={`${styles.navLink} ${styles.desktopOnly}`} onClick={() => setIsMenuOpen(false)}>Analytics</Link>
+          <Link to="/billing" className={`${styles.navLink} ${styles.desktopOnly}`} onClick={() => setIsMenuOpen(false)}>Billing</Link>
+
+          {/* Mobile-only navigation items */}
+          <Link to="/dashboard/settings" className={`${styles.navLink} ${styles.mobileOnly}`} onClick={() => setIsMenuOpen(false)}>
+            <Settings size={24} /> Settings
+          </Link>
+          <Link to="/dashboard/checkout" className={`${styles.navLink} ${styles.mobileOnly}`} onClick={() => setIsMenuOpen(false)}>
+            <CreditCard size={24} /> Checkout
+          </Link>
+          <Link to="/home" className={`${styles.navLink} ${styles.mobileOnly}`} onClick={() => setIsMenuOpen(false)}>
+            <Home size={24} /> Go to Home
+          </Link>
         </nav>
 
         {/* Right Actions */}
