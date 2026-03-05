@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Search, Zap, X } from 'lucide-react';
 import { useDebounce } from 'use-debounce';
-// import { Header } from '../header/Header';
+import { Header} from '../header/Header';
 import SearchHero from './components/SearchHero';
 import CategoryPills from './components/CategoryPills';
 import ExploreCard from './components/ExploreCard';
@@ -63,6 +63,7 @@ export default function ExplorePage() {
 
   return (
     <main className="min-h-screen bg-surface pb-20">
+      <Header />
       {/* 1. Full-Width Search Header */}
       <SearchHero onSearchChange={setSearchQuery} />
 
