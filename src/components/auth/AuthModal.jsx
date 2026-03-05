@@ -228,7 +228,7 @@ const AuthModal = () => {
                   Password
                 </label>
                 {isLogin && (
-                  <button type="button" className="text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors duration-300 ease-smooth">
+                  <button type="button" onClick={() => navigate('/forgot-password')} className="text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors duration-300 ease-smooth">
                     Forgot password?
                   </button>
                 )}

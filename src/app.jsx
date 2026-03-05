@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { useAuthContext } from './context/AuthContext';
 import AuthModal from './components/auth/AuthModal';
+import ForgotPasswordPage from './components/auth/ForgotPasswordPage';
+import ResetPasswordPage from './components/auth/ResetPasswordPage';
 import DashboardLayout from './components/layout/DashboardLayout';
 import AnalyticsDashboard from './app/dashboard/analytics/page';
 import SettingsPage from './app/dashboard/settings/page';
@@ -21,6 +23,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AuthModal />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/home" element={<LandingPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/feed" element={<SubscriberFeed />} />
