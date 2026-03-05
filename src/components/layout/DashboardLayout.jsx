@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Home } from 'lucide-react';
 import { useAuthContext } from '../../context/AuthContext';
 
 const IconAnalytics = () => (
@@ -113,6 +114,17 @@ function SidebarContent({ user, logout, onClose }) {
             <p className="text-gray-500 text-xs truncate">{user?.email ?? ''}</p>
           </div>
         </div>
+        <button
+          onClick={() => navigate('/home')}
+          className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-400 hover:text-[#FFDD00] hover:bg-[#FFDD00]/10 transition-all duration-200 group"
+        >
+          <Home 
+            size={20} 
+            strokeWidth={2.5} 
+            className="group-hover:scale-110 transition-transform duration-200" 
+          />
+          <span>Go to Home</span>
+        </button>
         <button
           onClick={handleLogout}
           className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-200"
