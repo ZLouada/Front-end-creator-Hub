@@ -37,12 +37,12 @@ export default function SubscriberFeed() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F0F0] dark:bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#F0F0F0]">
       <Header /> 
       
       {/* 1. TOP BAR: Sticky Header Switcher */}
       {/* Pulling this out of the 'flex-row' fixes the layout squishing */}
-      <div className="sticky top-0 z-50 bg-white dark:bg-[#141414]">
+      <div className="sticky top-0 z-50 bg-white">
         <CreatorSwitcher 
           creators={mockCreators} 
           onSelectCreator={handleCreatorSelect} 
@@ -56,7 +56,7 @@ export default function SubscriberFeed() {
         <main className="flex-1 py-6 px-4 sm:py-12 sm:px-6">
           <header className="mb-6 sm:mb-10">
             <h1 className="text-2xl sm:text-4xl font-black uppercase italic">Your Feed</h1>
-            <p className="font-bold text-gray-500 dark:text-gray-400">Updates from the creators you support.</p>
+            <p className="font-bold text-gray-500">Updates from the creators you support.</p>
           </header>
 
           <div className="space-y-12">
