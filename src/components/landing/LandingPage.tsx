@@ -1,4 +1,5 @@
 import Hero from './components/Hero';
+import { Header} from '../header/Header';
 import LocalAdvantage from './components/LocalAdvantage';
 import TierPreview from './components/TierPreview';
 import StudioPreview from './components/StudioPreview';
@@ -9,6 +10,7 @@ import FinalCTA from './components/FinalCTA';
 const LandingPage= () => {
   return (
     <main className="bg-white min-h-screen">
+      <Header />
       <Hero />
       <LocalAdvantage />
       <TierPreview />
