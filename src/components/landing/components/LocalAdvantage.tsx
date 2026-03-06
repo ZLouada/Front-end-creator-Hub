@@ -28,10 +28,10 @@ const LocalAdvantage = () => {
   ];
 
   return (
-    <section className="py-12 md:py-24 bg-surface border-t border-brand-300/20">
+    <section className="py-12 md:py-24 bg-surface dark:bg-[#0A0A0A] border-t border-brand-300/20 dark:border-gray-700">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-3xl mb-10 md:mb-16">
-          <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-brand-900 leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-brand-900 dark:text-gray-100 leading-tight">
             Built for the <span className="bg-brand-100 px-2 rounded-md">South Asian</span> economy.
           </h2>
         </div>
@@ -43,15 +43,15 @@ const LocalAdvantage = () => {
                   {item.icon}
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-900 mb-4">
+                <h3 className="text-2xl font-bold text-brand-900 dark:text-gray-100 mb-4">
                   {item.title}
                 </h3>
 
-                <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8 grow">
+                <p className="text-lg text-gray-500 dark:text-gray-400 font-medium leading-relaxed mb-8 grow">
                   {item.desc}
                 </p>
 
-                <div className="flex flex-wrap gap-2 pt-6 border-t border-brand-300/15">
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-brand-300/15 dark:border-gray-700">
                   {item.labels.map((label, lIndex) => (
                     <span key={lIndex} className={styles.tag}>
                       {label}

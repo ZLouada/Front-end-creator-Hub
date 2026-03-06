@@ -65,3 +65,30 @@
   box-shadow: 0 4px 16px rgba(255, 221, 0, 0.20), 0 0 12px rgba(255, 221, 0, 0.15);
   transform: translateY(-2px);
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .pill {
+  background-color: #1A1A1A;
+  color: #F0F0F0;
+  border-color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .pill:hover {
+  background-color: #252525;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: #444;
+}
+
+:global(.dark) .arrowBtn {
+  background: #1A1A1A;
+  border-color: #333;
+  color: #F0F0F0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .arrowBtn:hover {
+  background: #252525;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}

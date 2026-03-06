@@ -99,3 +99,34 @@
     gap: 1.5rem;
   }
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .footer {
+  background-color: #0A0A0A;
+  border-top-color: #333;
+}
+
+:global(.dark) .brandDesc {
+  color: #999;
+}
+
+:global(.dark) .columnTitle {
+  color: #F0F0F0;
+}
+
+:global(.dark) .link {
+  color: #F0F0F0;
+}
+
+:global(.dark) .bottom {
+  border-top-color: #333;
+}
+
+:global(.dark) .flag {
+  border-color: #333;
+}
+
+:global(.dark) .regionalBadge {
+  color: #F0F0F0;
+}

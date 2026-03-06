@@ -1,8 +1,5 @@
 /* LocalAdvantage.module.css */
 
-.pleaseSpeed {
-  background-color: yellow;
-}
 .card {
   border: 1px solid rgba(255, 221, 0, 0.15);
   background-color: #FFFFFF;
@@ -41,4 +38,27 @@
   text-transform: uppercase;
   border-radius: 9999px;
   color: #B08900;
+}
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .card {
+  background-color: #141414;
+  border-color: #333;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .iconBox {
+  border-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .tag {
+  background-color: #1A1A1A;
+  border-color: #333;
+  color: #FFDD00;
 }

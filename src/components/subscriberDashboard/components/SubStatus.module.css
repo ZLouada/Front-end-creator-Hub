@@ -119,3 +119,58 @@
   margin-top: 0.5rem;
   display: inline-block;
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .card {
+  background-color: #141414;
+  border-color: #333;
+  box-shadow: 8px 8px 0px 0px #000;
+}
+
+:global(.dark) .title {
+  color: #F0F0F0;
+}
+
+:global(.dark) .statBox {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+:global(.dark) .statLabel {
+  color: #999;
+}
+
+:global(.dark) .statValue {
+  color: #F0F0F0;
+}
+
+:global(.dark) .billingSection {
+  border-color: #333;
+}
+
+:global(.dark) .billingText {
+  color: #0A0A0A;
+}
+
+:global(.dark) .perksSection {
+  border-top-color: #333;
+}
+
+:global(.dark) .perksLabel {
+  color: #F0F0F0;
+}
+
+:global(.dark) .progressBarContainer {
+  background: #333;
+  border-color: #444;
+}
+
+:global(.dark) .progressBarFill {
+  border-right-color: #333;
+}
+
+:global(.dark) .savingsBadge {
+  background: #F0F0F0;
+  color: #0A0A0A;
+}

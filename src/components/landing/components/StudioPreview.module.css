@@ -70,3 +70,31 @@
   font-weight: 700;
   border: none;
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .dashboardFrame {
+  background: #141414;
+  border-color: #333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .statCard {
+  background: #1A1A1A;
+  border-color: #333;
+  color: #F0F0F0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .statCard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+:global(.dark) .chartBar {
+  background: linear-gradient(to top, #D4A900, #FFDD00);
+  box-shadow: 0 -2px 8px rgba(255, 221, 0, 0.2);
+}
+
+:global(.dark) .chartBar:hover {
+  box-shadow: 0 -4px 16px rgba(255, 221, 0, 0.4);
+}

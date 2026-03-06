@@ -23,7 +23,7 @@ const Input = forwardRef(function Input({
   return (
     <div>
       {label && (
-        <label className="block text-xs font-black uppercase tracking-wider text-brand-charcoal mb-2">
+        <label className="block text-xs font-black uppercase tracking-wider text-brand-charcoal dark:text-gray-300 mb-2">
           {label}
         </label>
       )}

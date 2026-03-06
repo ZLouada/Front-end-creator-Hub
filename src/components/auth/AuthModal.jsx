@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 
@@ -26,7 +27,7 @@ const Blob = ({ className, style }) => (
 const SocialBtn = ({ icon, label }) => (
   <button
     type="button"
-    className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl border border-brand-200/50 bg-brand-50/50 hover:bg-white hover:border-brand-400 text-sm font-semibold text-brand-900 transition-all duration-300 ease-smooth hover:shadow-soft hover:-translate-y-0.5 active:scale-95"
+    className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl border border-brand-200/50 dark:border-gray-700 bg-brand-50/50 dark:bg-[#1A1A1A] hover:bg-white dark:hover:bg-[#222] hover:border-brand-400 dark:hover:border-gray-500 text-sm font-semibold text-brand-900 dark:text-gray-100 transition-all duration-300 ease-smooth hover:shadow-soft hover:-translate-y-0.5 active:scale-95"
   >
     {icon}
     {label}
@@ -44,6 +45,7 @@ const AuthModal = () => {
   const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuthContext();
+  const { isDark } = useTheme();
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -65,7 +67,9 @@ const AuthModal = () => {
     size: `${Math.random() * 8 + 4}px`,
     left: `${Math.random() * 90 + 5}%`,
     top: `${Math.random() * 80 + 10}%`,
-    color: ['#FFDD00', '#FF9F43', '#FFF3C4', '#FFE66D'][i % 4],
+    color: isDark
+      ? ['#FFDD00', '#B8860B', '#FFD700', '#DAA520'][i % 4]
+      : ['#FFDD00', '#FF9F43', '#FFF3C4', '#FFE66D'][i % 4],
     duration: Math.random() * 3 + 3,
     delay: Math.random() * 5,
   }));
@@ -73,32 +77,37 @@ const AuthModal = () => {
   return (
     <div
       className="relative min-h-screen flex items-center justify-center overflow-hidden font-sans bg-surface"
-      style={{ background: 'linear-gradient(135deg, #FFFEF5 0%, #FFF3C4 30%, #FFE88A 60%, #FFDD00 100%)' }}
+      style={{ background: isDark
+        ? 'linear-gradient(135deg, #0A0A0A 0%, #141414 40%, #1A1A1A 70%, #0A0A0A 100%)'
+        : 'linear-gradient(135deg, #FFFEF5 0%, #FFF3C4 30%, #FFE88A 60%, #FFDD00 100%)'
+      }}
     >
       <div
         className="absolute inset-0 animate-gradient-bg pointer-events-none"
         style={{
-          background: 'linear-gradient(270deg, #FFFEF5, #FFDD00, #FFFEF5, #FFF3C4)',
+          background: isDark
+            ? 'linear-gradient(270deg, #0A0A0A, #1A1A1A, #0A0A0A, #141414)'
+            : 'linear-gradient(270deg, #FFFEF5, #FFDD00, #FFFEF5, #FFF3C4)',
           backgroundSize: '400% 400%',
-          opacity: 0.6,
+          opacity: isDark ? 0.3 : 0.6,
         }}
       />
 
       <Blob
         className="w-96 h-96 animate-float-slow"
-        style={{ background: '#FFDD00', opacity: 0.25, top: '-8rem', left: '-8rem' }}
+        style={{ background: isDark ? '#FFDD00' : '#FFDD00', opacity: isDark ? 0.08 : 0.25, top: '-8rem', left: '-8rem' }}
       />
       <Blob
         className="w-80 h-80 animate-drift"
-        style={{ background: '#F5C800', opacity: 0.18, bottom: '-6rem', right: '-6rem', animationDelay: '2s' }}
+        style={{ background: isDark ? '#F5C800' : '#F5C800', opacity: isDark ? 0.06 : 0.18, bottom: '-6rem', right: '-6rem', animationDelay: '2s' }}
       />
       <Blob
         className="w-64 h-64 animate-float-fast"
-        style={{ background: '#FFDD00', opacity: 0.12, top: '60%', left: '10%', animationDelay: '1s' }}
+        style={{ background: isDark ? '#FFDD00' : '#FFDD00', opacity: isDark ? 0.04 : 0.12, top: '60%', left: '10%', animationDelay: '1s' }}
       />
       <Blob
         className="w-48 h-48 animate-drift"
-        style={{ background: '#F5C800', opacity: 0.15, top: '20%', right: '8%', animationDelay: '3s' }}
+        style={{ background: isDark ? '#F5C800' : '#F5C800', opacity: isDark ? 0.05 : 0.15, top: '20%', right: '8%', animationDelay: '3s' }}
       />
 
       <div
@@ -106,7 +115,7 @@ const AuthModal = () => {
         style={{
           width: 520,
           height: 520,
-          border: '1.5px dashed rgba(255,221,0,0.25)',
+          border: isDark ? '1.5px dashed rgba(255,221,0,0.1)' : '1.5px dashed rgba(255,221,0,0.25)',
           borderRadius: '50%',
           top: '50%',
           left: '50%',
@@ -118,7 +127,7 @@ const AuthModal = () => {
         style={{
           width: 380,
           height: 380,
-          border: '1px dashed rgba(255,221,0,0.18)',
+          border: isDark ? '1px dashed rgba(255,221,0,0.06)' : '1px dashed rgba(255,221,0,0.18)',
           borderRadius: '50%',
           top: '50%',
           left: '50%',
@@ -134,7 +143,11 @@ const AuthModal = () => {
       <div
         className={`glass-card relative z-10 w-full max-w-[440px] mx-4 rounded-[2.5rem] shadow-soft-xl overflow-hidden
           ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
-        style={{ boxShadow: '0 32px 80px rgba(255,221,0,0.18), 0 8px 32px rgba(0,0,0,0.06)' }}
+        style={{ boxShadow: isDark
+          ? '0 32px 80px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)'
+          : '0 32px 80px rgba(255,221,0,0.18), 0 8px 32px rgba(0,0,0,0.06)',
+          backgroundColor: isDark ? '#141414' : undefined,
+        }}
       >
         <div className="h-1.5 w-full bg-gradient-to-r from-brand-300 via-brand-400 to-brand-500" />
 
@@ -145,7 +158,9 @@ const AuthModal = () => {
               <span
                 className="text-4xl font-bold tracking-tight"
                 style={{
-                  background: 'linear-gradient(135deg, #1A1A1A 30%, #FFDD00 100%)',
+                  background: isDark
+                    ? 'linear-gradient(135deg, #F0F0F0 30%, #FFDD00 100%)'
+                    : 'linear-gradient(135deg, #1A1A1A 30%, #FFDD00 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -155,10 +170,10 @@ const AuthModal = () => {
               </span>
             </div>
 
-            <h1 className="text-[1.7rem] font-bold text-brand-900 tracking-tight leading-tight">
+            <h1 className="text-[1.7rem] font-bold text-brand-900 dark:text-gray-100 tracking-tight leading-tight">
               {isLogin ? 'Welcome back!' : 'Join for free'}
             </h1>
-            <p className="text-sm text-gray-500 mt-1 font-medium">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium">
               {isLogin
                 ? 'Sign in to your account'
                 : 'Start sharing your work with the world'}
@@ -184,9 +199,9 @@ const AuthModal = () => {
           </div>
 
           <div className="flex items-center gap-3 mb-5">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-brand-200" />
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-brand-200 dark:to-gray-700" />
             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">or</span>
-            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-brand-200" />
+            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-brand-200 dark:to-gray-700" />
           </div>
 
           <form
@@ -224,11 +239,11 @@ const AuthModal = () => {
 
             <div className="animate-fade-up" style={{ animationDelay: '0.15s' }}>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-brand-700 tracking-wide">
+                <label className="block text-xs font-semibold text-brand-700 dark:text-gray-300 tracking-wide">
                   Password
                 </label>
                 {isLogin && (
-                  <button type="button" onClick={() => navigate('/forgot-password')} className="text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors duration-300 ease-smooth">
+                  <button type="button" onClick={() => navigate('/forgot-password')} className="text-xs font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 transition-colors duration-300 ease-smooth">
                     Forgot password?
                   </button>
                 )}
@@ -240,7 +255,7 @@ const AuthModal = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-brand-50/50 border-2 border-brand-200/50 focus:bg-white focus:border-brand-400 focus:shadow-[0_0_0_4px_rgba(255,221,0,0.12),0_4px_16px_rgba(255,221,0,0.06)] focus:-translate-y-px placeholder-gray-400 text-brand-900 px-5 py-3.5 text-base rounded-2xl pr-12"
+                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-brand-50/50 dark:bg-[#1A1A1A] border-2 border-brand-200/50 dark:border-gray-700 focus:bg-white dark:focus:bg-[#222] focus:border-brand-400 dark:focus:border-brand-500 focus:shadow-[0_0_0_4px_rgba(255,221,0,0.12),0_4px_16px_rgba(255,221,0,0.06)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-2xl pr-12"
                 />
                 <button
                   type="button"
@@ -287,18 +302,18 @@ const AuthModal = () => {
             </div>
           </form>
 
-          <p className="text-center text-sm font-medium text-gray-500 mt-5">
+          <p className="text-center text-sm font-medium text-gray-500 dark:text-gray-400 mt-5">
             {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
             <button
               type="button"
               onClick={switchMode}
-              className="font-bold text-brand-900 hover:text-brand-600 transition-colors duration-300 ease-smooth underline underline-offset-2"
+              className="font-bold text-brand-900 dark:text-gray-100 hover:text-brand-600 transition-colors duration-300 ease-smooth underline underline-offset-2"
             >
               {isLogin ? 'Sign up free' : 'Log in'}
             </button>
           </p>
 
-          <div className="flex items-center justify-center gap-4 mt-6 pt-5 border-t border-brand-200/30">
+          <div className="flex items-center justify-center gap-4 mt-6 pt-5 border-t border-brand-200/30 dark:border-gray-700/50">
             {[
               { icon: '\u{1F512}', text: 'Secure' },
               { icon: '\u2728', text: 'Free forever' },

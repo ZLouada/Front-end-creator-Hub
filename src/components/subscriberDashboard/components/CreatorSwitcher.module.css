@@ -116,3 +116,33 @@
     max-width: 60px;
   }
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .wrapper {
+  background-color: #141414;
+  border-bottom-color: #333;
+}
+
+:global(.dark) .avatarContainer {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+:global(.dark) .activeAvatar {
+  border-color: #FFDD00;
+  box-shadow: 4px 4px 0px 0px #000;
+}
+
+:global(.dark) .hasNewContent {
+  border-color: #FFDD00;
+}
+
+:global(.dark) .creatorName {
+  color: #F0F0F0;
+}
+
+:global(.dark) .newBadge {
+  border-color: #333;
+  box-shadow: 2px 2px 0px 0px #000;
+}

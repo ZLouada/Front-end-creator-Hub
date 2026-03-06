@@ -32,13 +32,13 @@ const Comparison = () => {
   ];
 
   return (
-    <section className="py-24 bg-surface">
+    <section className="py-24 bg-surface dark:bg-[#0A0A0A]">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-brand-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-brand-900 dark:text-gray-100 mb-4">
             Stop losing money to <span className="text-danger line-through">Global</span> fees.
           </h2>
-          <p className="text-lg font-semibold text-gray-500">
+          <p className="text-lg font-semibold text-gray-500 dark:text-gray-400">
             We built this because South Asian creators shouldn't have to settle for 
             Western tools that don't support our banks.
           </p>
@@ -58,7 +58,7 @@ const Comparison = () => {
                   <tr key={index}>
                     <td className={styles.td}>
                       <div className="flex items-center gap-3">
-                        <span className="p-2 bg-brand-50 rounded-lg border border-brand-300/20">
+                        <span className="p-2 bg-brand-50 dark:bg-[#1A1A1A] rounded-lg border border-brand-300/20 dark:border-gray-700">
                           {row.icon}
                         </span>
                         {row.feature}

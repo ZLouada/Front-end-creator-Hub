@@ -65,3 +65,40 @@
     font-size: 0.85rem;
   }
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .tableContainer {
+  background: #141414;
+  border-color: #333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .th {
+  background: #1A1A1A;
+  border-bottom-color: #333;
+  color: #F0F0F0;
+}
+
+:global(.dark) .td {
+  border-bottom-color: #333;
+  color: #F0F0F0;
+}
+
+:global(.dark) .highlightRow {
+  background: #1A1A1A;
+}
+
+:global(.dark) .brandCol {
+  background: linear-gradient(180deg, #1A1A1A, #141414);
+  border-left-color: #333;
+  border-right-color: #333;
+}
+
+:global(.dark) .checkIcon {
+  color: #4ADE80;
+}
+
+:global(.dark) .xIcon {
+  color: #f87171;
+}

@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard } from 'lucide-react';
+import { Search, Bell, User, Menu, X, Settings, LogOut, ShieldCheck, Home, CreditCard, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './Header.module.css';
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { isDark, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -45,6 +47,9 @@ export const Header = () => {
           <div className={styles.iconGroup}>
             <Search size={22} strokeWidth={3} className="cursor-pointer hover:text-[#FFDD00]" />
             <Bell size={22} strokeWidth={3} className="cursor-pointer hover:text-[#FFDD00]" />
+            <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle dark mode">
+              {isDark ? <Sun size={22} strokeWidth={3} /> : <Moon size={22} strokeWidth={3} />}
+            </button>
           </div>
 
           <button
@@ -58,7 +63,7 @@ export const Header = () => {
           <div className="relative">
             <div
               onClick={toggleProfile}
-              className="w-11 h-11 border-[3px] border-[#1A1A1A] rounded-full overflow-hidden bg-[#FFDD00] flex items-center justify-center cursor-pointer hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform shadow-[3px_3px_0px_#1A1A1A]"
+              className="w-11 h-11 border-[3px] border-[#1A1A1A] dark:border-[#333] rounded-full overflow-hidden bg-[#FFDD00] flex items-center justify-center cursor-pointer hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform shadow-[3px_3px_0px_#1A1A1A] dark:shadow-[3px_3px_0px_#000]"
             >
               <User size={26} strokeWidth={3} />
             </div>
@@ -72,11 +77,11 @@ export const Header = () => {
                 <button className={styles.dropdownItem} onClick={() => {navigate('/settings'); setIsProfileOpen(false);}}>
                   <Settings size={18} /> Settings
                 </button>
-                <button className={`${styles.dropdownItem} text-blue-600`} onClick={() => setIsProfileOpen(false)}>
+                <button className={`${styles.dropdownItem} text-blue-600 dark:text-blue-400`} onClick={() => setIsProfileOpen(false)}>
                   <ShieldCheck size={18} /> Switch to Creator
                 </button>
-                <hr className="border-t-2 border-black my-1" />
-                <button className={`${styles.dropdownItem} text-red-500`} onClick={() => setIsProfileOpen(false)}>
+                <hr className="border-t-2 border-black dark:border-gray-700 my-1" />
+                <button className={`${styles.dropdownItem} text-red-500 dark:text-red-400`} onClick={() => setIsProfileOpen(false)}>
                   <LogOut size={18} /> Logout
                 </button>
               </div>

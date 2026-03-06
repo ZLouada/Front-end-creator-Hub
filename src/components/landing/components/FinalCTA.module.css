@@ -90,3 +90,31 @@
     font-size: 0.9rem;
   }
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .section {
+  background: linear-gradient(135deg, #1A1A1A 0%, #141414 50%, #1A1A1A 100%);
+}
+
+:global(.dark) .heading {
+  color: #F0F0F0;
+}
+
+:global(.dark) .button {
+  background-color: #FFDD00;
+  color: #0A0A0A;
+}
+
+:global(.dark) .button:hover {
+  background-color: #F5C800;
+}
+
+:global(.dark) .subtextContainer {
+  color: #999;
+}
+
+:global(.dark) .checkIcon {
+  background: #1A1A1A;
+  color: #4ADE80;
+}

@@ -206,3 +206,83 @@
     gap: 1rem;
   }
 }
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .card {
+  background: #141414;
+  border-color: #333;
+  box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 0.6);
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 16px 16px 0px 0px #FFDD00;
+}
+
+:global(.dark) .header {
+  background-color: #1A1A1A;
+  border-bottom-color: #333;
+}
+
+:global(.dark) .creatorName {
+  color: #F0F0F0;
+}
+
+:global(.dark) .timestamp {
+  color: #999;
+}
+
+:global(.dark) .tierBadge {
+  border-color: #333;
+  box-shadow: 2px 2px 0px 0px #000;
+}
+
+:global(.dark) .postText {
+  color: #F0F0F0;
+}
+
+:global(.dark) .mediaContainer {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+:global(.dark) .playButton {
+  border-color: #333;
+  box-shadow: 4px 4px 0px 0px #000;
+}
+
+:global(.dark) .waveformBar {
+  background: #666;
+}
+
+:global(.dark) .pdfDownload {
+  background: #1A1A1A;
+  color: #F0F0F0;
+}
+
+:global(.dark) .lockedOverlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+:global(.dark) .upgradeBtn {
+  background: #F0F0F0;
+  color: #0A0A0A;
+  box-shadow: 4px 4px 0px 0px #00C853;
+}
+
+:global(.dark) .footer {
+  border-top-color: #333;
+}
+
+:global(.dark) .interaction {
+  color: #999;
+}
+
+@media (max-width: 767px) {
+  :global(.dark) .card {
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+  }
+  :global(.dark) .card:hover {
+    box-shadow: 8px 8px 0px 0px #FFDD00;
+  }
+}

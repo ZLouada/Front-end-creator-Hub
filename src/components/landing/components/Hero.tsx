@@ -7,32 +7,32 @@ const Hero = () => {
   const [username, setUsername] = useState('');
 
   return (
-    <section className="relative w-full min-h-[90vh] bg-surface overflow-hidden flex items-center">
+    <section className="relative w-full min-h-[90vh] bg-surface dark:bg-[#0A0A0A] overflow-hidden flex items-center">
       <div className="container mx-auto px-6 py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center relative z-10">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col space-y-8">
-          <div className="inline-flex items-center space-x-2 bg-brand-100 text-brand-900 px-4 py-2 rounded-full w-fit">
+          <div className="inline-flex items-center space-x-2 bg-brand-100 dark:bg-[#1A1A1A] text-brand-900 dark:text-gray-100 px-4 py-2 rounded-full w-fit">
             <Globe size={18} className="text-brand-600" />
             <span className="text-sm font-bold tracking-wider">Built for South Asia</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-brand-900 leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-brand-900 dark:text-gray-100 leading-tight">
             Monetize Your Craft in <span className="text-gradient-gold">South Asia.</span>
           </h1>
 
-          <p className="text-base lg:text-xl text-gray-600 max-w-lg leading-relaxed">
+          <p className="text-base lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
             The creator platform built for South Asia. Accept local payments, grow your community, and keep 90% of your revenue.
           </p>
 
           {/* THE CLAIM BAR */}
-          <form className={`${styles.claimBar} flex flex-col sm:flex-row items-center p-2 bg-white border border-brand-300/20 rounded-2xl max-w-xl`}>
+          <form className={`${styles.claimBar} flex flex-col sm:flex-row items-center p-2 bg-white dark:bg-[#141414] border border-brand-300/20 dark:border-gray-700 rounded-2xl max-w-xl`}>
             <div className="flex items-center flex-1 px-4 py-3 w-full">
-              <span className="text-gray-400 font-medium mr-1">creatorhub.sa/</span>
+              <span className="text-gray-400 dark:text-gray-500 font-medium mr-1">creatorhub.sa/</span>
               <input
                 type="text"
                 placeholder="yourname"
-                className="w-full bg-transparent outline-none text-brand-900 font-bold text-lg"
+                className="w-full bg-transparent outline-none text-brand-900 dark:text-gray-100 font-bold text-lg"
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
@@ -42,7 +42,7 @@ const Hero = () => {
           </form>
 
           <div className="flex flex-wrap gap-6 items-center pt-4">
-            <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
               <CheckCircle2 size={18} className="text-success" /> No credit card required
             </div>
           </div>
@@ -52,7 +52,7 @@ const Hero = () => {
         <div className="relative h-[350px] sm:h-[500px] lg:h-[650px] w-full flex justify-center items-center">
 
           {/* Center Main Image */}
-          <div className="absolute z-20 w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden shadow-soft-lg border-2 border-white/80 animate-float-slow">
+          <div className="absolute z-20 w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden shadow-soft-lg border-2 border-white/80 dark:border-gray-700 animate-float-slow">
              <img
                 alt="Main Creator"
                 className="w-full h-full object-cover"
@@ -61,7 +61,7 @@ const Hero = () => {
           </div>
 
           {/* Top Left Floating Image */}
-          <div className="absolute top-4 left-0 z-10 w-28 h-36 sm:w-40 sm:h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden shadow-soft border-2 border-white/80 animate-float-delayed transform -rotate-6">
+          <div className="absolute top-4 left-0 z-10 w-28 h-36 sm:w-40 sm:h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden shadow-soft border-2 border-white/80 dark:border-gray-700 animate-float-delayed transform -rotate-6">
               <img
                 src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400"
                 alt="Artist Creator"
@@ -74,7 +74,7 @@ const Hero = () => {
             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-soft-sm">
               <span className="text-xl">✨</span>
             </div>
-            <p className="text-brand-900 font-bold text-sm sm:text-xl leading-tight">
+            <p className="text-brand-900 dark:text-gray-100 font-bold text-sm sm:text-xl leading-tight">
               "Finally, a platform that understands my audience."
             </p>
           </div>
