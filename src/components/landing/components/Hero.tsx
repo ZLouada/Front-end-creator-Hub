@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
 import styles from './Hero.module.css';
 
@@ -7,81 +8,86 @@ const Hero = () => {
   const [username, setUsername] = useState('');
 
   return (
-    <section className="relative w-full min-h-[90vh] bg-surface dark:bg-[#0A0A0A] overflow-hidden flex items-center">
-      <div className="container mx-auto px-6 py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center relative z-10">
-
-        {/* LEFT CONTENT */}
-        <div className="flex flex-col space-y-8">
-          <div className="inline-flex items-center space-x-2 bg-brand-100 dark:bg-[#1A1A1A] text-brand-900 dark:text-gray-100 px-4 py-2 rounded-full w-fit">
-            <Globe size={18} className="text-brand-600" />
-            <span className="text-sm font-bold tracking-wider">Built for South Asia</span>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        
+        {/* LEFT CONTENT: TYPOGRAPHY FOCUS */}
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className={styles.contentLeft}
+        >
+          <div className={styles.editorialBadge}>
+            <Globe size={14} className={styles.yellowIcon} />
+            <span>The New Standard for South Asia</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-brand-900 dark:text-gray-100 leading-tight">
-            Monetize Your Craft in <span className="text-gradient-gold">South Asia.</span>
+          <h1 className={styles.serifHeading}>
+            Monetize your craft. <br />
+            <span className={styles.italicHighlight}>Grow your legacy.</span>
           </h1>
 
-          <p className="text-base lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
-            The creator platform built for South Asia. Accept local payments, grow your community, and keep 90% of your revenue.
+          <p className={styles.description}>
+            The premium creator platform built for South Asia. Accept local payments, 
+            cultivate your community, and keep <strong>92%</strong> of your revenue.
           </p>
 
-          {/* THE CLAIM BAR */}
-          <form className={`${styles.claimBar} flex flex-col sm:flex-row items-center p-2 bg-white dark:bg-[#141414] border border-brand-300/20 dark:border-gray-700 rounded-2xl max-w-xl`}>
-            <div className="flex items-center flex-1 px-4 py-3 w-full">
-              <span className="text-gray-400 dark:text-gray-500 font-medium mr-1">creatorhub.sa/</span>
-              <input
-                type="text"
-                placeholder="yourname"
-                className="w-full bg-transparent outline-none text-brand-900 dark:text-gray-100 font-bold text-lg"
-                onChange={(e) => setUsername(e.target.value)}
-              />
+          {/* THE CLAIM BAR: STATIONERY STYLE */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className={styles.claimContainer}
+          >
+            <form className={styles.claimBar}>
+              <div className={styles.inputWrapper}>
+                <span className={styles.urlPrefix}>creatorhub.sa/</span>
+                <input
+                  type="text"
+                  placeholder="yourname"
+                  className={styles.usernameInput}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <button className={styles.ctaButton}>
+                Claim My Hub <ArrowRight size={18} strokeWidth={2.5} />
+              </button>
+            </form>
+            
+            <div className={styles.trustStrip}>
+              <CheckCircle2 size={14} className={styles.successIcon} />
+              <span>Setup in 2 minutes • No credit card required</span>
             </div>
-            <button className={`${styles.btnShine} w-full sm:w-auto bg-gradient-to-br from-brand-400 to-brand-500 text-brand-900 font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 shadow-soft hover:shadow-glow transition-all duration-300 ease-smooth`}>
-              Start Free <ArrowRight size={20} />
-            </button>
-          </form>
+          </motion.div>
+        </motion.div>
 
-          <div className="flex flex-wrap gap-6 items-center pt-4">
-            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
-              <CheckCircle2 size={18} className="text-success" /> No credit card required
+        {/* RIGHT CONTENT: THE "GALLERY" LOOK */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 1 }}
+          className={styles.imageGallery}
+        >
+          <div className={styles.mainImageFrame}>
+            <div className={styles.imageOverlay} />
+            <img
+              alt="Artistic Portrait"
+              src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&q=80&w=800"
+              className={styles.heroImage}
+            />
+            <div className={styles.floatingTag}>
+              <span className={styles.tagLabel}>Featured Creator</span>
+              <p className={styles.tagName}>Amna R. • Visual Artist</p>
             </div>
+            
+            {/* The "Surgical" Accent Tape */}
+            <div className={styles.yellowTape} />
           </div>
-        </div>
-
-        {/* RIGHT CONTENT - Floating Images */}
-        <div className="relative h-[350px] sm:h-[500px] lg:h-[650px] w-full flex justify-center items-center">
-
-          {/* Center Main Image */}
-          <div className="absolute z-20 w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden shadow-soft-lg border-2 border-white/80 dark:border-gray-700 animate-float-slow">
-             <img
-                alt="Main Creator"
-                className="w-full h-full object-cover"
-                src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&q=80&w=800"
-              />
-          </div>
-
-          {/* Top Left Floating Image */}
-          <div className="absolute top-4 left-0 z-10 w-28 h-36 sm:w-40 sm:h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden shadow-soft border-2 border-white/80 dark:border-gray-700 animate-float-delayed transform -rotate-6">
-              <img
-                src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400"
-                alt="Artist Creator"
-                className="w-full h-full object-cover"
-              />
-          </div>
-
-          {/* Bottom Right Floating Card */}
-          <div className="absolute bottom-10 right-0 z-30 w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-gradient-to-br from-brand-400 to-brand-500 rounded-3xl p-4 sm:p-6 flex flex-col justify-between shadow-soft-lg transform rotate-3 animate-float-fast">
-            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-soft-sm">
-              <span className="text-xl">✨</span>
-            </div>
-            <p className="text-brand-900 dark:text-gray-100 font-bold text-sm sm:text-xl leading-tight">
-              "Finally, a platform that understands my audience."
-            </p>
-          </div>
-
-          {/* Decorative Yellow Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-400 opacity-15 blur-[80px] rounded-full z-0"></div>
-        </div>
+          
+          {/* Background Decorative Serif Lettering */}
+          <span className={styles.backgroundLetter}>C</span>
+        </motion.div>
 
       </div>
     </section>

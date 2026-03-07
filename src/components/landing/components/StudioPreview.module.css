@@ -1,100 +1,318 @@
-/* StudioPreview.module.css */
-
-.dashboardFrame {
-  border: 1px solid rgba(255, 221, 0, 0.15);
-  background: #FFFFFF;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06);
+.section {
+  padding: 140px 0;
+  background-color: #FBF9F6;
   overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.headerArea {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.liveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  background-color: #FFDD00;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(255, 221, 0, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 221, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); }
+}
+
+.serifTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.italicHighlight {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.subtitle {
+  max-width: 500px;
+  margin: 0 auto;
+  color: #6B7280;
+  font-size: 1.1rem;
+}
+
+/* Dashboard Canvas */
+.dashboardCanvas {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 24px;
+  display: flex;
+  min-height: 550px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 80px;
+  border-right: 1px solid #F3F4F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.brandMark {
+  margin-bottom: 60px;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.activeIconWrapper {
+  color: #1A1A1A;
+  position: relative;
+}
+
+.activeIconWrapper::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #FFDD00;
+  border-radius: 50%;
+}
+
+.sidebarIcon {
+  color: #D1D5DB;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.sidebarIcon:hover { color: #1A1A1A; }
+
+.mainContent {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.sidebar {
-  width: 100%;
-  height: auto;
-  background: linear-gradient(180deg, #111111, #1A1A1A);
+.topBar {
+  padding: 24px 40px;
+  border-bottom: 1px solid #F3F4F6;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  padding: 1rem;
-  gap: 1rem;
 }
 
-@media (min-width: 1024px) {
-  .sidebar {
-    width: 70px;
-    height: auto;
-    flex-direction: column;
-    padding: 2rem 0;
-    justify-content: flex-start;
-  }
+.breadcrumb {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: #9CA3AF;
+  font-weight: 600;
 }
 
-.chartBar {
+.boldLabel { color: #1A1A1A; }
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarPlaceholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+}
+
+.contentBody {
+  padding: 40px;
+  background-color: #FAFAFA;
   flex: 1;
-  background: linear-gradient(to top, #F5C800, #FFDD00);
-  border: none;
-  border-radius: 6px 6px 0 0;
-  transition: all 0.3s cubic-bezier(.22,1,.36,1);
-  min-width: 12px;
-  box-shadow: 0 -2px 8px rgba(255, 221, 0, 0.15);
 }
 
-.chartBar:hover {
-  box-shadow: 0 -4px 16px rgba(255, 221, 0, 0.3);
-  transform: scaleY(1.03);
-  transform-origin: bottom;
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .statCard {
-  border: 1px solid rgba(255, 221, 0, 0.12);
-  border-radius: 1rem;
-  padding: 1.25rem;
   background: white;
-  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.06);
-  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
 }
 
-.statCard:hover {
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.12);
-}
-
-.successBadge {
-  background: #00C853;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 10px;
+.statLabel {
+  font-size: 0.75rem;
   font-weight: 700;
-  border: none;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-/* ─── Dark Mode ─── */
-
-:global(.dark) .dashboardFrame {
-  background: #141414;
-  border-color: #333;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+.statValue {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
-:global(.dark) .statCard {
+.statValueRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.growthBadge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #10B981;
+}
+
+.yellowIcon { color: #FFDD00; }
+
+/* Chart Styling */
+.chartCard {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.chartTitle {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.chartLegend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9CA3AF;
+}
+
+.legendDot {
+  width: 6px;
+  height: 6px;
+  background: #FFDD00;
+  border-radius: 50%;
+}
+
+.chartArea {
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.chartBarWrapper {
+  flex: 1;
+  background: #F9FAFB;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 4px;
+}
+
+.chartBar {
+  width: 100%;
   background: #1A1A1A;
-  border-color: #333;
-  color: #F0F0F0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  transition: background 0.3s;
 }
 
-:global(.dark) .statCard:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+.chartBar:hover { background: #FFDD00; }
+
+.chartLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #262626;
+  padding: 0 10px;
+}
+
+@media (max-width: 900px) {
+  .dashboardCanvas { flex-direction: column; }
+  .sidebar { width: 100%; height: 60px; flex-direction: row; border-right: none; border-bottom: 1px solid #F3F4F6; padding: 0 20px; justify-content: space-between; }
+  .sidebarNav { flex-direction: row; }
+  .activeIconWrapper::after { display: none; }
+  .statsGrid { grid-template-columns: 1fr; }
+}
+
+/* LocalAdvantage.module.css */
+.section {
+  background-color: #FBF9F6;
+  transition: background-color 0.3s ease;
+}
+
+:global(.dark) .section {
+  background-color: transparent; /* Let the <main> color show through */
+  /* OR */
+  background-color: #0A0A0A; 
+}
+
+/* StudioPreview.module.css */
+:global(.dark) .dashboardCanvas {
+  background: #111111;
+  border-color: #262626;
+}
+
+:global(.dark) .sidebar {
+  border-right-color: #262626;
+}
+
+:global(.dark) .statCard, :global(.dark) .chartCard {
+  background: #1A1A1A;
+  border-color: #262626;
+}
+
+:global(.dark) .chartBarWrapper {
+  background: #262626;
 }
 
 :global(.dark) .chartBar {
-  background: linear-gradient(to top, #D4A900, #FFDD00);
-  box-shadow: 0 -2px 8px rgba(255, 221, 0, 0.2);
+  background: #404040; /* Lighter gray for bars to see them against dark bg */
 }
 
 :global(.dark) .chartBar:hover {
-  box-shadow: 0 -4px 16px rgba(255, 221, 0, 0.4);
+  background: #FFDD00;
 }

@@ -1,64 +1,204 @@
-/* LocalAdvantage.module.css */
-
-.card {
-  border: 1px solid rgba(255, 221, 0, 0.15);
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  border-radius: 1.5rem;
+.section {
+  padding: 140px 0;
+  background-color: #FBF9F6; /* Warm Paper */
+  color: #1A1A1A;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.06);
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.iconBox {
-  width: 4rem;
-  height: 4rem;
+.headerArea {
+  margin-bottom: 80px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9CA3AF;
+  margin-bottom: 16px;
+}
+
+.serifTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.italicHighlight {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Vertical Ledger Items */
+.featureList {
+  display: flex;
+  flex-direction: column;
+}
+
+.featureItem {
+  display: grid;
+  grid-template-columns: 80px 1fr 60px;
+  padding: 48px 0;
+  border-top: 1px solid #E5E7EB;
+  transition: all 0.4s ease;
+}
+
+.featureItem:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 12px;
+}
+
+.indexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.indexNumber {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #FFDD00; /* Surgical Yellow index */
+}
+
+.verticalHairline {
+  width: 1px;
+  flex: 1;
+  background-color: #E5E7EB;
+}
+
+.contentColumn {
+  padding-right: 40px;
+}
+
+.titleRow {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 221, 0, 0.2);
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(255, 221, 0, 0.1);
-  transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
-.card:hover .iconBox {
-  transform: rotate(0deg) scale(1.08);
+.iconWrapper {
+  color: #1A1A1A;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.featureDesc {
+  font-size: 1.1rem;
+  color: #6B7280;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+/* Tags Styling */
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .tag {
-  padding: 0.25rem 0.75rem;
-  background-color: #FFF9E0;
-  border: 1px solid rgba(255, 221, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  padding: 6px 12px;
+  border-radius: 100px;
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 9999px;
-  color: #B08900;
+  border: 1px solid #E5E7EB;
+  color: #1A1A1A;
 }
 
-/* ─── Dark Mode ─── */
+.tagDot {
+  width: 4px;
+  height: 4px;
+  background-color: #FFDD00;
+  border-radius: 50%;
+}
 
-:global(.dark) .card {
+/* Action Column */
+.actionColumn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.arrowCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9CA3AF;
+  transition: all 0.3s ease;
+}
+
+.featureItem:hover .arrowCircle {
+  background-color: #1A1A1A;
+  border-color: #1A1A1A;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .serifTitle { font-size: 2.5rem; }
+  .featureItem { grid-template-columns: 40px 1fr; }
+  .actionColumn { display: none; }
+}
+
+/* LocalAdvantage.module.css */
+.section {
+  background-color: #FBF9F6;
+  transition: background-color 0.3s ease;
+}
+
+:global(.dark) .section {
+  background-color: transparent; /* Let the <main> color show through */
+  /* OR */
+  background-color: #0A0A0A; 
+}
+
+:global(.dark) .serifTitle {
+  color: #F0F0F0;
+}
+
+/* LocalAdvantage.module.css */
+:global(.dark) .featureItem {
+  border-top-color: #262626;
+}
+
+:global(.dark) .featureTitle {
+  color: #F0F0F0;
+}
+
+:global(.dark) .featureItem:hover {
   background-color: #141414;
-  border-color: #333;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-:global(.dark) .card:hover {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-:global(.dark) .iconBox {
-  border-color: #333;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+:global(.dark) .verticalHairline {
+  background-color: #262626;
 }
 
 :global(.dark) .tag {
-  background-color: #1A1A1A;
+  background: #1A1A1A;
   border-color: #333;
-  color: #FFDD00;
+  color: #F0F0F0;
 }

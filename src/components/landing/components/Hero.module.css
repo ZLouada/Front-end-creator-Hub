@@ -1,77 +1,241 @@
-/* Hero.module.css */
-
-/* Smooth claim bar with soft shadow */
-.claimBar {
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.claimBar:focus-within {
-  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
-}
-
-/* Floating Animation for the Creator Collage */
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
-.floatingDelayed {
-  animation: float 6s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px) rotate(2deg); }
-  50% { transform: translateY(-20px) rotate(0deg); }
-  100% { transform: translateY(0px) rotate(2deg); }
-}
-
-/* Shine effect for the CTA button */
-.btnShine {
-  position: relative;
+.section {
+  min-height: 90vh;
+  padding: 120px 0 80px;
+  background-color: #FBF9F6; /* Warm Paper */
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
-.btnShine::after {
-  content: '';
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Typography & Content */
+.editorialBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1A1A1A;
+  margin-bottom: 32px;
+}
+
+.yellowIcon {
+  color: #FFDD00;
+}
+
+.serifHeading {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem;
+  line-height: 1.05;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 24px;
+}
+
+.italicHighlight {
+  font-style: italic;
+  font-weight: 400;
+  color: #1A1A1A;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #6B7280;
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+/* Claim Bar - The Stationery Look */
+.claimContainer {
+  max-width: 500px;
+}
+
+.claimBar {
+  display: flex;
+  background: white;
+  padding: 8px;
+  border: 1px solid #E5E7EB;
+  border-radius: 100px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  margin-bottom: 16px;
+}
+
+.inputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.urlPrefix {
+  color: #9CA3AF;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.usernameInput {
+  border: none;
+  background: transparent;
+  padding: 10px 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  width: 100%;
+  color: #1A1A1A;
+  outline: none;
+}
+
+.ctaButton {
+  background: #1A1A1A;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.ctaButton:hover {
+  background: #FFDD00;
+  color: #1A1A1A;
+}
+
+.trustStrip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #9CA3AF;
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+.successIcon {
+  color: #10B981;
+}
+
+/* Right Side - Image Gallery */
+.imageGallery {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mainImageFrame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+  background: #E5E7EB;
+}
+
+.heroImage {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.floatingTag {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.35),
-    transparent
-  );
+  bottom: 24px;
+  left: 24px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.tagLabel {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #FFDD00;
+  letter-spacing: 0.1em;
+}
+
+.tagName {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1A1A1A;
+}
+
+.yellowTape {
+  position: absolute;
+  top: 30px;
+  right: -20px;
+  width: 100px;
+  height: 30px;
+  background: rgba(255, 221, 0, 0.8);
   transform: rotate(45deg);
-  transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(4px);
 }
 
-.btnShine:hover::after {
-  left: 120%;
+.backgroundLetter {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 20rem;
+  color: #F3F1ED;
+  z-index: -1;
+  font-style: italic;
 }
 
-/* ─── Dark Mode ─── */
+/* Responsive */
+@media (max-width: 1024px) {
+  .container { grid-template-columns: 1fr; gap: 80px; text-align: center; }
+  .serifHeading { font-size: 3rem; }
+  .description { margin: 0 auto 40px; }
+  .claimContainer { margin: 0 auto; }
+  .imageGallery { display: none; }
+}
 
-:global(.dark) .claimBar {
-  background-color: #141414;
-  border: 1px solid #333;
+/* LocalAdvantage.module.css */
+.section {
+  background-color: #FBF9F6;
+  transition: background-color 0.3s ease;
+}
+
+/* --- Dark Mode Overrides --- */
+:global(.dark) .section {
+  background-color: #0A0A0A;
   color: #F0F0F0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-:global(.dark) .claimBar:focus-within {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+:global(.dark) .serifHeading {
+  color: #F0F0F0;
 }
 
-:global(.dark) .btnShine::after {
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 221, 0, 0.15),
-    transparent
-  );
+:global(.dark) .serifTitle {
+  color: #FFFFFF;
+}
+
+:global(.dark) .subtitle {
+  color: #9CA3AF; /* Muted gray for secondary text */
+}
+
+:global(.dark) .italicHighlight {
+  color: #FFDD00; /* Surgical Yellow pops even more in dark mode */
 }

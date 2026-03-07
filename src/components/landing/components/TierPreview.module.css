@@ -1,166 +1,263 @@
-/* TierPreview.module.css */
+.section {
+  padding: 120px 0;
+  background-color: #FBF9F6;
+}
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 0 2rem;
 }
 
-.toggleContainer {
+.header {
+  text-align: center;
+  margin-bottom: 80px;
   display: flex;
-  background: #FFF9E0;
-  border: 1px solid rgba(255, 221, 0, 0.2);
-  border-radius: 999px;
-  padding: 0.25rem;
-  width: fit-content;
-  margin: 0 auto 3rem;
-  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.08);
+  flex-direction: column;
+  align-items: center;
 }
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.serifTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 40px;
+}
+
+.italicHighlight {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* The Liquid Toggle */
+.toggleContainer {
+  position: relative;
+  display: flex;
+  background: white;
+  padding: 6px;
+  border-radius: 100px;
+  border: 1px solid #E5E7EB;
+  width: fit-content;
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 120px;
+  height: calc(100% - 12px);
+  background: #1A1A1A;
+  border-radius: 100px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slideRight { transform: translateX(120px); }
 
 .toggleBtn {
-  padding: 0.5rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 700;
-  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  z-index: 2;
+  width: 120px;
+  padding: 10px 0;
+  background: none;
   border: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   cursor: pointer;
-  font-size: 0.875rem;
+  color: #9CA3AF;
+  transition: color 0.3s;
 }
 
-.activeToggle {
-  background: linear-gradient(135deg, #FFDD00, #F5C800);
-  color: #1A1A1A;
-  box-shadow: 0 4px 12px rgba(255, 221, 0, 0.25);
-}
+.activeText { color: white; }
 
+/* Grid Layout */
 .mainGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
 }
 
-@media (min-width: 1024px) {
-  .mainGrid {
-    grid-template-columns: 1fr 350px;
-  }
+.tierList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .tierCard {
-  border: 1px solid rgba(255, 221, 0, 0.15);
-  border-radius: 1.5rem;
-  padding: 2rem;
   background: white;
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  padding: 24px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
   cursor: pointer;
   position: relative;
+  transition: all 0.3s ease;
 }
 
-.tierCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(255, 221, 0, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+.selectedCard {
+  border-color: #1A1A1A;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.activeCard {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(255, 221, 0, 0.18), 0 0 0 2px #FFDD00;
-  background: #FFFEF5;
-}
-
-.phoneMockup {
-  width: 100%;
-  max-width: 320px;
-  height: 600px;
-  border: 2px solid rgba(255, 221, 0, 0.3);
-  border-radius: 3rem;
-  background: #FFFFFF;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 24px 64px rgba(255, 221, 0, 0.15), 0 12px 32px rgba(0, 0, 0, 0.08);
-}
-
-.phoneScreen {
-  padding: 1.5rem;
-  height: 100%;
+.tierHeader {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
-.checkoutBtn {
+.tierTitle { font-weight: 800; font-size: 1.1rem; }
+.tierPrice { font-weight: 800; color: #1A1A1A; }
+.tierDesc { color: #6B7280; font-size: 0.95rem; line-height: 1.5; }
+
+.activeIndicator {
+  position: absolute;
+  left: -2px;
+  top: 20%;
+  height: 60%;
+  width: 4px;
+  background: #FFDD00;
+  border-radius: 100px;
+}
+
+/* Phone Mockup */
+.phoneMockup {
+  width: 320px;
+  height: 640px;
+  background: #1A1A1A;
+  border-radius: 40px;
+  padding: 12px;
+  position: relative;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+  margin: 0 auto;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 25px;
+  background: #1A1A1A;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 10;
+}
+
+.screenContent {
+  background: white;
   width: 100%;
-  padding: 1rem;
-  background: linear-gradient(135deg, #FFDD00, #F5C800);
-  color: #1A1A1A;
-  font-weight: 700;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  padding: 40px 24px;
+}
+
+.screenLabel { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: #9CA3AF; letter-spacing: 0.1em; }
+.screenTitle { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 8px 0 24px; }
+
+.uiLabel { font-size: 0.75rem; font-weight: 800; margin-bottom: 12px; }
+
+.paymentRow, .historyItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #E5E7EB; align-self: center; }
+.dotActive { width: 8px; height: 8px; border-radius: 50%; background: #FFDD00; align-self: center; }
+
+.summaryBox {
+  background: #F9FAFB;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.phoneAction {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: #1A1A1A;
+  color: white;
   border: none;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.3);
-  margin-top: auto;
-  transition: all 0.3s cubic-bezier(.22,1,.36,1);
-  cursor: pointer;
+  padding: 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
-.checkoutBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 221, 0, 0.4);
+.statsMiniGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.statMiniCard, .statMiniCardYellow { padding: 12px; border-radius: 12px; border: 1px solid #E5E7EB; }
+.statMiniCard span, .statMiniCardYellow span { font-size: 0.6rem; font-weight: 800; }
+.statMiniCard p, .statMiniCardYellow p { font-weight: 800; font-size: 1.1rem; }
+.statMiniCardYellow { background: #FFDD00; border-color: #FFDD00; }
+
+@media (max-width: 900px) {
+  .mainGrid { grid-template-columns: 1fr; }
+  .showcaseArea { display: none; }
 }
 
-@media (max-width: 767px) {
-  .container {
-    padding: 2rem 1rem;
-  }
-  .toggleContainer {
-    margin-bottom: 2rem;
-  }
-  .mainGrid {
-    gap: 2rem;
-  }
-  .tierCard {
-    padding: 1.25rem;
-  }
-  .phoneMockup {
-    height: 500px;
-  }
+/* LocalAdvantage.module.css */
+.section {
+  background-color: #FBF9F6;
+  transition: background-color 0.3s ease;
 }
 
-/* ─── Dark Mode ─── */
+:global(.dark) .section {
+  background-color: transparent; /* Let the <main> color show through */
+  /* OR */
+  background-color: #0A0A0A; 
+}
+
+/* TierPreview.module.css */
+:global(.dark) .tierCard {
+  background: #141414;
+  border-color: #262626;
+}
+
+:global(.dark) .selectedCard {
+  border-color: #FFDD00;
+}
+
+:global(.dark) .phoneMockup {
+  background: #000000;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.4);
+}
+
+:global(.dark) .tierPrice {
+  color: #FFFFFF;
+}
+
+:global(.dark) .screenContent {
+  background: #111111; /* The "app" inside the phone also goes dark */
+  color: #FFFFFF;
+}
+
+:global(.dark) .summaryBox {
+  background: #111111; /* The "app" inside the phone also goes dark */
+  color: #FFFFFF;
+}
 
 :global(.dark) .toggleContainer {
   background: #1A1A1A;
   border-color: #333;
-}
-
-:global(.dark) .toggleBtn {
-  color: #F0F0F0;
-}
-
-:global(.dark) .activeToggle {
-  color: #1A1A1A;
-}
-
-:global(.dark) .tierCard {
-  background: #141414;
-  border-color: #333;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
-  color: #F0F0F0;
-}
-
-:global(.dark) .tierCard:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-
-:global(.dark) .activeCard {
-  background: #1A1A1A;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 2px #FFDD00;
-}
-
-:global(.dark) .phoneMockup {
-  background: #141414;
-  border-color: #333;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.3);
-}
-
-:global(.dark) .checkoutBtn {
-  color: #1A1A1A;
 }

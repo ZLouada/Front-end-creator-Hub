@@ -1,186 +1,206 @@
-/* SocialProof.module.css */
-
 .section {
-  padding: 6rem 1.5rem;
-  background-color: #F0F0F0;
-  border-top: 1px solid rgba(255, 221, 0, 0.15);
+  padding: 140px 0;
+  background-color: #FBF9F6; /* Warm Paper */
+  color: #1A1A1A;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 80px;
+  position: relative;
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #1A1A1A;
+.serifTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
   line-height: 1.1;
+  font-weight: 600;
+  z-index: 2;
+  position: relative;
 }
 
-@media (min-width: 768px) {
-  .title {
-    font-size: 4rem;
-  }
+.italicHighlight {
+  font-style: italic;
+  font-weight: 400;
 }
 
-.highlight {
-  background: linear-gradient(135deg, #FFF9E0, #FFF3C4);
-  padding: 0 0.5rem;
-  border-radius: 0.375rem;
+.surgicalUnderline {
+  width: 120px;
+  height: 4px;
+  background-color: #FFDD00;
+  margin: 24px auto 0;
 }
 
-.grid {
+/* Testimonial Grid */
+.testimonialGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 80px;
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.card {
-  border: 1px solid rgba(255, 221, 0, 0.12);
-  background-color: #FFFFFF;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+.testimonialCard {
+  background: white;
+  padding: 48px 32px;
+  border: 1px solid #E5E7EB;
+  border-radius: 4px; /* Crisp, almost sharp edges */
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s cubic-bezier(.22,1,.36,1);
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(255, 221, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.06);
+.testimonialCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+  border-color: #FFDD00;
 }
 
-.quoteIcon {
+.quoteWrapper {
+  margin-bottom: 40px;
+}
+
+.minimalQuote {
   color: #FFDD00;
-  margin-bottom: 1.5rem;
+  margin-bottom: 16px;
+  opacity: 0.8;
 }
 
-.quoteText {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1A1A1A;
+.serifQuote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: 2rem;
-  flex-grow: 1;
+  color: #1A1A1A;
+  font-style: italic;
 }
 
-.creatorInfo {
+/* Creator Meta */
+.creatorMeta {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #F3F4F6;
 }
 
-.avatar {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 999px;
-  border: 2px solid rgba(255, 221, 0, 0.3);
+.avatarContainer {
+  position: relative;
+}
+
+.editorialAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   object-fit: cover;
-  background-color: #FFF9E0;
+  filter: grayscale(20%);
 }
 
-.name {
+.verifiedDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #FFDD00;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.metaText {
+  display: flex;
+  flex-direction: column;
+}
+
+.creatorName {
   font-weight: 800;
-  font-size: 1rem;
-  color: #1A1A1A;
+  font-size: 0.95rem;
+  margin: 0;
 }
 
-.location {
-  font-size: 0.875rem;
+.creatorSub {
+  font-size: 0.8rem;
+  color: #9CA3AF;
   font-weight: 600;
-  color: #666;
+  margin: 2px 0 0;
 }
 
-.statsBar {
-  margin-top: 4rem;
+.dotSeparator {
+  color: #FFDD00;
+}
+
+/* Bottom Stats Bar */
+.editorialStats {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  padding: 24px 0;
+  border-top: 1px solid #E5E7EB;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .statItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  color: #1A1A1A;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6B7280;
 }
 
-@media (max-width: 767px) {
-  .section {
-    padding: 3rem 1rem;
-  }
-  .header {
-    margin-bottom: 2rem;
-  }
-  .card {
-    padding: 1.5rem;
-  }
-  .statsBar {
-    margin-top: 2rem;
-    gap: 1rem;
-  }
+.yellowIcon {
+  color: #FFDD00;
 }
 
-/* ─── Dark Mode ─── */
+/* Responsive */
+@media (max-width: 1024px) {
+  .testimonialGrid { grid-template-columns: 1fr; }
+  .serifTitle { font-size: 2.5rem; }
+  .editorialStats { flex-direction: column; gap: 16px; border-bottom: none; }
+}
+
+/* LocalAdvantage.module.css */
+.section {
+  background-color: #FBF9F6;
+  transition: background-color 0.3s ease;
+}
 
 :global(.dark) .section {
-  background-color: #0A0A0A;
-  border-top-color: #333;
+  background-color: transparent; /* Let the <main> color show through */
+  /* OR */
+  background-color: #0A0A0A; 
 }
 
-:global(.dark) .title {
-  color: #F0F0F0;
+:global(.dark) .creatorMeta {
+  color: #FBF9F6;
 }
 
-:global(.dark) .highlight {
-  background: linear-gradient(135deg, #3a3500, #4a4200);
+:global(.dark) .serifQuote {
+  color: #f3f4f6d5;
 }
 
-:global(.dark) .card {
-  background-color: #141414;
-  border-color: #333;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+:global(.dark) .serifTitle {
+  color: blanchedalmond;
 }
 
-:global(.dark) .card:hover {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+/* SocialProof.module.css */
+:global(.dark) .testimonialCard {
+  background: #141414;
+  border-color: #262626;
 }
 
-:global(.dark) .quoteText {
-  color: #F0F0F0;
+:global(.dark) .editorialStats {
+  border-color: #262626;
 }
 
-:global(.dark) .avatar {
-  border-color: rgba(255, 221, 0, 0.3);
-  background-color: #1A1A1A;
-}
-
-:global(.dark) .name {
-  color: #F0F0F0;
-}
-
-:global(.dark) .location {
-  color: #999;
-}
-
-:global(.dark) .statItem {
-  color: #F0F0F0;
+:global(.dark) .creatorSub {
+  color: #6B7280;
 }
