@@ -209,6 +209,7 @@
 }
 :global(.dark) .logoBadge {
   border-color: #333;
+  color: #333;
   box-shadow: 2px 2px 0px #000;
 }
 :global(.dark) .navLink {
@@ -221,6 +222,10 @@
 :global(.dark) .dashboardBtn {
   border-color: #333;
   box-shadow: 4px 4px 0px #000;
+  color: #333;
+}
+:global(.dark) .profileIcon {
+  color: #333;
 }
 :global(.dark) .themeToggle {
   color: #F0F0F0;

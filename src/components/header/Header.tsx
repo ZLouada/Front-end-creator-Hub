@@ -65,7 +65,9 @@ export const Header = () => {
               onClick={toggleProfile}
               className="w-11 h-11 border-[3px] border-[#1A1A1A] dark:border-[#333] rounded-full overflow-hidden bg-[#FFDD00] flex items-center justify-center cursor-pointer hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform shadow-[3px_3px_0px_#1A1A1A] dark:shadow-[3px_3px_0px_#000]"
             >
-              <User size={26} strokeWidth={3} />
+              <div className={styles.profileIcon}>
+                <User size={26} strokeWidth={3} />
+              </div>
             </div>
 
             {/* Profile Dropdown */}
