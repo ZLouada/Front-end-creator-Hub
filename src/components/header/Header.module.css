@@ -1,0 +1,493 @@
+/* ── Header Shell ────────────────────────────────────────────────── */
+.header {
+  background-color: #FBF9F6;
+  border-bottom: 1px solid #E5E7EB;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── Logo ────────────────────────────────────────────────────────── */
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1A1A1A;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+:global(.dark) .logo { color: #FFFFFF; }
+
+.logoBadge {
+  background-color: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #6B7280;
+  letter-spacing: 0.04em;
+}
+
+/* ── Desktop Nav ─────────────────────────────────────────────────── */
+.desktopNav {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #6B7280;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  transition: background 0.2s, color 0.2s;
+}
+.navLink:hover {
+  background-color: #F3F4F6;
+  color: #1A1A1A;
+}
+.navLinkActive {
+  color: #1A1A1A;
+  background-color: #F3F4F6;
+}
+
+/* ── Right Actions ───────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconGroup {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  border-radius: 9999px;
+  transition: color 0.2s, background 0.2s;
+}
+.themeToggle:hover {
+  color: #1A1A1A;
+  background: #F3F4F6;
+}
+
+.dashboardBtn {
+  background-color: #FFDD00;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.55rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #1A1A1A;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.dashboardBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 221, 0, 0.35);
+}
+
+/* ── Profile Avatar Button ───────────────────────────────────────── */
+.profileWrap {
+  position: relative;
+}
+
+.avatarBtn {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 50%;
+  background: #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6B7280;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.avatarBtn:hover {
+  border-color: #D1D5DB;
+  background: #E5E7EB;
+  transform: translateY(-1px);
+}
+
+/* ── Dropdown ────────────────────────────────────────────────────── */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  width: 240px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  animation: dropdownIn 0.15s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dropdownHeader {
+  padding: 0.6rem 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.dropdownName {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.dropdownEmail {
+  font-size: 0.75rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.dropdownDivider {
+  border: none;
+  border-top: 1px solid #F3F4F6;
+  margin: 0.25rem 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+:global(.dark) .dropdown { background: #111; border-color: #262626; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+
+.dropdownHeader { padding: 8px 12px; }
+.userName { font-weight: 700; font-size: 0.9rem; margin: 0; }
+.userEmail { font-size: 0.75rem; color: #9CA3AF; margin: 2px 0 0; }
+.divider { height: 1px; background: #F3F4F6; margin: 8px 0; }
+:global(.dark) .divider { background: #1F2937; }
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.65rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.83rem;
+  color: #374151;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s;
+}
+.dropdownItem:hover {
+  background: #F9FAFB;
+}
+
+.dropdownItemCreator {
+  color: #2563EB;
+}
+.dropdownItemDanger {
+  color: #EF4444;
+}
+
+/* ── Mobile Menu Toggle ──────────────────────────────────────────── */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: #374151;
+  border-radius: 9999px;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.menuToggle:hover {
+  background: #F3F4F6;
+}
+
+/* ── Mobile Overlay ──────────────────────────────────────────────── */
+.mobileOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 200;
+  animation: fadeIn 0.2s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+/* ── Mobile Nav Drawer ───────────────────────────────────────────── */
+.mobileNav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 85vw);
+  height: 100vh;
+  background: #FFFFFF;
+  border-left: 1px solid #E5E7EB;
+  z-index: 300;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
+}
+
+.mobileNavOpen {
+  right: 0 !important;
+}
+
+.mobileNavHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #F3F4F6;
+  flex-shrink: 0;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s, color 0.2s;
+}
+.mobileNavLink:hover {
+  background: #F3F4F6;
+  color: #1A1A1A;
+}
+.mobileNavLinkActive {
+  background: #1A1A1A;
+  color: #FFFFFF;
+}
+.mobileNavLinkActive:hover {
+  background: #2D2D2D;
+  color: #FFFFFF;
+}
+
+.mobileNavFooter {
+  padding: 1rem;
+  border-top: 1px solid #F3F4F6;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.mobileNavTheme {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s;
+}
+.mobileNavTheme:hover {
+  background: #F3F4F6;
+}
+
+.mobileNavLogout {
+  color: #EF4444 !important;
+}
+.mobileNavLogout:hover {
+  background: #FEF2F2 !important;
+  color: #EF4444 !important;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .desktopNav,
+  .dashboardBtn {
+    display: none;
+  }
+  .menuToggle {
+    display: flex;
+  }
+  .mobileOverlay,
+  .mobileNav {
+    display: flex;
+  }
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+/* ── Dark Mode ───────────────────────────────────────────────────── */
+:global(.dark) .header {
+  background-color: #0A0A0A;
+  border-bottom-color: #2D2D2D;
+}
+:global(.dark) .logo {
+  color: #F0F0F0;
+}
+:global(.dark) .logoBadge {
+  background-color: #1A1A1A;
+  border-color: #2D2D2D;
+  color: #9CA3AF;
+}
+:global(.dark) .navLink {
+  color: #9CA3AF;
+}
+:global(.dark) .navLink:hover {
+  background-color: #1A1A1A;
+  color: #F0F0F0;
+}
+:global(.dark) .navLinkActive {
+  background-color: #1A1A1A;
+  color: #F0F0F0;
+}
+:global(.dark) .themeToggle {
+  color: #9CA3AF;
+}
+:global(.dark) .themeToggle:hover {
+  background: #1A1A1A;
+  color: #F0F0F0;
+}
+:global(.dark) .dashboardBtn {
+  background: #FFDD00;
+  color: #1A1A1A;
+}
+:global(.dark) .avatarBtn {
+  border-color: #2D2D2D;
+  background: #1A1A1A;
+  color: #9CA3AF;
+}
+:global(.dark) .avatarBtn:hover {
+  border-color: #3D3D3D;
+  background: #2D2D2D;
+}
+:global(.dark) .menuToggle {
+  color: #9CA3AF;
+}
+:global(.dark) .menuToggle:hover {
+  background: #1A1A1A;
+}
+:global(.dark) .dropdown {
+  background: #141414;
+  border-color: #2D2D2D;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+:global(.dark) .dropdownName {
+  color: #F0F0F0;
+}
+:global(.dark) .dropdownDivider {
+  border-top-color: #2D2D2D;
+}
+:global(.dark) .dropdownItem {
+  color: #D1D5DB;
+}
+:global(.dark) .dropdownItem:hover {
+  background: #1F1F1F;
+}
+:global(.dark) .dropdownItemCreator {
+  color: #60A5FA;
+}
+:global(.dark) .dropdownItemDanger {
+  color: #F87171;
+}
+:global(.dark) .mobileOverlay {
+  background: rgba(0, 0, 0, 0.65);
+}
+:global(.dark) .mobileNav {
+  background: #0A0A0A;
+  border-left-color: #2D2D2D;
+}
+:global(.dark) .mobileNavHeader {
+  border-bottom-color: #2D2D2D;
+}
+:global(.dark) .mobileNavLink {
+  color: #D1D5DB;
+}
+:global(.dark) .mobileNavLink:hover {
+  background: #1A1A1A;
+  color: #F0F0F0;
+}
+:global(.dark) .mobileNavLinkActive {
+  background: #F0F0F0;
+  color: #0A0A0A;
+}
+:global(.dark) .mobileNavLinkActive:hover {
+  background: #E0E0E0;
+  color: #0A0A0A;
+}
+:global(.dark) .mobileNavFooter {
+  border-top-color: #2D2D2D;
+}
+:global(.dark) .mobileNavTheme {
+  color: #D1D5DB;
+}
+:global(.dark) .mobileNavTheme:hover {
+  background: #1A1A1A;
+}
+:global(.dark) .mobileNavLogout:hover {
+  background: rgba(239, 68, 68, 0.12) !important;
+}

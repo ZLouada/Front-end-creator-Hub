@@ -1,0 +1,138 @@
+/* Footer.module.css */
+.footer {
+  background-color: #FFFFFF;
+  border-top: 1px solid #F3F4F6;
+  padding: 6rem 3rem 2.5rem 3rem;
+  margin-top: auto;
+}
+
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 5rem;
+  margin-bottom: 5rem;
+}
+
+.brandDesc {
+  font-weight: 400;
+  color: #6B7280;
+  max-width: 320px;
+  margin-top: 1.25rem;
+  line-height: 1.7;
+}
+
+.columnTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.75rem;
+  color: #1A1A1A;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #6B7280;
+  font-weight: 400;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #1A1A1A;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #1A1A1A;
+}
+
+.bottom {
+  border-top: 1px solid #F3F4F6;
+  padding-top: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.regionalBadge {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #6B7280;
+}
+
+.flag {
+  width: 20px;
+  height: 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 3.5rem 1.25rem 2rem 1.25rem;
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .bottom {
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* --- Dark Mode --- */
+
+:global(.dark) .footer {
+  background-color: #0A0A0A;
+  border-top-color: #2D2D2D;
+}
+
+:global(.dark) .brandDesc {
+  color: #9CA3AF;
+}
+
+:global(.dark) .columnTitle {
+  color: #F0F0F0;
+}
+
+:global(.dark) .link {
+  color: #9CA3AF;
+}
+
+:global(.dark) .link:hover {
+  color: #F0F0F0;
+}
+
+:global(.dark) .bottom {
+  border-top-color: #2D2D2D;
+}
+
+:global(.dark) .flag {
+  border-color: #2D2D2D;
+}
+
+:global(.dark) .regionalBadge {
+  color: #9CA3AF;
+}

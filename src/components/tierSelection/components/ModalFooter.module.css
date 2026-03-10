@@ -1,0 +1,127 @@
+.footer {
+  padding: 2.5rem 3rem; /* Massive internal padding */
+  background-color: #FFFFFF;
+  border-top: 1px solid #F3F4F6; /* Very faint divider */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Summary Section */
+.summaryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.selectionLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9CA3AF; /* Muted editorial text */
+}
+
+.tierSummary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.tierName {
+  font-family: 'Playfair Display', serif; /* Serif Hierarchy */
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.price {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.period {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+/* Action Section */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.secureText {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #9CA3AF;
+}
+
+/* Primary CTA: The Surgical Yellow Pill */
+.primaryButton {
+  background-color: #FFDD00; /* Surgical Yellow */
+  color: #1A1A1A;
+  padding: 1rem 2.5rem;
+  border-radius: 999px; /* Pill Shape */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 15px rgba(255, 221, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 221, 0, 0.3);
+  background-color: #F2D200;
+}
+
+.primaryButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustment */
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem;
+  }
+  
+  .tierSummary {
+    margin-bottom: 1rem;
+  }
+}
+
+:global(.dark) .footer {
+  background-color: #1A1A1A;
+  border-top: 1px solid #262626;
+}
+
+:global(.dark) .tierName,
+:global(.dark) .price {
+  color: #FFFFFF;
+}
+
+:global(.dark) .selectionLabel {
+  color: #6B7280;
+}
+
+:global(.dark) .primaryButton {
+  /* Keep yellow for the CTA - it works perfectly on dark backgrounds */
+  box-shadow: 0 4px 20px rgba(255, 212, 0, 0.15);
+}

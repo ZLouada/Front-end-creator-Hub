@@ -1,0 +1,164 @@
+.card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 3rem 2.5rem; /* Massive internal padding */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Atmospheric Shadow */
+}
+
+/* Hover state: Subtle lift and background shift */
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #D1D5DB;
+  background-color: #FBF9F6;
+}
+
+/* Active/Selected State: The Surgical Yellow Accent */
+.cardSelected {
+  border-color: #1A1A1A;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.recommendedBadge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #FFDD00; /* Surgical Yellow Highlighter */
+  border-radius: 16px 16px 0 0;
+}
+
+/* Typography Hierarchy */
+.tierName {
+  font-family: 'Playfair Display', serif; /* Serif Header */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 0.5rem;
+}
+
+.priceContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.currency {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.amount {
+  font-family: 'Playfair Display', serif; /* Serif for Authority */
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.cycle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+/* Perks List */
+.perksList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.perkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #4B5563;
+  line-height: 1.5;
+}
+
+.perkIcon {
+  color: #10B981; /* Soft Green for benefits */
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Standardized CTA: Pill-shaped */
+.joinButton {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 999px; /* Pill */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8125rem;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.buttonPrimary {
+  background-color: #FFDD00; /* Surgical Yellow */
+  color: #1A1A1A;
+}
+
+.buttonPrimary:hover {
+  background-color: #F2D200;
+  box-shadow: 0 4px 15px rgba(255, 221, 0, 0.3);
+}
+
+.buttonSecondary {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  color: #1A1A1A;
+}
+
+.buttonSecondary:hover {
+  border-color: #FFDD00;
+  color: #FFDD00;
+}
+
+:global(.dark) .card {
+  background-color: #1A1A1A; /* Surface color */
+  border-color: #262626;
+}
+
+:global(.dark) .card:hover {
+  background-color: #222222;
+  border-color: #333333;
+}
+
+:global(.dark) .cardSelected {
+  border-color: #FFDD00; /* Use the brand color to highlight selection in dark mode */
+}
+
+:global(.dark) .tierName,
+:global(.dark) .amount,
+:global(.dark) .currency {
+  color: #FFFFFF;
+}
+
+:global(.dark) .perkItem {
+  color: #D1D5DB;
+}
+
+:global(.dark) .buttonSecondary {
+  background-color: transparent;
+  border-color: #333333;
+  color: #FFFFFF;
+}

@@ -1,0 +1,169 @@
+/* SubStatus.module.css */
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 340px;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1A1A1A;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Stats Row */
+.statsGrid {
+  display: grid;
+  grid-template-cols: 1fr 1fr;
+  gap: 1.125rem;
+}
+
+.statBox {
+  background: #FBF9F6;
+  border: 1px solid #E5E7EB;
+  padding: 0.875rem;
+  border-radius: 14px;
+}
+
+.statLabel {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #6B7280;
+  margin-bottom: 0.25rem;
+}
+
+.statValue {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+/* Billing Alert */
+.billingSection {
+  background-color: #FFDD00;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.billingText {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.billingDate {
+  display: block;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Perks Progress */
+.perksSection {
+  border-top: 1px solid #F3F4F6;
+  padding-top: 1.25rem;
+}
+
+.perksHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.perksLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 8px;
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: #00C853;
+  border-radius: 99px;
+  transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.savingsBadge {
+  background: #1A1A1A;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .card {
+  background-color: #141414;
+  border-color: #2D2D2D;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+:global(.dark) .title {
+  color: #F0F0F0;
+}
+
+:global(.dark) .statBox {
+  background: #1A1A1A;
+  border-color: #2D2D2D;
+}
+
+:global(.dark) .statLabel {
+  color: #9CA3AF;
+}
+
+:global(.dark) .statValue {
+  color: #F0F0F0;
+}
+
+:global(.dark) .billingSection {
+  border-color: #2D2D2D;
+}
+
+:global(.dark) .billingText {
+  color: #0A0A0A;
+}
+
+:global(.dark) .perksSection {
+  border-top-color: #2D2D2D;
+}
+
+:global(.dark) .perksLabel {
+  color: #F0F0F0;
+}
+
+:global(.dark) .progressBarContainer {
+  background: #2D2D2D;
+  border-color: #3D3D3D;
+}
+
+:global(.dark) .savingsBadge {
+  background: #F0F0F0;
+  color: #0A0A0A;
+}

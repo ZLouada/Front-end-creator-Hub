@@ -1,0 +1,82 @@
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem 3rem 2rem; /* Massive internal padding */
+  background-color: #FBF9F6; /* Warm Paper Base */
+}
+
+/* The Creator Avatar: Professional & Refined */
+.avatarWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Atmospheric shadow */
+}
+
+/* Surgical Yellow Accent: Notification/Status Dot */
+.statusDot {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 14px;
+  height: 14px;
+  background-color: #FFDD00; /* Surgical Yellow */
+  border: 3px solid #FBF9F6;
+  border-radius: 50%;
+}
+
+/* Typography Hierarchy */
+.title {
+  font-family: 'Playfair Display', serif; /* Serif Hierarchy */
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif; /* Sans UI */
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6B7280;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* Refined Divider */
+.divider {
+  width: 40px;
+  height: 1px;
+  background-color: #F3F4F6;
+  margin-top: 2rem;
+}
+
+:global(.dark) .heroContainer {
+  background-color: #0F0F0F;
+}
+
+:global(.dark) .avatar {
+  border-color: #262626;
+}
+
+:global(.dark) .title {
+  color: #FFFFFF;
+}
+
+:global(.dark) .subtitle {
+  color: #9CA3AF;
+}
+
+:global(.dark) .divider {
+  background-color: #262626;
+}

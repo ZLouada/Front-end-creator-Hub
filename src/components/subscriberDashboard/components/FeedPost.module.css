@@ -1,0 +1,280 @@
+/* FeedPost.module.css */
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 3rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+/* --- Header Section --- */
+.header {
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.creatorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.creatorName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6B7280;
+}
+
+.tierBadge {
+  background: #FFDD00;
+  border: 1px solid #E5E7EB;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* --- Content & Media Area --- */
+.body {
+  padding: 1.75rem;
+}
+
+.postText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+  color: #1A1A1A;
+  line-height: 1.6;
+}
+
+.mediaContainer {
+  position: relative;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  box-shadow: none;
+  background: #F3F4F6;
+  overflow: hidden;
+}
+
+/* --- Media Types --- */
+.videoPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playButton {
+  background: #1A1A1A;
+  color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  padding: 1.75rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.playButton:hover {
+  transform: scale(1.04);
+}
+
+.audioWaveform {
+  width: 100%;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.waveformBar {
+  flex: 1;
+  background: #D1D5DB;
+  border-radius: 4px;
+  transition: height 0.2s;
+}
+
+.pdfDownload {
+  width: 100%;
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+}
+
+/* --- Locked State --- */
+.lockedOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.upgradeBtn {
+  margin-top: 1rem;
+  background: #1A1A1A;
+  color: #FFFFFF;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,200,83,0.2);
+  transition: all 0.2s ease;
+}
+
+.upgradeBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,200,83,0.3);
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid #F3F4F6;
+  display: flex;
+  gap: 1.75rem;
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #6B7280;
+  transition: color 0.2s ease;
+}
+
+.interaction:hover {
+  color: #1A1A1A;
+}
+
+@media (max-width: 767px) {
+  .card {
+    margin-bottom: 1.75rem;
+  }
+  .header {
+    padding: 0.875rem 1.25rem;
+  }
+  .body {
+    padding: 1.25rem;
+  }
+  .postText {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .audioWaveform {
+    padding: 1rem;
+  }
+  .playButton {
+    padding: 1rem;
+  }
+  .footer {
+    padding: 0.875rem 1.25rem;
+    gap: 1rem;
+  }
+}
+
+/* ─── Dark Mode ─── */
+
+:global(.dark) .card {
+  background: #141414;
+  border-color: #2D2D2D;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+:global(.dark) .header {
+  background-color: #1A1A1A;
+  border-bottom-color: #2D2D2D;
+}
+
+:global(.dark) .creatorName {
+  color: #F0F0F0;
+}
+
+:global(.dark) .timestamp {
+  color: #9CA3AF;
+}
+
+:global(.dark) .tierBadge {
+  border-color: #2D2D2D;
+}
+
+:global(.dark) .postText {
+  color: #F0F0F0;
+}
+
+:global(.dark) .mediaContainer {
+  background: #1A1A1A;
+  border-color: #2D2D2D;
+}
+
+:global(.dark) .playButton {
+  border-color: #2D2D2D;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+:global(.dark) .waveformBar {
+  background: #4B5563;
+}
+
+:global(.dark) .pdfDownload {
+  background: #1A1A1A;
+  color: #F0F0F0;
+}
+
+:global(.dark) .lockedOverlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+:global(.dark) .upgradeBtn {
+  background: #F0F0F0;
+  color: #0A0A0A;
+  box-shadow: 0 4px 12px rgba(0,200,83,0.2);
+}
+
+:global(.dark) .footer {
+  border-top-color: #2D2D2D;
+}
+
+:global(.dark) .interaction {
+  color: #9CA3AF;
+}
+
+:global(.dark) .interaction:hover {
+  color: #F0F0F0;
+}

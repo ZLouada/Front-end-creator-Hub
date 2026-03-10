@@ -1,0 +1,199 @@
+.section {
+  padding: 140px 0;
+  background-color: #FBF9F6;
+  color: #1A1A1A;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header & Strike-through */
+.headerArea {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.serifTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.strikeWrapper {
+  position: relative;
+  display: inline-block;
+  color: #9CA3AF; /* Muted the global fees text */
+}
+
+.strikeLine {
+  position: absolute;
+  left: 0;
+  top: 55%;
+  height: 8px;
+  background-color: #FFDD00; /* Surgical Yellow Marker */
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #6B7280;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* The Table */
+.tableWrapper {
+  background: white;
+  border-radius: 32px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02);
+}
+
+.gridHead {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  padding: 24px 40px;
+  background: #FAFAFA;
+  border-bottom: 1px solid #E5E7EB;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9CA3AF;
+}
+
+.brandLabel {
+  color: #1A1A1A;
+  text-align: center;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  padding: 32px 40px;
+  border-bottom: 1px solid #F3F4F6;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.row:hover {
+  background-color: #FBF9F6;
+}
+
+.featureCell {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+}
+
+.featureName {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Local Column Highlight */
+.localCell {
+  display: flex;
+  justify-content: center;
+}
+
+.localHighlight {
+  background: rgba(255, 221, 0, 0.1); /* Subtle Yellow Wash */
+  padding: 8px 20px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 221, 0, 0.3);
+}
+
+.boldValue {
+  font-weight: 800;
+  color: #1A1A1A;
+}
+
+.successDot {
+  width: 6px;
+  height: 6px;
+  background-color: #FFDD00;
+  border-radius: 50%;
+}
+
+/* Global Column */
+.globalCell {
+  text-align: center;
+}
+
+.mutedValue {
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+/* CTA Area */
+.ctaArea {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.editorialButton {
+  background: #1A1A1A;
+  color: white;
+  padding: 18px 40px;
+  border-radius: 100px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.2s ease;
+}
+
+.editorialButton:hover {
+  transform: translateY(-2px);
+}
+
+.trustText {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .serifTitle { font-size: 2.2rem; }
+  .gridHead, .row { grid-template-columns: 1fr; gap: 16px; text-align: left; }
+  .brandLabel, .globalLabel, .localCell, .globalCell { text-align: left; justify-content: flex-start; }
+}
+
+/* Comparison.module.css */
+:global(.dark) .tableHeader {
+  border-bottom-color: #FFDD00;
+}
+
+:global(.dark) .row {
+  border-bottom-color: #1A1A1A;
+}
+
+:global(.dark) .highlightCell {
+  background-color: rgba(255, 221, 0, 0.05); /* Very faint yellow tint */
+}

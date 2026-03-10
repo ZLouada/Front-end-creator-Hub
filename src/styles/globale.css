@@ -1,0 +1,14 @@
+/* globale.css is now minimal - core styles are in index.css */
+/* This file is kept for any component-level imports that reference it */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}

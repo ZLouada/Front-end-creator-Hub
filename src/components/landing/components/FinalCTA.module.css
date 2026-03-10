@@ -1,0 +1,132 @@
+.section {
+  padding: 160px 0 100px;
+  background-color: #FBF9F6; /* Warm Paper */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Subtle Branding Elements */
+.ambientOrb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 221, 0, 0.08) 0%, rgba(251, 249, 246, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1A1A1A;
+  margin-bottom: 40px;
+}
+
+.yellowIcon {
+  color: #FFDD00;
+}
+
+/* Typography */
+.serifHeading {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; /* Large Impact */
+  font-weight: 600;
+  line-height: 1;
+  color: #1A1A1A;
+  margin-bottom: 24px;
+}
+
+.italicHighlight {
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+}
+
+.description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  color: #6B7280;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+/* Call to Action */
+.actionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.mainPill {
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+  padding: 20px 48px;
+  border-radius: 100px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.mainPill:hover {
+  background-color: #FFDD00;
+  color: #1A1A1A;
+}
+
+.trustRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.shieldIcon {
+  color: #10B981; /* Subtle Green for trust */
+}
+
+.footerDivider {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 1100px;
+  height: 1px;
+  background-color: #E5E7EB;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .serifHeading { font-size: 3.5rem; }
+  .description { font-size: 1.1rem; }
+  .section { padding: 100px 0; }
+}

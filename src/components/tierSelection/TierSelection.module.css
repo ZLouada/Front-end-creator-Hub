@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Massive vertical spacing between sections */
+}
+
+/* The Grid: 20% more space than standard */
+.tierGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem; /* Spacious gap between cards */
+  padding: 1rem 0;
+}
+
+@media (max-width: 1024px) {
+  .tierGrid {
+    grid-template-columns: 1fr; /* Stack on smaller tablets/mobile */
+  }
+}
