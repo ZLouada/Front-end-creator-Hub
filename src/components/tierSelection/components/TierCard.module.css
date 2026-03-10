@@ -134,31 +134,43 @@
 }
 
 :global(.dark) .card {
-  background-color: #1A1A1A; /* Surface color */
-  border-color: #262626;
+  background-color: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
 }
 
 :global(.dark) .card:hover {
-  background-color: #222222;
-  border-color: #333333;
+  background-color: #1E1E25;
+  border-color: #3A3A46;
 }
 
 :global(.dark) .cardSelected {
-  border-color: #FFDD00; /* Use the brand color to highlight selection in dark mode */
+  border-color: #FFDD00;
+  box-shadow: 0 0 0 1px #FFDD00, 0 8px 32px rgba(255,221,0,0.12);
 }
 
 :global(.dark) .tierName,
 :global(.dark) .amount,
 :global(.dark) .currency {
-  color: #FFFFFF;
+  color: #F0F0F3;
+}
+
+:global(.dark) .cycle {
+  color: #6A6A78;
 }
 
 :global(.dark) .perkItem {
-  color: #D1D5DB;
+  color: #C8C8D4;
 }
 
 :global(.dark) .buttonSecondary {
   background-color: transparent;
-  border-color: #333333;
-  color: #FFFFFF;
+  border-color: #3A3A46;
+  color: #F0F0F3;
+}
+
+:global(.dark) .buttonSecondary:hover {
+  border-color: #FFDD00;
+  color: #FFDD00;
+}
 }

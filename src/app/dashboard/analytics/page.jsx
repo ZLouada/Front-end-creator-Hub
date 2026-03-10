@@ -205,7 +205,7 @@ export default function AnalyticsDashboard() {
                 <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Revenue Growth</h3>
                 <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">vs previous period</p>
               </div>
-              <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-gray-100 dark:bg-[#2D2D2D] text-gray-600 dark:text-gray-300 border border-editorial-border">
+              <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-gray-100 dark:bg-[#22222A] text-gray-600 dark:text-gray-300 border border-editorial-border">
                 6 months
               </span>
             </div>
@@ -262,11 +262,11 @@ export default function AnalyticsDashboard() {
             <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Recent Activity</h3>
             <button className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">View all →</button>
           </div>
-          <div className="divide-y divide-gray-50 dark:divide-[#2D2D2D]">
+          <div className="divide-y divide-gray-50 dark:divide-[#27272F]">
             {recentActivity.map((item) => (
-              <div key={item.id} className="flex items-center justify-between px-8 py-5 hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition-colors">
+              <div key={item.id} className="flex items-center justify-between px-8 py-5 hover:bg-gray-50 dark:hover:bg-[#1E1E25] transition-colors">
                 <div className="flex items-center gap-5">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-[#333] flex items-center justify-center text-lg shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-[#22222A] flex items-center justify-center text-lg shrink-0">
                     {item.avatar}
                   </div>
                   <div>

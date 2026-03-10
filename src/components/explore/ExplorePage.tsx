@@ -69,7 +69,7 @@ export default function ExplorePage() {
     });
 
   return (
-    <main className="min-h-screen bg-surface dark:bg-[#0A0A0A] pb-20">
+    <main className="min-h-screen bg-surface dark:bg-[#0C0C0F] pb-20">
       <Header />
       {/* 1. Full-Width Search Header */}
       <SearchHero onSearchChange={setSearchQuery} />
@@ -109,7 +109,7 @@ export default function ExplorePage() {
                   <ExploreCard key={index} {...creator} />
                 ))
               ) : (
-                <div className="col-span-full py-20 text-center border border-dashed border-gray-200 dark:border-[#333] rounded-3xl bg-gray-50 dark:bg-[#141414]">
+                <div className="col-span-full py-20 text-center border border-dashed border-gray-200 dark:border-[#27272F] rounded-3xl bg-gray-50 dark:bg-[#111115]">
                   <p className="text-2xl font-bold text-gray-400 dark:text-gray-600">No creators found!</p>
                 </div>
               )}

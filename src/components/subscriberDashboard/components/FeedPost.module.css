@@ -208,73 +208,76 @@
 /* ─── Dark Mode ─── */
 
 :global(.dark) .card {
-  background: #141414;
-  border-color: #2D2D2D;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
 :global(.dark) .card:hover {
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  border-color: #3A3A46;
 }
 
 :global(.dark) .header {
-  background-color: #1A1A1A;
-  border-bottom-color: #2D2D2D;
+  background-color: #22222A;
+  border-bottom-color: #27272F;
 }
 
 :global(.dark) .creatorName {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .timestamp {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 
 :global(.dark) .tierBadge {
-  border-color: #2D2D2D;
+  border-color: #27272F;
 }
 
 :global(.dark) .postText {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .mediaContainer {
-  background: #1A1A1A;
-  border-color: #2D2D2D;
+  background: #22222A;
+  border-color: #27272F;
 }
 
 :global(.dark) .playButton {
-  border-color: #2D2D2D;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  background: #F0F0F3;
+  color: #111115;
+  border-color: #27272F;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
 :global(.dark) .waveformBar {
-  background: #4B5563;
+  background: #3A3A46;
 }
 
 :global(.dark) .pdfDownload {
-  background: #1A1A1A;
-  color: #F0F0F0;
+  background: #1A1A1F;
+  color: #F0F0F3;
 }
 
 :global(.dark) .lockedOverlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(12, 12, 15, 0.65);
 }
 
 :global(.dark) .upgradeBtn {
-  background: #F0F0F0;
-  color: #0A0A0A;
-  box-shadow: 0 4px 12px rgba(0,200,83,0.2);
+  background: #FFDD00;
+  color: #111115;
+  box-shadow: 0 4px 16px rgba(255,221,0,0.2);
 }
 
 :global(.dark) .footer {
-  border-top-color: #2D2D2D;
+  border-top-color: #27272F;
 }
 
 :global(.dark) .interaction {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 
 :global(.dark) .interaction:hover {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }

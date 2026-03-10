@@ -278,25 +278,89 @@
   .statsGrid { grid-template-columns: 1fr; }
 }
 
-/* StudioPreview.module.css */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
+:global(.dark) .section {
+  background-color: #0C0C0F;
+}
+
+:global(.dark) .serifTitle {
+  color: #F0F0F3;
+}
+
+:global(.dark) .italicHighlight {
+  color: #FFDD00;
+}
+
+:global(.dark) .subtitle {
+  color: #9A9AAB;
+}
+
 :global(.dark) .dashboardCanvas {
-  background: #111111;
-  border-color: #262626;
+  background: #111115;
+  border-color: #27272F;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
 }
 
 :global(.dark) .sidebar {
-  border-right-color: #262626;
+  border-right-color: #27272F;
 }
 
-:global(.dark) .statCard, :global(.dark) .chartCard {
-  background: #1A1A1A;
-  border-color: #262626;
+:global(.dark) .sidebarIcon {
+  color: #3A3A46;
+}
+
+:global(.dark) .sidebarIcon:hover {
+  color: #F0F0F3;
+}
+
+:global(.dark) .activeIconWrapper {
+  color: #F0F0F3;
+}
+
+:global(.dark) .topBar {
+  border-bottom-color: #27272F;
+}
+
+:global(.dark) .breadcrumb {
+  color: #6A6A78;
+}
+
+:global(.dark) .boldLabel {
+  color: #F0F0F3;
+}
+
+:global(.dark) .avatarPlaceholder {
+  background: #22222A;
+  border-color: #27272F;
+}
+
+:global(.dark) .contentBody {
+  background-color: #0C0C0F;
+}
+
+:global(.dark) .statCard,
+:global(.dark) .chartCard {
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+:global(.dark) .statValue {
+  color: #F0F0F3;
 }
 
 :global(.dark) .chartBarWrapper {
-  background: #262626;
+  background: #22222A;
 }
 
 :global(.dark) .chartBar {
-  background: #404040; /* Lighter gray for bars to see them against dark bg */
+  background: #3A3A46;
+}
+
+:global(.dark) .chartBar:hover {
+  background: #FFDD00;
+}
+
+:global(.dark) .chartLabels {
+  color: #3A3A46;
 }

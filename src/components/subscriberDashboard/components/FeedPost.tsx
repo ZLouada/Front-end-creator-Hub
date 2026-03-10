@@ -36,7 +36,7 @@ const FeedPost = ({ type, creator, timestamp, tier, content, mediaUrl, isLocked 
       case 'audio':
         return (
           <div className={styles.audioWaveform}>
-            <div className="p-4 bg-gray-100 dark:bg-[#2D2D2D] border border-gray-200 dark:border-[#333] rounded-xl mr-4">
+            <div className="p-4 bg-gray-100 dark:bg-[#22222A] border border-gray-200 dark:border-[#27272F] rounded-xl mr-4">
               <Music size={24} />
             </div>
             {[40, 70, 45, 90, 65, 80, 30, 50, 85, 40].map((h, i) => (
@@ -48,7 +48,7 @@ const FeedPost = ({ type, creator, timestamp, tier, content, mediaUrl, isLocked 
         return (
           <div className={styles.pdfDownload}>
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-gray-100 dark:bg-[#2D2D2D] border border-gray-200 dark:border-[#333] rounded-lg">
+              <div className="p-3 bg-gray-100 dark:bg-[#22222A] border border-gray-200 dark:border-[#27272F] rounded-lg">
                 <Paperclip size={20} />
               </div>
               <div>
@@ -82,7 +82,7 @@ const FeedPost = ({ type, creator, timestamp, tier, content, mediaUrl, isLocked 
         <div className={styles.mediaContainer}>
           {isLocked && (
             <div className={styles.lockedOverlay}>
-              <div className="p-4 bg-white dark:bg-[#2D2D2D] border border-gray-200 dark:border-[#333] rounded-full mb-4">
+              <div className="p-4 bg-white dark:bg-[#22222A] border border-gray-200 dark:border-[#27272F] rounded-full mb-4">
                 <Lock size={32} />
               </div>
               <p className="font-semibold text-sm">Content Locked</p>

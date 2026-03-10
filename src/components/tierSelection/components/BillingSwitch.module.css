@@ -71,19 +71,21 @@
   color: #1A1A1A;
 }
 
+/* ── Dark Mode ─────────────────────────────────────────────────── */
 :global(.dark) .switchContainer {
-  background-color: #1A1A1A;
-  border-color: #262626;
+  background-color: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
 :global(.dark) .slider {
-  background-color: #262626; /* Slightly lighter than the container */
+  background-color: #22222A;
 }
 
 :global(.dark) .optionBtn {
-  color: #6B7280;
+  color: #6A6A78;
 }
 
 :global(.dark) .optionBtnActive {
-  color: #FFFFFF;
+  color: #F0F0F3;
 }

@@ -167,16 +167,36 @@
   .editorialStats { flex-direction: column; gap: 16px; border-bottom: none; }
 }
 
-/* SocialProof.module.css */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
+:global(.dark) .section {
+  background-color: #0C0C0F;
+  color: #F0F0F3;
+}
+
+:global(.dark) .serifTitle {
+  color: #F0F0F3;
+}
+
+:global(.dark) .italicHighlight {
+  color: #FFDD00;
+}
+
 :global(.dark) .testimonialCard {
-  background: #141414;
-  border-color: #262626;
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+
+:global(.dark) .testimonialCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  border-color: #3A3A46;
 }
 
 :global(.dark) .editorialStats {
-  border-color: #262626;
+  border-color: #27272F;
 }
 
 :global(.dark) .creatorSub {
-  color: #6B7280;
+  color: #6A6A78;
 }

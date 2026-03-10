@@ -126,42 +126,42 @@
 /* ─── Dark Mode ─── */
 
 :global(.dark) .heroSection {
-  background: linear-gradient(135deg, #0A0A0A 0%, #111111 40%, #141414 100%);
-  border-bottom-color: #333;
+  background: linear-gradient(135deg, #0C0C0F 0%, #111115 40%, #16161C 100%);
+  border-bottom-color: #27272F;
 }
 
 :global(.dark) .heroSection::before {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,221,0,0.03) 0%, transparent 60%);
 }
 
 :global(.dark) .heading {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .searchInput {
-  background: #1A1A1A;
-  color: #F0F0F0;
-  border-color: #333;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+  background: #1A1A1F;
+  color: #F0F0F3;
+  border-color: #27272F;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25);
 }
 
 :global(.dark) .searchInput::placeholder {
-  color: #666;
+  color: #6A6A78;
 }
 
 :global(.dark) .searchInput:focus {
-  background: #1A1A1A;
-  border-color: #9CA3AF;
-  box-shadow: 0 0 0 4px rgba(156, 163, 175, 0.10), 0 4px 16px rgba(0, 0, 0, 0.3);
+  background: #1A1A1F;
+  border-color: #3A3A46;
+  box-shadow: 0 0 0 4px rgba(255,221,0,0.08), 0 4px 16px rgba(0,0,0,0.4);
 }
 
 :global(.dark) .searchButton {
-  background: linear-gradient(135deg, #F0F0F0 0%, #D1D5DB 100%);
-  color: #1A1A1A;
+  background: #FFDD00;
+  color: #111115;
 }
 
 :global(.dark) .searchButton:hover {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
-  color: #1A1A1A;
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  background: #FFE84D;
+  color: #111115;
+  box-shadow: 0 4px 16px rgba(255,221,0,0.25);
 }

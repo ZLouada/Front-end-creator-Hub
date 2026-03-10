@@ -9,7 +9,7 @@ import FinalCTA from './components/FinalCTA';
 
 const LandingPage= () => {
   return (
-    <main className="bg-white dark:bg-[#0A0A0A] min-h-screen">
+    <main className="bg-white dark:bg-[#0C0C0F] min-h-screen">
       <Header />
       <Hero />
       <LocalAdvantage />

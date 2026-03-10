@@ -182,7 +182,7 @@ const ResetPasswordPage = () => {
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
-                    className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1A] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#222] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl pr-12"
+                    className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#22222A] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl pr-12"
                   />
                   <button
                     type="button"
@@ -205,7 +205,7 @@ const ResetPasswordPage = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
-                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1A] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#222] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl"
+                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#22222A] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl"
                 />
               </div>
 

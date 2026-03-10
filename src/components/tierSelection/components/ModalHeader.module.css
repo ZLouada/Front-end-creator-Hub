@@ -61,22 +61,29 @@
   margin-top: 2rem;
 }
 
+/* ── Dark Mode ─────────────────────────────────────────────────── */
 :global(.dark) .heroContainer {
-  background-color: #0F0F0F;
+  background-color: #111115;
+  border-bottom: 1px solid #27272F;
 }
 
 :global(.dark) .avatar {
-  border-color: #262626;
+  border-color: #27272F;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+:global(.dark) .statusDot {
+  border-color: #111115;
 }
 
 :global(.dark) .title {
-  color: #FFFFFF;
+  color: #F0F0F3;
 }
 
 :global(.dark) .subtitle {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 
 :global(.dark) .divider {
-  background-color: #262626;
+  background-color: #27272F;
 }

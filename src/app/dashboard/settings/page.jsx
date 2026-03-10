@@ -59,7 +59,7 @@ export default function SettingsPage() {
                   type="text"
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  className="input-modern w-full px-4 py-3 bg-gray-50 dark:bg-[#1A1A1A] border border-editorial-border dark:border-[#2D2D2D] rounded-xl text-gray-800 dark:text-gray-100 font-semibold text-sm placeholder-gray-400 outline-none focus:border-gray-900 dark:focus:border-gray-400 transition-colors"
+                  className="input-modern w-full px-4 py-3 bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-[#27272F] rounded-xl text-gray-800 dark:text-gray-100 font-semibold text-sm placeholder-gray-400 outline-none focus:border-gray-900 dark:focus:border-gray-400 transition-colors"
                 />
               </Field>
               <Field label="Email Address" hint="Contact support to change your email.">
@@ -67,7 +67,7 @@ export default function SettingsPage() {
                   type="email"
                   disabled
                   defaultValue={user?.email ?? 'user@example.com'}
-                  className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1A] border border-transparent rounded-xl text-gray-400 font-semibold text-sm cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1F] border border-transparent rounded-xl text-gray-400 font-semibold text-sm cursor-not-allowed"
                 />
               </Field>
               <button
@@ -115,7 +115,7 @@ export default function SettingsPage() {
             <div className="overflow-x-auto -mx-2">
               <table className="w-full text-left min-w-[480px]">
                 <thead>
-                    <tr className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest border-b border-editorial-border dark:border-[#2D2D2D]">
+                    <tr className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest border-b border-editorial-border dark:border-[#27272F]">
                     <th className="pb-3 pl-2">Date</th>
                     <th className="pb-3">Description</th>
                     <th className="pb-3">Amount</th>

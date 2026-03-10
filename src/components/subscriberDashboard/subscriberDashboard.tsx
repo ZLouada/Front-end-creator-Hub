@@ -37,11 +37,11 @@ export default function SubscriberFeed() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F0F0] dark:bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#F0F0F0] dark:bg-[#0C0C0F]">
       <Header /> 
       
       {/* 1. TOP BAR: Sticky Creator Switcher — sits just below the sticky header */}
-      <div className="sticky top-[72px] z-40 bg-white dark:bg-[#141414] border-b border-gray-100 dark:border-[#2D2D2D]">
+      <div className="sticky top-[72px] z-40 bg-white dark:bg-[#111115] border-b border-gray-100 dark:border-[#27272F]">
         <CreatorSwitcher 
           creators={mockCreators} 
           onSelectCreator={handleCreatorSelect} 

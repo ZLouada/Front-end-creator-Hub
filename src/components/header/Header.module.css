@@ -383,70 +383,74 @@
 
 /* ── Dark Mode ───────────────────────────────────────────────────── */
 :global(.dark) .header {
-  background-color: #0A0A0A;
-  border-bottom-color: #2D2D2D;
+  background-color: rgba(12, 12, 15, 0.95);
+  border-bottom-color: #27272F;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 :global(.dark) .logo {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 :global(.dark) .logoBadge {
-  background-color: #1A1A1A;
-  border-color: #2D2D2D;
-  color: #9CA3AF;
+  background-color: #1A1A1F;
+  border-color: #27272F;
+  color: #9A9AAB;
 }
 :global(.dark) .navLink {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 :global(.dark) .navLink:hover {
-  background-color: #1A1A1A;
-  color: #F0F0F0;
+  background-color: #1E1E25;
+  color: #F0F0F3;
 }
 :global(.dark) .navLinkActive {
-  background-color: #1A1A1A;
-  color: #F0F0F0;
+  background-color: #1E1E25;
+  color: #F0F0F3;
 }
 :global(.dark) .themeToggle {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 :global(.dark) .themeToggle:hover {
-  background: #1A1A1A;
-  color: #F0F0F0;
+  background: #1E1E25;
+  color: #F0F0F3;
 }
 :global(.dark) .dashboardBtn {
   background: #FFDD00;
-  color: #1A1A1A;
+  color: #111115;
+  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.2);
 }
 :global(.dark) .avatarBtn {
-  border-color: #2D2D2D;
-  background: #1A1A1A;
-  color: #9CA3AF;
+  border-color: #27272F;
+  background: #1A1A1F;
+  color: #9A9AAB;
 }
 :global(.dark) .avatarBtn:hover {
-  border-color: #3D3D3D;
-  background: #2D2D2D;
+  border-color: #3A3A46;
+  background: #22222A;
 }
 :global(.dark) .menuToggle {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 :global(.dark) .menuToggle:hover {
-  background: #1A1A1A;
+  background: #1E1E25;
 }
 :global(.dark) .dropdown {
-  background: #141414;
-  border-color: #2D2D2D;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px #27272F;
 }
 :global(.dark) .dropdownName {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 :global(.dark) .dropdownDivider {
-  border-top-color: #2D2D2D;
+  border-top-color: #27272F;
 }
 :global(.dark) .dropdownItem {
-  color: #D1D5DB;
+  color: #C8C8D4;
 }
 :global(.dark) .dropdownItem:hover {
-  background: #1F1F1F;
+  background: #22222A;
+  color: #F0F0F3;
 }
 :global(.dark) .dropdownItemCreator {
   color: #60A5FA;
@@ -455,38 +459,39 @@
   color: #F87171;
 }
 :global(.dark) .mobileOverlay {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
 }
 :global(.dark) .mobileNav {
-  background: #0A0A0A;
-  border-left-color: #2D2D2D;
+  background: #0C0C0F;
+  border-left-color: #27272F;
 }
 :global(.dark) .mobileNavHeader {
-  border-bottom-color: #2D2D2D;
+  border-bottom-color: #27272F;
 }
 :global(.dark) .mobileNavLink {
-  color: #D1D5DB;
+  color: #C8C8D4;
 }
 :global(.dark) .mobileNavLink:hover {
-  background: #1A1A1A;
-  color: #F0F0F0;
+  background: #1A1A1F;
+  color: #F0F0F3;
 }
 :global(.dark) .mobileNavLinkActive {
-  background: #F0F0F0;
-  color: #0A0A0A;
+  background: #F0F0F3;
+  color: #0C0C0F;
 }
 :global(.dark) .mobileNavLinkActive:hover {
-  background: #E0E0E0;
-  color: #0A0A0A;
+  background: #FFFFFF;
+  color: #0C0C0F;
 }
 :global(.dark) .mobileNavFooter {
-  border-top-color: #2D2D2D;
+  border-top-color: #27272F;
 }
 :global(.dark) .mobileNavTheme {
-  color: #D1D5DB;
+  color: #C8C8D4;
 }
 :global(.dark) .mobileNavTheme:hover {
-  background: #1A1A1A;
+  background: #1A1A1F;
 }
 :global(.dark) .mobileNavLogout:hover {
   background: rgba(239, 68, 68, 0.12) !important;

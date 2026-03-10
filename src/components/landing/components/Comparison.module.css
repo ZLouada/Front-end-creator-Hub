@@ -185,15 +185,48 @@
   .brandLabel, .globalLabel, .localCell, .globalCell { text-align: left; justify-content: flex-start; }
 }
 
-/* Comparison.module.css */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
+:global(.dark) .section {
+  background-color: #0C0C0F;
+  color: #F0F0F3;
+}
+
+:global(.dark) .serifTitle {
+  color: #F0F0F3;
+}
+
+:global(.dark) .subtitle {
+  color: #9A9AAB;
+}
+
+:global(.dark) .tableWrapper {
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+:global(.dark) .gridHead {
+  background: #22222A;
+  border-bottom-color: #27272F;
+}
+
+:global(.dark) .brandLabel {
+  color: #F0F0F3;
+}
+
 :global(.dark) .tableHeader {
   border-bottom-color: #FFDD00;
 }
 
 :global(.dark) .row {
-  border-bottom-color: #1A1A1A;
+  border-bottom-color: #27272F;
+  color: #C8C8D4;
+}
+
+:global(.dark) .row:hover {
+  background-color: #22222A;
 }
 
 :global(.dark) .highlightCell {
-  background-color: rgba(255, 221, 0, 0.05); /* Very faint yellow tint */
+  background-color: rgba(255, 221, 0, 0.06);
 }

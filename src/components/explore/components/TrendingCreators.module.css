@@ -147,38 +147,38 @@
 /* ─── Dark Mode ─── */
 
 :global(.dark) .sidebar {
-  background: rgba(20, 20, 20, 0.72);
-  border-color: #333;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(17, 17, 21, 0.85);
+  border-color: #27272F;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.25);
 }
 
 :global(.dark) .header {
-  border-bottom-color: #333;
+  border-bottom-color: #27272F;
 }
 
 :global(.dark) .header h2 {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .feedItem {
-  background: #141414;
-  border-color: #333;
+  background: #1A1A1F;
+  border-color: #27272F;
 }
 
 :global(.dark) .feedItem:hover {
-  background: #1A1A1A;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
-  border-color: #444;
+  background: #22222A;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25);
+  border-color: #3A3A46;
 }
 
 :global(.dark) .activityText {
-  color: #999;
+  color: #9A9AAB;
 }
 
 :global(.dark) .highlight {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .timeTag {
-  color: #666;
+  color: #6A6A78;
 }

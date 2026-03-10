@@ -116,31 +116,33 @@
 /* ─── Dark Mode ─── */
 
 :global(.dark) .wrapper {
-  background-color: #141414;
-  border-color: #2D2D2D;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  background-color: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
 :global(.dark) .title {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .cityBadge {
-  border-color: #2D2D2D;
+  background: #22222A;
+  border-color: #27272F;
+  color: #9A9AAB;
 }
 
 :global(.dark) .creatorItem:hover {
-  background: #1F1F1F;
-  border-color: #2D2D2D;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: #22222A;
+  border-color: #27272F;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 :global(.dark) .avatar {
-  border-color: #2D2D2D;
+  border-color: #27272F;
 }
 
 :global(.dark) .name {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .paymentTag {
@@ -148,11 +150,11 @@
 }
 
 :global(.dark) .viewAllBtn {
-  background: #F0F0F0;
-  color: #0A0A0A;
+  background: #FFDD00;
+  color: #111115;
 }
 
 :global(.dark) .viewAllBtn:hover {
-  background: #FFFFFF;
-  color: #0A0A0A;
+  background: #FFE84D;
+  color: #111115;
 }

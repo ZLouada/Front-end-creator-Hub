@@ -17,11 +17,16 @@
   --bg-primary:     #FFFFFF;
   --bg-card:        #FFFFFF;
   --bg-surface:     #FBF9F6;
+  --bg-elevated:    #FFFFFF;
   --text-primary:   #1A1A1A;
   --text-secondary: #6B7280;
+  --text-muted:     #9CA3AF;
   --border-primary: #E5E7EB;
+  --border-strong:  #D1D5DB;
   --shadow-color:   rgba(0,0,0,0.04);
+  --shadow-strong:  rgba(0,0,0,0.08);
   --brand-yellow:   #FFDD00;
+  --glow-yellow:    rgba(255,221,0,0.12);
   --divider-color:  #F3F4F6;
   --hover-bg:       #F9FAFB;
 
@@ -30,16 +35,30 @@
 }
 
 .dark {
-  --bg-primary:     #0A0A0A;
-  --bg-card:        #141414;
-  --bg-surface:     #1A1A1A;
-  --text-primary:   #F0F0F0;
-  --text-secondary: #9CA3AF;
-  --border-primary: #2D2D2D;
-  --shadow-color:   rgba(0,0,0,0.2);
+  /* ── Depth layers (darkest → most elevated) ── */
+  --bg-surface:     #0C0C0F;   /* page / section background */
+  --bg-primary:     #111115;   /* content area background   */
+  --bg-card:        #1A1A1F;   /* card, panel surfaces      */
+  --bg-elevated:    #22222A;   /* dropdowns, modals         */
+
+  /* ── Typography ── */
+  --text-primary:   #F0F0F3;   /* primary text – soft white */
+  --text-secondary: #9A9AAB;   /* secondary / muted text    */
+  --text-muted:     #6A6A78;   /* placeholder / caption     */
+
+  /* ── Borders ── */
+  --border-primary: #27272F;   /* subtle structure borders  */
+  --border-strong:  #3A3A46;   /* visible borders           */
+
+  /* ── Shadows & glows ── */
+  --shadow-color:   rgba(0,0,0,0.45);
+  --shadow-strong:  rgba(0,0,0,0.65);
+  --glow-yellow:    rgba(255,221,0,0.10);
+
+  /* ── Brand ── */
   --brand-yellow:   #FFDD00;
-  --divider-color:  #2D2D2D;
-  --hover-bg:       #1F1F1F;
+  --divider-color:  #27272F;
+  --hover-bg:       #1E1E25;
 }
 
 *, *::before, *::after {
@@ -100,11 +119,19 @@ button { cursor: pointer; }
 }
 .card-neu:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px var(--shadow-strong);
 }
 .card-neu:active {
   transform: translateY(0);
   box-shadow: 0 2px 12px var(--shadow-color);
+}
+
+/* Dark mode card elevation */
+.dark .card-neu {
+  box-shadow: 0 4px 24px var(--shadow-color), 0 1px 0 var(--border-primary) inset;
+}
+.dark .card-neu:hover {
+  box-shadow: 0 12px 40px var(--shadow-strong), 0 0 0 1px var(--border-strong);
 }
 
 /* ─── Editorial Input ────────────────────────────────────────── */

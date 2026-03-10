@@ -29,8 +29,8 @@ export default {
         surface: {
           DEFAULT: '#FBF9F6',
           card:    '#FFFFFF',
-          dark:    '#1A1A1A',
-          sidebar: '#111111',
+          dark:    '#111115',
+          sidebar: '#0C0C0F',
         },
         success: '#00C853',
         danger:  '#FF5C5C',

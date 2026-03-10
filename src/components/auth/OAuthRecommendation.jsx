@@ -17,7 +17,7 @@ const OAuthRecommendation = ({ onSkip }) => {
         </p>
 
         <div className="space-y-4 relative z-10">
-          <button className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-editorial-border bg-gray-50/50 dark:bg-[#1A1A1A] hover:bg-white dark:hover:bg-[#222] hover:border-brand-900 dark:hover:border-gray-500 hover:shadow-soft transition-all duration-300 ease-smooth font-bold text-brand-900 dark:text-gray-100 hover:-translate-y-0.5 active:translate-y-0">
+          <button className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-editorial-border bg-gray-50/50 dark:bg-[#1A1A1F] hover:bg-white dark:hover:bg-[#22222A] hover:border-brand-900 dark:hover:border-gray-500 hover:shadow-soft transition-all duration-300 ease-smooth font-bold text-brand-900 dark:text-gray-100 hover:-translate-y-0.5 active:translate-y-0">
             <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
               <path d="M44.5 20H24v8.5h11.8C34.7 33.9 29.8 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c10.5 0 20-7.5 20-21 0-1.4-.2-2.7-.5-4z" fill="#FFC107"/>
               <path d="M6.3 14.7l7 5.1C15 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 16.3 3 9.7 7.9 6.3 14.7z" fill="#FF3D00"/>

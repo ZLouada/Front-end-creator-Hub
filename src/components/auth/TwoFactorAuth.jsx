@@ -37,7 +37,7 @@ const TwoFactorAuth = ({ onVerify }) => {
               value={data}
               onChange={(e) => handleChange(e.target, index)}
               onFocus={(e) => e.target.select()}
-              className="w-12 h-14 text-center text-xl font-bold bg-gray-50 dark:bg-[#1A1A1A] border border-editorial-border dark:border-gray-700 rounded-xl focus:bg-white dark:focus:bg-[#222] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px outline-none transition-all duration-300 ease-smooth text-brand-900 dark:text-gray-100"
+              className="w-12 h-14 text-center text-xl font-bold bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-gray-700 rounded-xl focus:bg-white dark:focus:bg-[#22222A] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px outline-none transition-all duration-300 ease-smooth text-brand-900 dark:text-gray-100"
             />
           ))}
         </div>

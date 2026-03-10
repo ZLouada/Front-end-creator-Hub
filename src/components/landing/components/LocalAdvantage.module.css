@@ -164,21 +164,57 @@
   .actionColumn { display: none; }
 }
 
-/* LocalAdvantage.module.css */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
+:global(.dark) .section {
+  background-color: #111115;
+  color: #F0F0F3;
+}
+
+:global(.dark) .serifTitle {
+  color: #F0F0F3;
+}
+
 :global(.dark) .featureItem {
-  border-top-color: #262626;
+  border-top-color: #27272F;
 }
 
 :global(.dark) .featureItem:hover {
-  background-color: #141414;
+  background-color: #1A1A1F;
+}
+
+:global(.dark) .iconWrapper {
+  color: #F0F0F3;
+}
+
+:global(.dark) .featureTitle {
+  color: #F0F0F3;
+}
+
+:global(.dark) .featureDesc {
+  color: #9A9AAB;
 }
 
 :global(.dark) .verticalHairline {
-  background-color: #262626;
+  background-color: #27272F;
 }
 
 :global(.dark) .tag {
-  background: #1A1A1A;
-  border-color: #333;
-  color: #F0F0F0;
+  background: #1A1A1F;
+  border-color: #27272F;
+  color: #F0F0F3;
+}
+
+:global(.dark) .arrowCircle {
+  border-color: #27272F;
+  color: #6A6A78;
+}
+
+:global(.dark) .featureItem:hover .arrowCircle {
+  background-color: #F0F0F3;
+  border-color: #F0F0F3;
+  color: #111115;
+}
+
+:global(.dark) .footerDivider {
+  background-color: #27272F;
 }

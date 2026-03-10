@@ -120,50 +120,50 @@
 /* ─── Dark Mode ─── */
 
 :global(.dark) .card {
-  background-color: #141414;
-  border-color: #2D2D2D;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  background-color: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
 :global(.dark) .title {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .statBox {
-  background: #1A1A1A;
-  border-color: #2D2D2D;
+  background: #22222A;
+  border-color: #27272F;
 }
 
 :global(.dark) .statLabel {
-  color: #9CA3AF;
+  color: #6A6A78;
 }
 
 :global(.dark) .statValue {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .billingSection {
-  border-color: #2D2D2D;
+  border-color: #27272F;
 }
 
 :global(.dark) .billingText {
-  color: #0A0A0A;
+  color: #111115;
 }
 
 :global(.dark) .perksSection {
-  border-top-color: #2D2D2D;
+  border-top-color: #27272F;
 }
 
 :global(.dark) .perksLabel {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .progressBarContainer {
-  background: #2D2D2D;
-  border-color: #3D3D3D;
+  background: #27272F;
+  border-color: #3A3A46;
 }
 
 :global(.dark) .savingsBadge {
-  background: #F0F0F0;
-  color: #0A0A0A;
+  background: #F0F0F3;
+  color: #111115;
 }

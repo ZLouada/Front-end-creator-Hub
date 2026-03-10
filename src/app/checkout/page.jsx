@@ -61,7 +61,7 @@ export default function CheckoutPage() {
                     onClick={() => setSelectedGateway(gw.id)}
                     className={`relative flex flex-col items-center gap-1.5 p-4 rounded-lg border text-sm font-bold transition-all duration-200 hover:-translate-y-0.5
                       ${selectedGateway === gw.id
-                        ? 'border-brand-900 bg-gray-50 dark:bg-[#1A1A1A] text-gray-900 dark:text-gray-100 shadow-soft'
+                        ? 'border-brand-900 bg-gray-50 dark:bg-[#1A1A1F] text-gray-900 dark:text-gray-100 shadow-soft'
                         : 'border-editorial-border bg-surface text-gray-500 dark:text-gray-400 hover:border-editorial-border'
                       }`}
                   >
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
                         <button
                           type="button"
                           onClick={() => setSelectedGateway('stripe')}
-                          className="px-3 py-1.5 bg-white dark:bg-[#1A1A1A] text-gray-700 dark:text-gray-300 text-xs font-bold rounded-lg border border-editorial-border hover:bg-gray-50 dark:hover:bg-[#222] transition-colors"
+                          className="px-3 py-1.5 bg-white dark:bg-[#1A1A1F] text-gray-700 dark:text-gray-300 text-xs font-bold rounded-lg border border-editorial-border hover:bg-gray-50 dark:hover:bg-[#22222A] transition-colors"
                         >
                           Try Card instead
                         </button>

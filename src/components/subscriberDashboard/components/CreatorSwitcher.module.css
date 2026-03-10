@@ -118,28 +118,30 @@
 /* ─── Dark Mode ─── */
 
 :global(.dark) .wrapper {
-  background-color: #141414;
-  border-bottom-color: #2D2D2D;
+  background-color: #111115;
+  border-bottom-color: #27272F;
 }
 
 :global(.dark) .avatarContainer {
-  background: #1A1A1A;
-  border-color: #2D2D2D;
+  background: #1A1A1F;
+  border-color: #27272F;
 }
 
 :global(.dark) .activeAvatar {
   border-color: #FFDD00;
+  background-color: #1C1C12;
   box-shadow: 0 0 0 2px #FFDD00;
 }
 
 :global(.dark) .hasNewContent {
   border-color: #FFDD00;
+  box-shadow: 0 0 12px rgba(255,221,0,0.35);
 }
 
 :global(.dark) .creatorName {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .newBadge {
-  border-color: #2D2D2D;
+  border-color: #27272F;
 }

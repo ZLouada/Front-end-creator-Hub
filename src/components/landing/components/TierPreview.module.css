@@ -216,27 +216,42 @@
   .showcaseArea { display: none; }
 }
 
-/* TierPreview.module.css */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
+:global(.dark) .section {
+  background-color: #111115;
+}
+
+:global(.dark) .serifTitle {
+  color: #F0F0F3;
+}
+
+:global(.dark) .italicHighlight {
+  color: #FFDD00;
+}
+
+:global(.dark) .toggleContainer {
+  background: #1A1A1F;
+  border-color: #27272F;
+}
+
 :global(.dark) .tierCard {
-  background: #141414;
-  border-color: #262626;
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
 }
 
 :global(.dark) .selectedCard {
   border-color: #FFDD00;
+  box-shadow: 0 0 0 1px #FFDD00, 0 8px 32px rgba(255,221,0,0.12);
 }
 
 :global(.dark) .phoneMockup {
-  background: #000000;
-  box-shadow: 0 50px 100px rgba(0,0,0,0.4);
+  background: #0C0C0F;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+  border-color: #27272F;
 }
 
 :global(.dark) .screenContent {
-  background: #111111; /* The "app" inside the phone also goes dark */
-  color: #FFFFFF;
-}
-
-:global(.dark) .toggleContainer {
-  background: #1A1A1A;
-  border-color: #333;
+  background: #111115;
+  color: #F0F0F3;
 }

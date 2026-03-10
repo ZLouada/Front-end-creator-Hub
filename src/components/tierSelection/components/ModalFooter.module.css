@@ -107,21 +107,29 @@
   }
 }
 
+/* ── Dark Mode ─────────────────────────────────────────────────── */
 :global(.dark) .footer {
-  background-color: #1A1A1A;
-  border-top: 1px solid #262626;
+  background-color: #111115;
+  border-top: 1px solid #27272F;
 }
 
 :global(.dark) .tierName,
 :global(.dark) .price {
-  color: #FFFFFF;
+  color: #F0F0F3;
 }
 
 :global(.dark) .selectionLabel {
-  color: #6B7280;
+  color: #6A6A78;
+}
+
+:global(.dark) .period {
+  color: #9A9AAB;
+}
+
+:global(.dark) .secureText {
+  color: #6A6A78;
 }
 
 :global(.dark) .primaryButton {
-  /* Keep yellow for the CTA - it works perfectly on dark backgrounds */
-  box-shadow: 0 4px 20px rgba(255, 212, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(255, 221, 0, 0.2);
 }

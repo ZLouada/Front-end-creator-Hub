@@ -27,7 +27,7 @@ const Blob = ({ className, style }) => (
 const SocialBtn = ({ icon, label }) => (
   <button
     type="button"
-    className="flex items-center justify-center gap-2 w-full py-3 rounded-full border border-editorial-border dark:border-gray-700 bg-gray-50/50 dark:bg-[#1A1A1A] hover:bg-white dark:hover:bg-[#222] hover:border-brand-900 dark:hover:border-gray-500 text-sm font-semibold text-brand-900 dark:text-gray-100 transition-all duration-300 ease-smooth hover:shadow-soft hover:-translate-y-0.5 active:scale-95"
+    className="flex items-center justify-center gap-2 w-full py-3 rounded-full border border-editorial-border dark:border-gray-700 bg-gray-50/50 dark:bg-[#1A1A1F] hover:bg-white dark:hover:bg-[#22222A] hover:border-brand-900 dark:hover:border-gray-500 text-sm font-semibold text-brand-900 dark:text-gray-100 transition-all duration-300 ease-smooth hover:shadow-soft hover:-translate-y-0.5 active:scale-95"
   >
     {icon}
     {label}
@@ -250,7 +250,7 @@ const AuthModal = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1A] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#222] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl pr-12"
+                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#22222A] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl pr-12"
                 />
                 <button
                   type="button"

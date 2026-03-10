@@ -45,7 +45,7 @@ const SubscriptionManager = () => {
               </>
             ) : (
               <>
-                <span className="px-3 py-1.5 bg-gray-100 dark:bg-[#2D2D2D] text-gray-500 dark:text-gray-400 text-xs font-bold rounded-lg">
+                <span className="px-3 py-1.5 bg-gray-100 dark:bg-[#27272F] text-gray-500 dark:text-gray-400 text-xs font-bold rounded-lg">
                   Cancelled
                 </span>
                 <span className="text-xs text-gray-400 dark:text-gray-500 font-medium">Access ends at billing cycle</span>
@@ -59,7 +59,7 @@ const SubscriptionManager = () => {
             <div className="flex items-center justify-between text-xs font-bold text-gray-400 dark:text-gray-500 mb-1.5">
               <span>Storage used</span><span>2.4 GB / 10 GB</span>
             </div>
-            <div className="h-1.5 bg-gray-100 dark:bg-[#2D2D2D] rounded-full overflow-hidden">
+            <div className="h-1.5 bg-gray-100 dark:bg-[#27272F] rounded-full overflow-hidden">
               <div className="h-full rounded-full bg-brand-900" style={{ width: '24%' }} />
             </div>
           </div>

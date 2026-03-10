@@ -58,7 +58,7 @@ export default function LoginPage() {
 							type="text"
 							value={displayName}
 							onChange={(e) => setDisplayName(e.target.value)}
-							className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1A] dark:text-gray-100"
+							className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1F] dark:text-gray-100"
 							required
 						/>
 					</div>
@@ -70,7 +70,7 @@ export default function LoginPage() {
 						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1A] dark:text-gray-100"
+						className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1F] dark:text-gray-100"
 						required
 					/>
 				</div>
@@ -81,7 +81,7 @@ export default function LoginPage() {
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1A] dark:text-gray-100"
+						className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1F] dark:text-gray-100"
 						required
 					/>
 				</div>

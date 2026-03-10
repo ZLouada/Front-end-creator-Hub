@@ -764,8 +764,8 @@
 
 /* ── Dark mode overrides ─────────────────────────────────────────── */
 
-.dark .bannerWrapper {
-  background: linear-gradient(135deg, #111 0%, #2a2a2a 50%, #111 100%);
+:global(.dark) .bannerWrapper {
+  background: linear-gradient(135deg, #0C0C0F 0%, #1A1A1F 50%, #0C0C0F 100%);
 }
 
 /* ── Mobile responsiveness ───────────────────────────────────────── */

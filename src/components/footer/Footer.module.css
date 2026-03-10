@@ -102,37 +102,38 @@
   }
 }
 
-/* --- Dark Mode --- */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
 
 :global(.dark) .footer {
-  background-color: #0A0A0A;
-  border-top-color: #2D2D2D;
+  background-color: #0C0C0F;
+  border-top-color: #27272F;
 }
 
 :global(.dark) .brandDesc {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 
 :global(.dark) .columnTitle {
-  color: #F0F0F0;
+  color: #F0F0F3;
 }
 
 :global(.dark) .link {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }
 
 :global(.dark) .link:hover {
-  color: #F0F0F0;
+  color: #F0F0F3;
+  text-decoration-color: #F0F0F3;
 }
 
 :global(.dark) .bottom {
-  border-top-color: #2D2D2D;
+  border-top-color: #27272F;
 }
 
 :global(.dark) .flag {
-  border-color: #2D2D2D;
+  border-color: #27272F;
 }
 
 :global(.dark) .regionalBadge {
-  color: #9CA3AF;
+  color: #9A9AAB;
 }

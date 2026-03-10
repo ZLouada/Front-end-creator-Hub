@@ -212,20 +212,69 @@
   .imageGallery { display: none; }
 }
 
-/* --- Dark Mode Overrides --- */
+/* ── Dark Mode ─────────────────────────────────────────────────── */
 :global(.dark) .section {
-  background-color: #0A0A0A;
-  color: #F0F0F0;
+  background-color: #0C0C0F;
+  color: #F0F0F3;
 }
 
-:global(.dark) .serifTitle {
-  color: #FFFFFF;
+:global(.dark) .editorialBadge {
+  background: #1A1A1F;
+  border-color: #27272F;
+  color: #F0F0F3;
 }
 
-:global(.dark) .subtitle {
-  color: #9CA3AF; /* Muted gray for secondary text */
+:global(.dark) .serifHeading {
+  color: #F0F0F3;
 }
 
 :global(.dark) .italicHighlight {
-  color: #FFDD00; /* Surgical Yellow pops even more in dark mode */
+  color: #FFDD00;
+}
+
+:global(.dark) .description {
+  color: #9A9AAB;
+}
+
+:global(.dark) .claimBar {
+  background: #1A1A1F;
+  border-color: #27272F;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+:global(.dark) .urlPrefix {
+  color: #6A6A78;
+}
+
+:global(.dark) .usernameInput {
+  color: #F0F0F3;
+  caret-color: #FFDD00;
+}
+
+:global(.dark) .ctaButton {
+  background: #F0F0F3;
+  color: #111115;
+}
+
+:global(.dark) .ctaButton:hover {
+  background: #FFDD00;
+  color: #111115;
+}
+
+:global(.dark) .mainImageFrame {
+  background: #22222A;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+
+:global(.dark) .floatingTag {
+  background: #1A1A1F;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+:global(.dark) .tagName {
+  color: #F0F0F3;
+}
+
+:global(.dark) .backgroundLetter {
+  color: #1A1A1F;
 }
