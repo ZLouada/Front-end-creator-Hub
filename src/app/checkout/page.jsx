@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useCheckout } from '../../hooks/useCheckout';
 
 const tierPrice = 10.00;

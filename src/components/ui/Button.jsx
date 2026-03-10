@@ -16,6 +16,7 @@ const sizes = {
   xl: 'px-12 py-6 text-lg',
 };
 
+/** @type {React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & {variant?: string, size?: string, children?: React.ReactNode, className?: string} & React.RefAttributes<HTMLButtonElement>>} */
 const Button = forwardRef(function Button({
   variant = 'primary',
   size = 'md',

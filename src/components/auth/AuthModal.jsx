@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -42,12 +42,9 @@ const AuthModal = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuthContext();
   const { isDark } = useTheme();
-
-  useEffect(() => { setMounted(true); }, []);
 
   const switchMode = () => {
     setIsLogin((v) => !v);
@@ -63,16 +60,15 @@ const AuthModal = () => {
     navigate('/dashboard');
   };
 
-  const particles = Array.from({ length: 14 }, (_, i) => ({
+  const [particles] = useState(() => Array.from({ length: 14 }, (_, i) => ({
     size: `${Math.random() * 8 + 4}px`,
     left: `${Math.random() * 90 + 5}%`,
     top: `${Math.random() * 80 + 10}%`,
-    color: isDark
-      ? ['#9CA3AF', '#6B7280', '#D1D5DB', '#4B5563'][i % 4]
-      : ['#E5E7EB', '#D1D5DB', '#F3F4F6', '#9CA3AF'][i % 4],
+    colorLight: ['#E5E7EB', '#D1D5DB', '#F3F4F6', '#9CA3AF'][i % 4],
+    colorDark: ['#9CA3AF', '#6B7280', '#D1D5DB', '#4B5563'][i % 4],
     duration: Math.random() * 3 + 3,
     delay: Math.random() * 5,
-  }));
+  })));
 
   return (
     <div
@@ -137,12 +133,11 @@ const AuthModal = () => {
       />
 
       {particles.map((p, i) => (
-        <Particle key={i} style={p} />
+        <Particle key={i} style={{ ...p, color: isDark ? p.colorDark : p.colorLight }} />
       ))}
 
       <div
-        className={`glass-card relative z-10 w-full max-w-[440px] mx-4 rounded-[2.5rem] shadow-soft-xl overflow-hidden
-          ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
+        className={`glass-card relative z-10 w-full max-w-[440px] mx-4 rounded-[2.5rem] shadow-soft-xl overflow-hidden animate-fade-up`}
         style={{ boxShadow: isDark
           ? '0 32px 80px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)'
           : '0 32px 80px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04)',

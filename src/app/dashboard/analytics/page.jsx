@@ -263,7 +263,7 @@ export default function AnalyticsDashboard() {
             <button className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">View all →</button>
           </div>
           <div className="divide-y divide-gray-50 dark:divide-[#2D2D2D]">
-            {recentActivity.map((item, i) => (
+            {recentActivity.map((item) => (
               <div key={item.id} className="flex items-center justify-between px-8 py-5 hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition-colors">
                 <div className="flex items-center gap-5">
                   <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-[#333] flex items-center justify-center text-lg shrink-0">

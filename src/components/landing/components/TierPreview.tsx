@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Smartphone, User, Eye, ArrowRight, ShieldCheck } from 'lucide-react';
-import styles from './TierPreview.css';
+import styles from './TierPreview.module.css';
 
 const TIER_DATA = [
   { id: 'chai', name: 'Chai Tier', price: 'PKR 500', desc: 'Basic support to keep the content flowing.' },

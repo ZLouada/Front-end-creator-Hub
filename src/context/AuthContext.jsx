@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext({
   user: null,
-  login: (userData) => {},
+  login: (_userData) => {},
   logout: () => {},
-  updateUser: (updates) => {}, // Tell TS this function exists
+  updateUser: (_updates) => {},
 });
 
 export function AuthProvider({ children }) {
@@ -40,6 +40,7 @@ export function AuthProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuthContext = () => {
   const context = useContext(AuthContext);
   if (!context) {

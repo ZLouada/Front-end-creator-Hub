@@ -18,7 +18,8 @@ export default function LoginPage() {
 			} else {
 				await register(displayName, email, password);
 			}
-		} catch (err) {
+		} catch {
+			// login/register errors are surfaced via the useAuth error state
 		}
 	};
 
