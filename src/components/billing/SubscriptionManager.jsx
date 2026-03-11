@@ -15,7 +15,7 @@ const SubscriptionManager = () => {
 
   return (
     <>
-      <div className="bg-surface-card rounded-2xl border border-editorial-border shadow-soft overflow-hidden">
+      <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl border border-editorial-border dark:border-[#27272F] shadow-soft overflow-hidden">
         <div className="flex items-center justify-between flex-wrap gap-4 p-6">
 
           <div className="flex items-center gap-4">
@@ -33,7 +33,7 @@ const SubscriptionManager = () => {
           <div className="flex items-center gap-3">
             {status === 'active' ? (
               <>
-                <span className="px-3 py-1.5 bg-green-50 text-success text-xs font-bold rounded-lg border border-green-100">
+                <span className="px-3 py-1.5 bg-green-50 dark:bg-[#0A2E1A] text-success text-xs font-bold rounded-lg border border-green-100 dark:border-[#1A4A2A]">
                   Active
                 </span>
                 <button
@@ -72,7 +72,7 @@ const SubscriptionManager = () => {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => !isCancelling && setIsModalOpen(false)}
           />
-          <div className="relative z-10 bg-surface-card rounded-2xl shadow-soft-xl w-full max-w-sm p-7 animate-fade-up">
+          <div className="relative z-10 bg-surface-card dark:bg-[#1A1A1F] rounded-2xl shadow-soft-xl w-full max-w-sm p-7 animate-fade-up">
             <div className="w-12 h-12 rounded-full bg-danger-50 flex items-center justify-center mb-4">
               <svg width="22" height="22" fill="none" stroke="#FF5C5C" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24">
                 <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -86,7 +86,7 @@ const SubscriptionManager = () => {
               <button
                 onClick={() => setIsModalOpen(false)}
                 disabled={isCancelling}
-                className="flex-1 py-2.5 rounded-lg text-sm font-bold text-gray-700 dark:text-gray-300 border border-editorial-border hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition-all disabled:opacity-50"
+                className="flex-1 py-2.5 rounded-lg text-sm font-bold text-gray-700 dark:text-gray-300 border border-editorial-border dark:border-[#27272F] hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition-all disabled:opacity-50"
               >
                 Keep plan
               </button>

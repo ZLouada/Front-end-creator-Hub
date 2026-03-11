@@ -22,7 +22,7 @@ export default function CheckoutPage() {
   const { selectedGateway, setSelectedGateway, isProcessing, error, handlePaymentSubmit } = useCheckout(tierPrice);
 
   return (
-    <div className="min-h-full bg-surface p-5 sm:p-8 flex items-start justify-center">
+    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-5 sm:p-8 flex items-start justify-center">
       <div className="w-full max-w-4xl">
 
         <div className="mb-6 animate-fade-up">
@@ -34,7 +34,7 @@ export default function CheckoutPage() {
 
           <div className="lg:col-span-3 space-y-5">
 
-            <div className="bg-surface-card rounded-2xl p-6 border border-editorial-border shadow-soft animate-fade-up" style={{ animationDelay: '0.06s' }}>
+            <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-6 border border-editorial-border dark:border-[#27272F] shadow-soft animate-fade-up" style={{ animationDelay: '0.06s' }}>
               <div className="flex items-center gap-4">
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shrink-0 bg-brand-900 shadow-soft-sm"
@@ -51,7 +51,7 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            <div className="bg-surface-card rounded-2xl p-6 border border-editorial-border shadow-soft animate-fade-up" style={{ animationDelay: '0.10s' }}>
+            <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-6 border border-editorial-border dark:border-[#27272F] shadow-soft animate-fade-up" style={{ animationDelay: '0.10s' }}>
               <p className="text-xs font-bold text-gray-400 dark:text-gray-500 tracking-widest mb-4">Payment Method</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {gateways.map((gw) => (
@@ -62,7 +62,7 @@ export default function CheckoutPage() {
                     className={`relative flex flex-col items-center gap-1.5 p-4 rounded-lg border text-sm font-bold transition-all duration-200 hover:-translate-y-0.5
                       ${selectedGateway === gw.id
                         ? 'border-brand-900 bg-gray-50 dark:bg-[#1A1A1F] text-gray-900 dark:text-gray-100 shadow-soft'
-                        : 'border-editorial-border bg-surface text-gray-500 dark:text-gray-400 hover:border-editorial-border'
+                        : 'border-editorial-border dark:border-[#27272F] bg-surface dark:bg-[#111115] text-gray-500 dark:text-gray-400 hover:border-editorial-border'
                       }`}
                   >
                     {selectedGateway === gw.id && (
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="lg:col-span-2 space-y-5">
-            <div className="bg-surface-card rounded-2xl p-6 border border-editorial-border shadow-soft animate-fade-up" style={{ animationDelay: '0.14s' }}>
+            <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-6 border border-editorial-border dark:border-[#27272F] shadow-soft animate-fade-up" style={{ animationDelay: '0.14s' }}>
               <p className="text-xs font-bold text-gray-400 dark:text-gray-500 tracking-widest mb-4">Order Summary</p>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">

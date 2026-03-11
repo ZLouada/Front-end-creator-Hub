@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -87,7 +87,8 @@ const inputStyle = (isDark) => ({
 
 /* ─── Main component ───────────────────────────────────────────── */
 const AuthModal = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [searchParams] = useSearchParams();
+  const [isLogin, setIsLogin] = useState(searchParams.get('mode') !== 'signup');
   const [formKey, setFormKey] = useState(0);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
@@ -98,6 +99,8 @@ const AuthModal = () => {
   const navigate = useNavigate();
   const { login } = useAuthContext();
   const { isDark } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { const t = requestAnimationFrame(() => setMounted(true)); return () => cancelAnimationFrame(t); }, []);
 
   const switchMode = () => {
     setIsLogin(v => !v);
@@ -146,14 +149,14 @@ const AuthModal = () => {
           backgroundSize: '48px 48px',
         }} />
 
-        {/* Yellow glow blobs */}
-        <div style={{ position: 'absolute', top: '-6rem', left: '-6rem', width: '28rem', height: '28rem', background: 'radial-gradient(circle, rgba(255,221,0,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-4rem', right: '-4rem', width: '22rem', height: '22rem', background: 'radial-gradient(circle, rgba(255,221,0,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        {/* Yellow glow blobs — animated */}
+        <div style={{ position: 'absolute', top: '-6rem', left: '-6rem', width: '28rem', height: '28rem', background: 'radial-gradient(circle, rgba(255,221,0,0.12) 0%, transparent 70%)', pointerEvents: 'none', animation: 'authBlobA 10s ease-in-out infinite' }} />
+        <div style={{ position: 'absolute', bottom: '-4rem', right: '-4rem', width: '22rem', height: '22rem', background: 'radial-gradient(circle, rgba(255,221,0,0.07) 0%, transparent 70%)', pointerEvents: 'none', animation: 'authBlobB 13s ease-in-out infinite' }} />
 
         {/* Content */}
-        <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ position: 'relative', zIndex: 1, animation: mounted ? 'authFadeLeft 0.7s cubic-bezier(0.22,1,0.36,1) forwards' : 'none', opacity: mounted ? undefined : 0 }}>
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '3.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '3.5rem', animation: mounted ? 'authFadeLeft 0.6s cubic-bezier(0.22,1,0.36,1) 0.05s both' : 'none' }}>
             <div style={{
               width: 44, height: 44, borderRadius: '12px',
               background: '#FFDD00',
@@ -167,7 +170,7 @@ const AuthModal = () => {
           </div>
 
           {/* Headline */}
-          <h1 style={{
+          <h1 style={{ animation: mounted ? 'authFadeLeft 0.6s cubic-bezier(0.22,1,0.36,1) 0.12s both' : 'none',
             color: '#fff', fontSize: '2.8rem', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.04em', margin: '0 0 1rem',
             fontFamily: "'Playfair Display', Georgia, serif",
@@ -184,6 +187,7 @@ const AuthModal = () => {
             display: 'flex', gap: '2rem', marginBottom: '3rem',
             paddingBottom: '3rem',
             borderBottom: '1px solid rgba(255,255,255,0.08)',
+            animation: mounted ? 'authFadeLeft 0.6s cubic-bezier(0.22,1,0.36,1) 0.22s both' : 'none',
           }}>
             <StatPill value="5M+" label="Creators" />
             <StatPill value="SAR 2B+" label="Earned" />
@@ -191,7 +195,7 @@ const AuthModal = () => {
           </div>
 
           {/* Testimonials */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', animation: mounted ? 'authFadeLeft 0.6s cubic-bezier(0.22,1,0.36,1) 0.32s both' : 'none' }}>
             <TestimonialCard
               avatar="LS"
               name="Layla S."
@@ -226,6 +230,8 @@ const AuthModal = () => {
           boxShadow: isDark
             ? '0 24px 64px rgba(0,0,0,0.5)'
             : '0 24px 64px rgba(0,0,0,0.06)',
+          animation: mounted ? 'authCardIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards' : 'none',
+          opacity: mounted ? undefined : 0,
         }}>
 
           {/* Mobile logo */}
@@ -239,7 +245,7 @@ const AuthModal = () => {
           </div>
 
           {/* Heading */}
-          <div style={{ marginBottom: '1.75rem' }}>
+          <div key={isLogin ? 'h-login' : 'h-signup'} style={{ marginBottom: '1.75rem', animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both' }}>
             <h2 style={{
               margin: '0 0 0.3rem',
               fontSize: '1.65rem', fontWeight: 700, letterSpacing: '-0.03em',
@@ -258,7 +264,7 @@ const AuthModal = () => {
           {/* Google button */}
           <button
             type="button"
-            style={{
+            style={{ animation: mounted ? 'authFadeUp 0.45s cubic-bezier(0.22,1,0.36,1) 0.1s both' : 'none',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.65rem',
               width: '100%', padding: '0.78rem',
               background: isDark ? '#111115' : '#F9FAFB',
@@ -289,6 +295,7 @@ const AuthModal = () => {
           <form key={formKey} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 
             {!isLogin && (
+              <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0s both' }}>
               <Field label="Full name" isDark={isDark}>
                 <input
                   type="text"
@@ -301,8 +308,10 @@ const AuthModal = () => {
                   style={{ ...inputStyle(isDark), border: fieldBorder('name'), boxShadow: fieldShadow('name') }}
                 />
               </Field>
+              </div>
             )}
 
+            <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.05s both' }}>
             <Field label="Email address" isDark={isDark}>
               <input
                 type="email"
@@ -315,7 +324,9 @@ const AuthModal = () => {
                 style={{ ...inputStyle(isDark), border: fieldBorder('email'), boxShadow: fieldShadow('email') }}
               />
             </Field>
+            </div>
 
+            <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}>
             <Field label="Password" isDark={isDark}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Password</span>
@@ -346,12 +357,14 @@ const AuthModal = () => {
                 </button>
               </div>
             </Field>
+            </div>
 
             {/* Submit */}
             <button
               type="submit"
               disabled={loading}
               style={{
+                animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.15s both',
                 marginTop: '0.5rem',
                 width: '100%', padding: '0.85rem',
                 background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00',
@@ -403,7 +416,14 @@ const AuthModal = () => {
         </div>
       </div>
 
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>{`
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes authCardIn { from { opacity: 0; transform: translateY(28px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes authFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes authFadeLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes authBlobA { 0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(20px,-25px) scale(1.08); } 70% { transform: translate(-10px,15px) scale(0.95); } }
+        @keyframes authBlobB { 0%,100% { transform: translate(0,0) scale(1); } 35% { transform: translate(-18px,20px) scale(1.06); } 65% { transform: translate(12px,-12px) scale(0.97); } }
+      `}</style>
     </div>
   );
 };

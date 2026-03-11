@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import Skeleton from '../../../components/ui/Skeleton';
 import { useAnalytics } from '../../../hooks/useAnalytics';
+import { useTheme } from '../../../context/ThemeContext';
 
 const revenueData = [
   { name: 'Jan', revenue: 400,  prev: 290 },
@@ -91,7 +92,7 @@ function StatCard({ icon, label, value, suffix = '', badge, badgeColor, gradient
 
 function AnalyticsSkeleton() {
   return (
-    <div className="min-h-full bg-surface p-6 sm:p-10">
+    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-6 sm:p-10">
       <div className="max-w-6xl mx-auto space-y-10">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -112,7 +113,7 @@ function AnalyticsSkeleton() {
         {/* 2 Chart Areas */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {[0, 1].map((i) => (
-            <div key={i} className="bg-surface-card rounded-2xl p-8 border border-editorial-border">
+            <div key={i} className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-8 border border-editorial-border dark:border-[#27272F]">
               <div className="flex items-center justify-between mb-7">
                 <div>
                   <Skeleton className="h-5 w-36 mb-2" />
@@ -126,8 +127,8 @@ function AnalyticsSkeleton() {
         </div>
 
         {/* Activity Table */}
-        <div className="bg-surface-card rounded-2xl border border-editorial-border overflow-hidden">
-          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border">
+        <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl border border-editorial-border dark:border-[#27272F] overflow-hidden">
+          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border dark:border-[#27272F]">
             <Skeleton className="h-5 w-36" />
             <Skeleton className="h-4 w-16" />
           </div>
@@ -156,6 +157,7 @@ function AnalyticsSkeleton() {
 
 export default function AnalyticsDashboard() {
   const { isLoading } = useAnalytics();
+  const { isDark } = useTheme();
   const revenue    = useCounter(3200);
   const supporters = useCounter(300);
   const success    = useCounter(985);
@@ -163,7 +165,7 @@ export default function AnalyticsDashboard() {
   if (isLoading) return <AnalyticsSkeleton />;
 
   return (
-    <div className="min-h-full bg-surface p-6 sm:p-10">
+    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-6 sm:p-10">
       <div className="max-w-6xl mx-auto space-y-10">
 
         <div className="flex items-center justify-between animate-fade-up">
@@ -199,7 +201,7 @@ export default function AnalyticsDashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-          <div className="bg-surface-card rounded-2xl p-8 shadow-soft border border-editorial-border animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-8 shadow-soft border border-editorial-border dark:border-[#27272F] animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="flex items-center justify-between mb-7">
               <div>
                 <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Revenue Growth</h3>
@@ -214,26 +216,26 @@ export default function AnalyticsDashboard() {
                 <AreaChart data={revenueData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                   <defs>
                     <linearGradient id="rev" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#1A1A1A" stopOpacity={0.2} />
-                      <stop offset="100%" stopColor="#1A1A1A" stopOpacity={0} />
+                      <stop offset="0%" stopColor={isDark ? '#FFDD00' : '#1A1A1A'} stopOpacity={0.2} />
+                      <stop offset="100%" stopColor={isDark ? '#FFDD00' : '#1A1A1A'} stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="prev" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#d1d5db" stopOpacity={0.2} />
-                      <stop offset="100%" stopColor="#d1d5db" stopOpacity={0} />
+                      <stop offset="0%" stopColor={isDark ? '#3A3A46' : '#d1d5db'} stopOpacity={0.2} />
+                      <stop offset="100%" stopColor={isDark ? '#3A3A46' : '#d1d5db'} stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+                  <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#27272F' : '#f3f4f6'} />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 11, fontWeight: 600 }} dy={8} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 11, fontWeight: 600 }} tickFormatter={(v) => `$${v}`} />
                   <Tooltip content={<CustomTooltip prefix="$" />} />
-                  <Area type="monotone" dataKey="prev" stroke="#d1d5db" strokeWidth={2} fill="url(#prev)" strokeDasharray="4 4" />
-                  <Area type="monotone" dataKey="revenue" stroke="#1A1A1A" strokeWidth={3} fill="url(#rev)" dot={{ r: 4, fill: '#1A1A1A', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6, strokeWidth: 3, stroke: '#fff' }} />
+                  <Area type="monotone" dataKey="prev" stroke={isDark ? '#3A3A46' : '#d1d5db'} strokeWidth={2} fill="url(#prev)" strokeDasharray="4 4" />
+                  <Area type="monotone" dataKey="revenue" stroke={isDark ? '#FFDD00' : '#1A1A1A'} strokeWidth={3} fill="url(#rev)" dot={{ r: 4, fill: isDark ? '#FFDD00' : '#1A1A1A', strokeWidth: 2, stroke: isDark ? '#111115' : '#fff' }} activeDot={{ r: 6, strokeWidth: 3, stroke: isDark ? '#111115' : '#fff' }} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          <div className="bg-surface-card rounded-2xl p-8 shadow-soft border border-editorial-border animate-fade-up" style={{ animationDelay: '0.26s' }}>
+          <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-8 shadow-soft border border-editorial-border dark:border-[#27272F] animate-fade-up" style={{ animationDelay: '0.26s' }}>
             <div className="flex items-center justify-between mb-7">
               <div>
                 <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">New Supporters</h3>
@@ -246,19 +248,19 @@ export default function AnalyticsDashboard() {
             <div className="h-48 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={subscriberData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+                  <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#27272F' : '#f3f4f6'} />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 11, fontWeight: 600 }} dy={8} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 11, fontWeight: 600 }} />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar dataKey="subs" fill="#1A1A1A" radius={[8, 8, 2, 2]} barSize={36} />
+                  <Bar dataKey="subs" fill={isDark ? '#FFDD00' : '#1A1A1A'} radius={[8, 8, 2, 2]} barSize={36} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
           </div>
         </div>
 
-        <div className="bg-surface-card rounded-2xl shadow-soft border border-editorial-border overflow-hidden animate-fade-up" style={{ animationDelay: '0.32s' }}>
-          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border">
+        <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl shadow-soft border border-editorial-border dark:border-[#27272F] overflow-hidden animate-fade-up" style={{ animationDelay: '0.32s' }}>
+          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border dark:border-[#27272F]">
             <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Recent Activity</h3>
             <button className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">View all →</button>
           </div>

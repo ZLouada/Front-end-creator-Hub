@@ -11,8 +11,8 @@ const paymentHistory = [
 
 function Section({ title, subtitle, children }) {
   return (
-    <div className="bg-surface-card rounded-2xl shadow-soft border border-editorial-border overflow-hidden">
-      <div className="px-6 py-5 border-b border-editorial-border">
+    <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl shadow-soft border border-editorial-border dark:border-[#27272F] overflow-hidden">
+      <div className="px-6 py-5 border-b border-editorial-border dark:border-[#27272F]">
         <h2 className="text-base font-bold text-gray-900 dark:text-gray-100">{title}</h2>
         {subtitle && <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">{subtitle}</p>}
       </div>
@@ -43,7 +43,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-full bg-surface p-5 sm:p-8">
+    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-5 sm:p-8">
       <div className="max-w-3xl mx-auto space-y-6">
 
         <div className="animate-fade-up">
@@ -123,14 +123,14 @@ export default function SettingsPage() {
                     <th className="pb-3 text-right pr-2">Receipt</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-gray-50 dark:divide-[#27272F]">
                   {paymentHistory.map((row) => (
                     <tr key={row.date} className="hover:bg-gray-50 dark:hover:bg-[#1A1A1F] transition-colors">
                       <td className="py-3.5 pl-2 text-sm text-gray-500 dark:text-gray-400 font-medium">{row.date}</td>
                       <td className="py-3.5 text-sm text-gray-700 dark:text-gray-300 font-semibold">{row.desc}</td>
                       <td className="py-3.5 text-sm text-gray-900 dark:text-gray-100 font-bold">{row.amount}</td>
                       <td className="py-3.5">
-                        <span className="px-2.5 py-1 bg-green-50 text-success rounded-lg text-xs font-bold border border-green-100">
+                        <span className="px-2.5 py-1 bg-green-50 dark:bg-[#0A2E1A] text-success rounded-lg text-xs font-bold border border-green-100 dark:border-[#1A4A2A]">
                           {row.status}
                         </span>
                       </td>
@@ -175,7 +175,7 @@ function ToggleRow({ label, desc, defaultOn }) {
       <button
         onClick={() => setOn((v) => !v)}
         className={`relative shrink-0 w-11 h-6 rounded-full transition-all duration-300 ${
-          on ? 'bg-brand-900 shadow-soft-sm' : 'bg-gray-300'
+          on ? 'bg-brand-900 shadow-soft-sm' : 'bg-gray-300 dark:bg-[#3A3A46]'
         }`}
       >
         <span

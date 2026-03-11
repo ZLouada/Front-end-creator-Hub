@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { useAuthContext } from './context/AuthContext';
+import IntroPage from './components/intro/IntroPage';
 import AuthModal from './components/auth/AuthModal';
 import ForgotPasswordPage from './components/auth/ForgotPasswordPage';
 import ResetPasswordPage from './components/auth/ResetPasswordPage';
@@ -27,7 +28,8 @@ function App() {
       <ScrollToTopOnNav />
       <ScrollToTopBtn />
       <Routes>
-        <Route path="/" element={<AuthModal />} />
+        <Route path="/" element={<IntroPage />} />
+        <Route path="/auth" element={<AuthModal />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/home" element={<LandingPage />} />

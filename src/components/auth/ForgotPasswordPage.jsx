@@ -26,6 +26,8 @@ const ForgotPasswordPage = () => {
   const [focusedField, setFocusedField] = useState(null);
   const navigate = useNavigate();
   const { isDark } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { const t = requestAnimationFrame(() => setMounted(true)); return () => cancelAnimationFrame(t); }, []);
 
   const handleSendCode = async (e) => {
     e.preventDefault();
@@ -63,8 +65,9 @@ const ForgotPasswordPage = () => {
         padding: '4rem 3.5rem', position: 'relative', overflow: 'hidden',
       }} className="hidden lg:flex">
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,221,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,221,0,0.04) 1px, transparent 1px)`, backgroundSize: '48px 48px' }} />
-        <div style={{ position: 'absolute', top: '-6rem', left: '-6rem', width: '28rem', height: '28rem', background: 'radial-gradient(circle, rgba(255,221,0,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '380px' }}>
+        <div style={{ position: 'absolute', top: '-6rem', left: '-6rem', width: '28rem', height: '28rem', background: 'radial-gradient(circle, rgba(255,221,0,0.12) 0%, transparent 70%)', pointerEvents: 'none', animation: 'authBlobA 10s ease-in-out infinite' }} />
+        <div style={{ position: 'absolute', bottom: '-3rem', right: '-3rem', width: '18rem', height: '18rem', background: 'radial-gradient(circle, rgba(255,221,0,0.06) 0%, transparent 70%)', pointerEvents: 'none', animation: 'authBlobB 13s ease-in-out infinite' }} />
+        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '380px', animation: mounted ? 'authFadeLeft 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both' : 'none' }}>
           <div style={{ width: 80, height: 80, borderRadius: '20px', background: 'rgba(255,221,0,0.15)', border: '1px solid rgba(255,221,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem' }}>
             <svg width="36" height="36" fill="none" stroke="#FFDD00" strokeWidth="1.5" viewBox="0 0 24 24">
               <rect x="2" y="4" width="20" height="16" rx="3"/>
@@ -93,9 +96,11 @@ const ForgotPasswordPage = () => {
           border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`,
           borderRadius: '24px', padding: '2.5rem',
           boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)',
+          animation: mounted ? 'authCardIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards' : 'none',
+          opacity: mounted ? undefined : 0,
         }}>
           {/* Back link */}
-          <button type="button" onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'none', border: 'none', fontSize: '0.82rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, marginBottom: '2rem', fontFamily: 'inherit', transition: 'color 0.15s' }}
+          <button type="button" onClick={() => navigate('/auth')} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'none', border: 'none', fontSize: '0.82rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, marginBottom: '2rem', fontFamily: 'inherit', transition: 'color 0.15s' }}
             onMouseEnter={e => e.currentTarget.style.color = '#FFDD00'}
             onMouseLeave={e => e.currentTarget.style.color = isDark ? '#9A9AAB' : '#6B7280'}
           >
@@ -104,7 +109,7 @@ const ForgotPasswordPage = () => {
           </button>
 
           {/* Heading */}
-          <div style={{ marginBottom: '1.75rem' }}>
+          <div key={codeSent ? 'sent' : 'unsent'} style={{ marginBottom: '1.75rem', animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both' }}>
             <div style={{ width: 48, height: 48, borderRadius: '12px', background: isDark ? 'rgba(255,221,0,0.1)' : 'rgba(255,221,0,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
               <svg width="22" height="22" fill="none" stroke="#FFDD00" strokeWidth="1.8" viewBox="0 0 24 24">
                 {codeSent
@@ -132,13 +137,13 @@ const ForgotPasswordPage = () => {
 
           {!codeSent ? (
             <form onSubmit={handleSendCode} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div>
+              <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.05s both' }}>
                 <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Email address</label>
                 <input type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} required
                   onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField(null)}
                   style={inputStyle(isDark, focusedField === 'email')} />
               </div>
-              <button type="submit" disabled={loading} style={{ marginTop: '0.25rem', width: '100%', padding: '0.85rem', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
+              <button type="submit" disabled={loading} style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.1s both', marginTop: '0.25rem', width: '100%', padding: '0.85rem', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
                 onMouseEnter={e => { if (!loading) e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,221,0,0.45)'; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)'; }}
               >
@@ -148,7 +153,7 @@ const ForgotPasswordPage = () => {
               </button>
             </form>
           ) : (
-            <form onSubmit={handleContinue} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <form onSubmit={handleContinue} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', animation: 'authFadeUp 0.4s cubic-bezier(0.22,1,0.36,1) both' }}>
               <div style={{ padding: '0.85rem 1rem', background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.25)', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 <svg width="18" height="18" fill="none" stroke="#4ADE80" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round"/><polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round"/></svg>
                 <span style={{ fontSize: '0.83rem', fontWeight: 600, color: '#4ADE80' }}>Code sent! Check your inbox.</span>
@@ -173,7 +178,14 @@ const ForgotPasswordPage = () => {
         </div>
       </div>
 
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>{`
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes authCardIn { from { opacity: 0; transform: translateY(28px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes authFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes authFadeLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes authBlobA { 0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(20px,-25px) scale(1.08); } 70% { transform: translate(-10px,15px) scale(0.95); } }
+        @keyframes authBlobB { 0%,100% { transform: translate(0,0) scale(1); } 35% { transform: translate(-18px,20px) scale(1.06); } 65% { transform: translate(12px,-12px) scale(0.97); } }
+      `}</style>
     </div>
   );
 };
