@@ -8,6 +8,8 @@ import {
   Github, Mail, Phone, Briefcase, Calendar
 } from 'lucide-react';
 import { Header } from '../header/Header';
+import { EditorialModal } from '../tierSelection/components/EditorialModal';
+import TierSelection from '../tierSelection/tierSelection';
 import styles from './ProfilePage.module.css';
 
 /* ─── Types ─────────────────────────────────────────────────────── */
@@ -227,7 +229,11 @@ export default function ProfilePage() {
 
   const initials = `${firstName[0] ?? ''}${lastName[0] ?? ''}`;
 
+  /* ── Tier Preview handlers ─────────────────────────────────────── */
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
+    
     <div className={styles.page}>
       <Header />
 
@@ -264,6 +270,12 @@ export default function ProfilePage() {
             </div>
 
             <div className={styles.profileHeaderActions}>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className={styles.viewMembershipBtn}
+              >
+                View Membership
+              </button>
               <button className={styles.editProfileBtn} onClick={startEditInfo}>
                 <Edit2 size={14} /> Edit Profile
               </button>
@@ -309,6 +321,15 @@ export default function ProfilePage() {
           </div>
         </div>
 
+        <EditorialModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)}
+          maxWidth="1100px"
+          title="Select Your Membership"
+        >
+          <TierSelection /> 
+        </EditorialModal>
+        
         {/* Two columns */}
         <div className={styles.columns}>
 
