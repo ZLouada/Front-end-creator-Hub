@@ -55,6 +55,14 @@ const ForgotPasswordPage = () => {
       background: isDark ? '#0C0C0F' : '#FAFAF8',
       fontFamily: "'Inter', system-ui, sans-serif",
     }}>
+      <style>{`
+        .fp-right-wrap { padding: 2rem; }
+        .fp-card       { padding: 2.5rem; }
+        @media (max-width: 480px) {
+          .fp-right-wrap { padding: 1.25rem 1rem !important; align-items: flex-start !important; padding-top: 2rem !important; }
+          .fp-card       { padding: 1.75rem 1.5rem !important; border-radius: 20px !important; }
+        }
+      `}</style>
 
       {/* Left panel */}
       <div style={{
@@ -89,12 +97,12 @@ const ForgotPasswordPage = () => {
       </div>
 
       {/* Right panel */}
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', minHeight: '100vh' }}>
-        <div style={{
+      <div className="fp-right-wrap" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+        <div className="fp-card" style={{
           width: '100%', maxWidth: '440px',
           background: isDark ? '#1A1A1F' : '#FFFFFF',
           border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`,
-          borderRadius: '24px', padding: '2.5rem',
+          borderRadius: '24px',
           boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)',
           animation: mounted ? 'authCardIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards' : 'none',
           opacity: mounted ? undefined : 0,

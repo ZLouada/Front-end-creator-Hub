@@ -132,6 +132,21 @@ const AuthModal = () => {
       fontFamily: "'Inter', system-ui, sans-serif",
     }}>
 
+      {/* ── Animations ─────────────────────────────────────────── */}
+      <style>{`
+        @keyframes authCardIn  { from { opacity:0; transform:translateY(22px) } to { opacity:1; transform:translateY(0) } }
+        @keyframes authFadeLeft{ from { opacity:0; transform:translateX(-18px) } to { opacity:1; transform:translateX(0) } }
+        @keyframes authFadeUp  { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
+        @keyframes authBlobA   { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(24px,-32px) scale(1.05)} 66%{transform:translate(-16px,22px) scale(0.97)} }
+        @keyframes authBlobB   { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-28px,22px) scale(1.04)} 80%{transform:translate(18px,-28px) scale(0.96)} }
+        .auth-right-wrap { padding: 2rem; }
+        .auth-card       { padding: 2.5rem; }
+        @media (max-width: 480px) {
+          .auth-right-wrap { padding: 1.25rem 1rem !important; align-items: flex-start; padding-top: 2rem; }
+          .auth-card       { padding: 1.75rem 1.5rem !important; border-radius: 20px !important; }
+        }
+      `}</style>
+
       {/* ── LEFT PANEL — brand identity ─────────────────────────── */}
       <div style={{
         width: '48%', minHeight: '100vh', flexShrink: 0,
@@ -215,18 +230,16 @@ const AuthModal = () => {
       </div>
 
       {/* ── RIGHT PANEL — auth form ──────────────────────────────── */}
-      <div style={{
+      <div className="auth-right-wrap" style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '2rem',
         background: isDark ? '#0C0C0F' : '#FAFAF8',
         minHeight: '100vh',
       }}>
-        <div style={{
+        <div className="auth-card" style={{
           width: '100%', maxWidth: '440px',
           background: isDark ? '#1A1A1F' : '#FFFFFF',
           border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`,
-          borderRadius: '24px',
-          padding: '2.5rem',
+          borderRadius: '24px', /* overridden by .auth-card media query on mobile */
           boxShadow: isDark
             ? '0 24px 64px rgba(0,0,0,0.5)'
             : '0 24px 64px rgba(0,0,0,0.06)',

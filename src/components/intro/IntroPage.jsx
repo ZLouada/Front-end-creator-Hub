@@ -55,6 +55,38 @@ const IntroPage = () => {
           0%,100% { opacity: 0.65; }
           50%      { opacity: 1; }
         }
+
+        /* ── Responsive section helpers ── */
+        .in-nav-inner   { padding: 0 2rem; height: 66px; }
+        .in-hero-pad    { padding: 2rem; }
+        .in-stats       { padding: 3.5rem 2rem; }
+        .in-features    { padding: 7rem 2rem; }
+        .in-testimonials{ padding: 6rem 2rem; }
+        .in-cta         { padding: 8rem 2rem; }
+        .in-footer      { padding: 2.5rem 2rem; }
+        .in-cta-btns    { display:flex; justify-content:center; flex-wrap:wrap; gap:0.875rem; margin-bottom:3.25rem; }
+        .in-trust       { display:flex; justify-content:center; flex-wrap:wrap; gap:1.5rem; }
+        .in-feat-inner  { max-width:1120px; margin:0 auto; }
+        .in-test-inner  { max-width:1120px; margin:0 auto; }
+        .in-cta-inner   { position:relative; z-index:1; max-width:620px; margin:0 auto; }
+        .in-foot-inner  { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+
+        @media (max-width: 640px) {
+          .in-nav-inner    { padding: 0 1rem; height: 58px; }
+          .in-hero-pad     { padding: 1.25rem; }
+          .in-stats        { padding: 2.5rem 1.25rem; }
+          .in-features     { padding: 4.5rem 1.25rem; }
+          .in-testimonials { padding: 4rem 1.25rem; }
+          .in-cta          { padding: 5rem 1.25rem; }
+          .in-footer       { padding: 2rem 1.25rem; }
+          .in-cta-btns     { flex-direction: column; align-items: stretch; margin-bottom:2.5rem; }
+          .in-cta-btns button { width: 100% !important; justify-content: center !important; }
+          .in-trust        { gap: 0.85rem; }
+          .in-section-heading { font-size: clamp(1.7rem, 6vw, 2.4rem) !important; }
+          .in-feat-card    { padding: 1.5rem !important; }
+          .in-nav-login    { padding: 0.45rem 0.75rem !important; font-size: 0.8rem !important; }
+          .in-nav-signup   { padding: 0.45rem 0.85rem !important; font-size: 0.8rem !important; }
+        }
       `}</style>
 
       {/* ══════════════════════════════════════════════════════════
@@ -68,9 +100,8 @@ const IntroPage = () => {
         borderBottom: navBorder,
         transition: 'background 0.35s, border-color 0.35s, backdrop-filter 0.35s',
       }}>
-        <div style={{
+        <div className="in-nav-inner" style={{
           maxWidth: 1200, margin: '0 auto',
-          padding: '0 2rem', height: 66,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
 
@@ -104,6 +135,7 @@ const IntroPage = () => {
                 cursor: 'pointer', fontFamily: 'inherit',
                 transition: 'border-color 0.15s, color 0.15s',
               }}
+            className="in-nav-login"
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = '#FFDD00';
                 e.currentTarget.style.color = '#FFDD00';
@@ -124,6 +156,7 @@ const IntroPage = () => {
                 boxShadow: '0 2px 14px rgba(255,221,0,0.35)',
                 transition: 'transform 0.15s, box-shadow 0.15s',
               }}
+            className="in-nav-signup"
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'translateY(-1px)';
                 e.currentTarget.style.boxShadow = '0 6px 20px rgba(255,221,0,0.5)';
@@ -169,8 +202,8 @@ const IntroPage = () => {
           pointerEvents: 'none', animation: 'introBlobB 18s ease-in-out infinite',
         }} />
 
-        <div style={{
-          maxWidth: 920, margin: '0 auto', padding: '2rem',
+        <div className="in-hero-pad" style={{
+          maxWidth: 920, margin: '0 auto',
           textAlign: 'center', position: 'relative', zIndex: 1,
         }}>
 
@@ -222,9 +255,7 @@ const IntroPage = () => {
           </p>
 
           {/* CTA buttons */}
-          <div style={{
-            display: 'flex', justifyContent: 'center', flexWrap: 'wrap',
-            gap: '0.875rem', marginBottom: '3.25rem',
+          <div className="in-cta-btns" style={{
             animation: mounted ? 'introFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.35s both' : 'none',
             opacity: mounted ? undefined : 0,
           }}>
@@ -274,8 +305,7 @@ const IntroPage = () => {
           </div>
 
           {/* Trust strip */}
-          <div style={{
-            display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1.5rem',
+          <div className="in-trust" style={{
             animation: mounted ? 'introFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s both' : 'none',
             opacity: mounted ? undefined : 0,
           }}>
@@ -296,10 +326,9 @@ const IntroPage = () => {
       {/* ══════════════════════════════════════════════════════════
           STATS BAR
       ══════════════════════════════════════════════════════════ */}
-      <section style={{
+      <section className="in-stats" style={{
         borderTop: `1px solid ${cardBorder}`,
         borderBottom: `1px solid ${cardBorder}`,
-        padding: '3.5rem 2rem',
       }}>
         <div style={{
           maxWidth: 900, margin: '0 auto',
@@ -329,15 +358,15 @@ const IntroPage = () => {
       {/* ══════════════════════════════════════════════════════════
           FEATURES
       ══════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '7rem 2rem' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto' }}>
+      <section className="in-features">
+        <div className="in-feat-inner">
 
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <p style={{
               color: '#FFDD00', fontSize: '0.72rem', fontWeight: 700,
               textTransform: 'uppercase', letterSpacing: '0.12em', margin: '0 0 0.9rem',
             }}>Everything you need</p>
-            <h2 style={{
+            <h2 className="in-section-heading" style={{
               color: textPrimary, fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800,
               letterSpacing: '-0.04em', margin: '0 0 1rem',
               fontFamily: "'Playfair Display', Georgia, serif",
@@ -395,6 +424,7 @@ const IntroPage = () => {
                   transition: 'border-color 0.22s, background 0.22s',
                   cursor: 'default',
                 }}
+                className="in-feat-card"
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = 'rgba(255,221,0,0.3)';
                   e.currentTarget.style.background = 'rgba(255,221,0,0.04)';
@@ -429,19 +459,18 @@ const IntroPage = () => {
       {/* ══════════════════════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════════════════════ */}
-      <section style={{
-        padding: '6rem 2rem',
+      <section className="in-testimonials" style={{
         background: isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
         borderTop: `1px solid ${isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}`,
         borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}`,
       }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto' }}>
+        <div className="in-test-inner">
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
             <p style={{
               color: '#FFDD00', fontSize: '0.72rem', fontWeight: 700,
               textTransform: 'uppercase', letterSpacing: '0.12em', margin: '0 0 0.75rem',
             }}>Creators love it</p>
-            <h2 style={{
+          <h2 className="in-section-heading" style={{
               color: textPrimary, fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: 800,
               letterSpacing: '-0.04em', margin: 0,
               fontFamily: "'Playfair Display', Georgia, serif",
@@ -495,7 +524,7 @@ const IntroPage = () => {
       {/* ══════════════════════════════════════════════════════════
           FINAL CTA
       ══════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '8rem 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section className="in-cta" style={{ textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         {/* Centered glow */}
         <div style={{
           position: 'absolute', top: '50%', left: '50%',
@@ -505,8 +534,8 @@ const IntroPage = () => {
           pointerEvents: 'none', animation: 'ctaGlow 6s ease-in-out infinite',
         }} />
 
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 620, margin: '0 auto' }}>
-          <h2 style={{
+        <div className="in-cta-inner">
+          <h2 className="in-section-heading" style={{
             color: textPrimary, fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900,
             letterSpacing: '-0.045em', margin: '0 0 1.25rem',
             fontFamily: "'Playfair Display', Georgia, serif",
@@ -549,15 +578,10 @@ const IntroPage = () => {
       {/* ══════════════════════════════════════════════════════════
           FOOTER
       ══════════════════════════════════════════════════════════ */}
-      <footer style={{
+      <footer className="in-footer" style={{
         borderTop: `1px solid ${cardBorder}`,
-        padding: '2.5rem 2rem',
       }}>
-        <div style={{
-          maxWidth: 1200, margin: '0 auto',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          flexWrap: 'wrap', gap: '1rem',
-        }}>
+        <div className="in-foot-inner">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <div style={{
               width: 28, height: 28, borderRadius: '8px',

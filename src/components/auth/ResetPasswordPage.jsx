@@ -65,6 +65,14 @@ const ResetPasswordPage = () => {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', background: isDark ? '#0C0C0F' : '#FAFAF8', fontFamily: "'Inter', system-ui, sans-serif" }}>
+      <style>{`
+        .rp-right-wrap { padding: 2rem; }
+        .rp-card       { padding: 2.5rem; }
+        @media (max-width: 480px) {
+          .rp-right-wrap { padding: 1.25rem 1rem !important; align-items: flex-start !important; padding-top: 2rem !important; }
+          .rp-card       { padding: 1.75rem 1.5rem !important; border-radius: 20px !important; }
+        }
+      `}</style>
 
       {/* Left panel */}
       <div style={{ width: '48%', minHeight: '100vh', flexShrink: 0, background: 'linear-gradient(145deg, #1A1A1A 0%, #111115 40%, #0C0C0F 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '4rem 3.5rem', position: 'relative', overflow: 'hidden' }} className="hidden lg:flex">
@@ -96,8 +104,8 @@ const ResetPasswordPage = () => {
       </div>
 
       {/* Right panel */}
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', minHeight: '100vh' }}>
-        <div style={{ width: '100%', maxWidth: '440px', background: isDark ? '#1A1A1F' : '#FFFFFF', border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`, borderRadius: '24px', padding: '2.5rem', boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)', animation: mounted ? 'authCardIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards' : 'none', opacity: mounted ? undefined : 0 }}>
+      <div className="rp-right-wrap" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+        <div className="rp-card" style={{ width: '100%', maxWidth: '440px', background: isDark ? '#1A1A1F' : '#FFFFFF', border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`, borderRadius: '24px', boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)', animation: mounted ? 'authCardIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards' : 'none', opacity: mounted ? undefined : 0 }}>
 
           <button type="button" onClick={() => navigate('/forgot-password')} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'none', border: 'none', fontSize: '0.82rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, marginBottom: '2rem', fontFamily: 'inherit', transition: 'color 0.15s' }}
             onMouseEnter={e => e.currentTarget.style.color = '#FFDD00'}
