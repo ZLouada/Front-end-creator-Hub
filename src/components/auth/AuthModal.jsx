@@ -57,7 +57,7 @@ const AuthModal = () => {
     await new Promise((r) => setTimeout(r, 1000));
     login({ name: name || 'Creator', email });
     setLoading(false);
-    navigate('/dashboard');
+    navigate('/home');
   };
 
   const [particles] = useState(() => Array.from({ length: 14 }, (_, i) => ({

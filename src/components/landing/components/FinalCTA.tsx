@@ -1,10 +1,12 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import styles from './FinalCTA.module.css';
 
 const FinalCTA = () => {
+  const navigate = useNavigate();
   return (
     <section className={styles.section}>
       {/* Background Decorative Element */}
@@ -39,6 +41,7 @@ const FinalCTA = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={styles.mainPill}
+              onClick={() => navigate('/')}
             >
               Launch Your Studio
               <ArrowRight size={20} strokeWidth={2.5} />

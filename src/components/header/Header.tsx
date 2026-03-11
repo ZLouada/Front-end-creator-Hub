@@ -7,12 +7,14 @@ import {
   Home, CreditCard, Sun, Moon, Compass, BarChart2, Rss, UserCircle2
 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { useAuthContext } from '../../context/AuthContext';
 import styles from './Header.module.css';
 
 export const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { isDark, toggleTheme } = useTheme();
+  const { logout } = useAuthContext();
   
   // State for visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -142,11 +144,11 @@ export const Header = () => {
                   <button className={styles.dropdownItem} role="menuitem" onClick={() => { navigate('/dashboard/settings'); setIsProfileOpen(false); }}>
                     <Settings size={16} /> Settings
                   </button>
-                  <button className={`${styles.dropdownItem} ${styles.dropdownItemCreator}`} role="menuitem" onClick={() => setIsProfileOpen(false)}>
+                  <button className={`${styles.dropdownItem} ${styles.dropdownItemCreator}`} role="menuitem" onClick={() => { navigate('/dashboard'); setIsProfileOpen(false); }}>
                     <ShieldCheck size={16} /> Switch to Creator
                   </button>
                   <hr className={styles.dropdownDivider} />
-                  <button className={`${styles.dropdownItem} ${styles.dropdownItemDanger}`} role="menuitem" onClick={() => setIsProfileOpen(false)}>
+                  <button className={`${styles.dropdownItem} ${styles.dropdownItemDanger}`} role="menuitem" onClick={() => { logout(); setIsProfileOpen(false); navigate('/'); }}>
                     <LogOut size={16} /> Logout
                   </button>
                 </div>
@@ -196,7 +198,7 @@ export const Header = () => {
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
             {isDark ? 'Switch to Light' : 'Switch to Dark'}
           </button>
-          <button className={`${styles.mobileNavLink} ${styles.mobileNavLogout}`}>
+          <button className={`${styles.mobileNavLink} ${styles.mobileNavLogout}`} onClick={() => { logout(); navigate('/'); setIsMenuOpen(false); }}>
             <LogOut size={22} />
             <span>Logout</span>
           </button>

@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
 import styles from './Hero.module.css';
 
 const Hero = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
 
   return (
@@ -40,7 +42,7 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className={styles.claimContainer}
           >
-            <form className={styles.claimBar}>
+            <form className={styles.claimBar} onSubmit={(e) => { e.preventDefault(); navigate('/'); }}>
               <div className={styles.inputWrapper}>
                 <span className={styles.urlPrefix}>creatorhub.sa/</span>
                 <input
