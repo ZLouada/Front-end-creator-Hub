@@ -36,7 +36,7 @@ const TIERS = [
   }
 ];
 
-export const TierSelection = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const TierSelection = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   // 2. State Management
   const [isYearly, setIsYearly] = useState(false);
   const [selectedId, setSelectedId] = useState('pro'); // Default to recommended
@@ -50,11 +50,6 @@ export const TierSelection = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
   };
 
   return (
-    <EditorialModal 
-      isOpen={isOpen} 
-      onClose={onClose} 
-      maxWidth="1100px" // Wider for the 3-card layout
-    >
       <div className={styles.container}>
         
         {/* Header Section */}
@@ -95,6 +90,7 @@ export const TierSelection = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
         />
 
       </div>
-    </EditorialModal>
   );
 };
+
+export default TierSelection;

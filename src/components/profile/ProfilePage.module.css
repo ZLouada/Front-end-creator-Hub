@@ -182,7 +182,24 @@
   opacity: 0.85;
   transform: translateY(-1px);
 }
-
+.viewMembershipBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #FFDD00;
+  color: #1A1A1A;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.viewMembershipBtn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
 .connectBtn {
   display: flex;
   align-items: center;
@@ -764,8 +781,8 @@
 
 /* ── Dark mode overrides ─────────────────────────────────────────── */
 
-:global(.dark) .bannerWrapper {
-  background: linear-gradient(135deg, #0C0C0F 0%, #1A1A1F 50%, #0C0C0F 100%);
+.dark .bannerWrapper {
+  background: linear-gradient(135deg, #111 0%, #2a2a2a 50%, #111 100%);
 }
 
 /* ── Mobile responsiveness ───────────────────────────────────────── */
