@@ -6,9 +6,9 @@
 }
 
 .pageBody {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem;
+  padding: 0 2rem 4rem;
 }
 
 /* ── Banner ──────────────────────────────────────────────────────── */
@@ -267,18 +267,20 @@
 .columns {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 @media (min-width: 768px) {
   .columns {
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 320px 1fr;
+    gap: 1.75rem;
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .columns {
-    grid-template-columns: 300px 1fr 280px;
+    grid-template-columns: 340px 1fr 320px;
+    gap: 2rem;
   }
 }
 

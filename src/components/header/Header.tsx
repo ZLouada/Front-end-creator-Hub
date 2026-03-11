@@ -68,7 +68,6 @@ export const Header = () => {
     { to: '/dashboard/checkout', icon: <CreditCard size={22} />, label: 'Checkout' },
   ];
 
-  // Editorial Style Constants
   const ICON_STROKE = 1.5;
   const ICON_SIZE = 20;
 

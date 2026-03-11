@@ -144,6 +144,7 @@
 
 :global(.dark) .billingSection {
   border-color: #27272F;
+  color: #111115;
 }
 
 :global(.dark) .billingText {

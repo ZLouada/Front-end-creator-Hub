@@ -233,6 +233,7 @@
 
 :global(.dark) .tierBadge {
   border-color: #27272F;
+  color: #111115;
 }
 
 :global(.dark) .postText {

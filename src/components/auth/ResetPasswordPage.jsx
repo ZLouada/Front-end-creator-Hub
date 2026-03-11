@@ -2,10 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { authService } from '../../services/api';
-import Button from '../ui/Button';
 
-const Blob = ({ className, style }) => (
-  <div className={`absolute rounded-full blur-3xl pointer-events-none ${className}`} style={style} />
+const inputStyle = (isDark, focused) => ({
+  width: '100%', boxSizing: 'border-box',
+  background: isDark ? '#111115' : '#F9FAFB',
+  border: `1.5px solid ${focused ? '#FFDD00' : isDark ? '#27272F' : '#E5E7EB'}`,
+  borderRadius: '12px', padding: '0.75rem 1rem',
+  fontSize: '0.9rem', fontWeight: 500,
+  color: isDark ? '#F0F0F3' : '#1A1A1A',
+  fontFamily: 'inherit', outline: 'none',
+  boxShadow: focused ? '0 0 0 3px rgba(255,221,0,0.12)' : 'none',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
+});
+
+const EyeIcon = ({ open }) => open ? (
+  <svg width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+    <line x1="1" y1="1" x2="23" y2="23"/>
+  </svg>
+) : (
+  <svg width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
 );
 
 const ResetPasswordPage = () => {
@@ -15,7 +34,7 @@ const ResetPasswordPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [focusedField, setFocusedField] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const { isDark } = useTheme();
@@ -23,35 +42,14 @@ const ResetPasswordPage = () => {
   const email = location.state?.email || '';
   const code = location.state?.code || '';
 
-  useEffect(() => { setMounted(true); }, []);
-
-  useEffect(() => {
-    if (!email || !code) {
-      navigate('/forgot-password');
-    }
-  }, [email, code, navigate]);
-
-  useEffect(() => {
-    if (success) {
-      const timer = setTimeout(() => navigate('/'), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [success, navigate]);
+  useEffect(() => { if (!email || !code) navigate('/forgot-password'); }, [email, code, navigate]);
+  useEffect(() => { if (success) { const t = setTimeout(() => navigate('/'), 3000); return () => clearTimeout(t); } }, [success, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
-    if (newPassword.length < 8) {
-      setError('Password must be at least 8 characters.');
-      return;
-    }
-
-    if (newPassword !== confirmPassword) {
-      setError('Passwords do not match.');
-      return;
-    }
-
+    if (newPassword.length < 8) { setError('Password must be at least 8 characters.'); return; }
+    if (newPassword !== confirmPassword) { setError('Passwords do not match.'); return; }
     setLoading(true);
     try {
       await authService.resetPassword(email, code, newPassword);
@@ -63,196 +61,111 @@ const ResetPasswordPage = () => {
     }
   };
 
-  const EyeIcon = ({ open }) => open ? (
-    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
-      <line x1="1" y1="1" x2="23" y2="23"/>
-    </svg>
-  ) : (
-    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-      <circle cx="12" cy="12" r="3"/>
-    </svg>
-  );
-
   return (
-    <div
-      className="relative min-h-screen flex items-center justify-center overflow-hidden font-sans bg-surface"
-      style={{ background: isDark
-        ? 'linear-gradient(135deg, #0A0A0A 0%, #141414 40%, #1A1A1A 70%, #0A0A0A 100%)'
-        : 'linear-gradient(135deg, #FFFFFF 0%, #FBF9F6 30%, #F3F4F6 60%, #E5E7EB 100%)'
-      }}
-    >
-      <div
-        className="absolute inset-0 animate-gradient-bg pointer-events-none"
-        style={{
-          background: isDark
-            ? 'linear-gradient(270deg, #0A0A0A, #1A1A1A, #0A0A0A, #141414)'
-            : 'linear-gradient(270deg, #FFFFFF, #F3F4F6, #FFFFFF, #FBF9F6)',
-          backgroundSize: '400% 400%',
-          opacity: isDark ? 0.3 : 0.6,
-        }}
-      />
+    <div style={{ minHeight: '100vh', display: 'flex', background: isDark ? '#0C0C0F' : '#FAFAF8', fontFamily: "'Inter', system-ui, sans-serif" }}>
 
-      <Blob
-        className="w-96 h-96 animate-float-slow"
-        style={{ background: isDark ? '#333333' : '#E5E7EB', opacity: isDark ? 0.08 : 0.25, top: '-8rem', left: '-8rem' }}
-      />
-      <Blob
-        className="w-80 h-80 animate-drift"
-        style={{ background: isDark ? '#2D2D2D' : '#D1D5DB', opacity: isDark ? 0.06 : 0.18, bottom: '-6rem', right: '-6rem', animationDelay: '2s' }}
-      />
-      <Blob
-        className="w-64 h-64 animate-float-fast"
-        style={{ background: isDark ? '#333333' : '#E5E7EB', opacity: isDark ? 0.04 : 0.12, top: '60%', left: '10%', animationDelay: '1s' }}
-      />
-
-      <div
-        className={`glass-card relative z-10 w-full max-w-[440px] mx-4 rounded-[2.5rem] shadow-soft-xl overflow-hidden
-          ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
-        style={{ boxShadow: isDark
-          ? '0 32px 80px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)'
-          : '0 32px 80px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04)',
-          backgroundColor: isDark ? '#141414' : undefined,
-        }}
-      >
-        <div className="h-1.5 w-full bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500" />
-
-        <div className="p-8 pt-7">
-          <div className="flex flex-col items-center mb-7">
-            <div className="mb-4 animate-fade-up">
-              <span
-                className="text-4xl font-bold tracking-tight"
-                style={{
-                  background: isDark
-                    ? 'linear-gradient(135deg, #F0F0F0 30%, #9CA3AF 100%)'
-                    : 'linear-gradient(135deg, #1A1A1A 30%, #6B7280 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                CreatorHub
-              </span>
+      {/* Left panel */}
+      <div style={{ width: '48%', minHeight: '100vh', flexShrink: 0, background: 'linear-gradient(145deg, #1A1A1A 0%, #111115 40%, #0C0C0F 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '4rem 3.5rem', position: 'relative', overflow: 'hidden' }} className="hidden lg:flex">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,221,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,221,0,0.04) 1px, transparent 1px)`, backgroundSize: '48px 48px' }} />
+        <div style={{ position: 'absolute', bottom: '-4rem', right: '-4rem', width: '22rem', height: '22rem', background: 'radial-gradient(circle, rgba(255,221,0,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '380px' }}>
+          <div style={{ width: 80, height: 80, borderRadius: '20px', background: 'rgba(255,221,0,0.15)', border: '1px solid rgba(255,221,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem' }}>
+            <svg width="36" height="36" fill="none" stroke="#FFDD00" strokeWidth="1.5" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+          <h2 style={{ color: '#fff', fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.04em', margin: '0 0 1rem', fontFamily: "'Playfair Display', Georgia, serif" }}>
+            Set a new<br /><span style={{ color: '#FFDD00' }}>password.</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem', lineHeight: 1.6, margin: '0 0 2rem' }}>
+            Choose a strong password with at least 8 characters to keep your account secure.
+          </p>
+          {['Use 8+ characters', 'Mix letters & numbers', 'Use a unique password'].map((tip, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.6rem', textAlign: 'left' }}>
+              <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(255,221,0,0.15)', border: '1px solid rgba(255,221,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="10" height="10" fill="none" stroke="#FFDD00" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.83rem' }}>{tip}</span>
             </div>
+          ))}
+        </div>
+      </div>
 
-            <h1 className="text-[1.7rem] font-semibold font-serif text-brand-900 dark:text-gray-100 tracking-tight leading-tight">
-              {success ? 'Password reset!' : 'Set new password'}
-            </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium text-center">
-              {success
-                ? 'Your password has been updated. Redirecting to login...'
-                : 'Enter your new password below'}
+      {/* Right panel */}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', minHeight: '100vh' }}>
+        <div style={{ width: '100%', maxWidth: '440px', background: isDark ? '#1A1A1F' : '#FFFFFF', border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`, borderRadius: '24px', padding: '2.5rem', boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)' }}>
+
+          <button type="button" onClick={() => navigate('/forgot-password')} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'none', border: 'none', fontSize: '0.82rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, marginBottom: '2rem', fontFamily: 'inherit', transition: 'color 0.15s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#FFDD00'}
+            onMouseLeave={e => e.currentTarget.style.color = isDark ? '#9A9AAB' : '#6B7280'}
+          >
+            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M19 12H5m0 0l7-7m-7 7l7 7"/></svg>
+            Back
+          </button>
+
+          <div style={{ marginBottom: '1.75rem' }}>
+            <div style={{ width: 48, height: 48, borderRadius: '12px', background: isDark ? 'rgba(255,221,0,0.1)' : 'rgba(255,221,0,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
+              <svg width="22" height="22" fill="none" stroke="#FFDD00" strokeWidth="1.8" viewBox="0 0 24 24">
+                {success
+                  ? <><path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round"/><polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round"/></>
+                  : <><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></>
+                }
+              </svg>
+            </div>
+            <h2 style={{ margin: '0 0 0.3rem', fontSize: '1.65rem', fontWeight: 700, letterSpacing: '-0.03em', color: isDark ? '#F0F0F3' : '#1A1A1A', fontFamily: "'Playfair Display', Georgia, serif" }}>
+              {success ? 'Password updated!' : 'Create new password'}
+            </h2>
+            <p style={{ margin: 0, fontSize: '0.88rem', color: isDark ? '#9A9AAB' : '#6B7280', fontWeight: 500 }}>
+              {success ? 'Redirecting you to login in a moment…' : 'Choose a strong password for your account'}
             </p>
           </div>
 
           {success ? (
-            <div className="animate-fade-up">
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 mb-4">
-                <svg width="20" height="20" fill="none" stroke="#16a34a" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
-                  <polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <span className="text-sm font-semibold text-green-700 dark:text-green-400">
-                  Password updated successfully! Redirecting in 3 seconds...
-                </span>
+            <div>
+              <div style={{ padding: '0.85rem 1rem', background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.25)', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <svg width="18" height="18" fill="none" stroke="#4ADE80" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round"/><polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round"/></svg>
+                <span style={{ fontSize: '0.83rem', fontWeight: 600, color: '#4ADE80' }}>Password updated successfully!</span>
               </div>
-
-              <Button
-                type="button"
-                variant="primary"
-                size="lg"
-                shimmer
-                className="w-full"
-                onClick={() => navigate('/')}
-              >
-                Go to login now
-              </Button>
+              <button type="button" onClick={() => navigate('/')} style={{ width: '100%', padding: '0.85rem', background: '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 18px rgba(255,221,0,0.35)' }}>
+                Go to login
+              </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3.5">
-              <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
-                <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 tracking-wide mb-1.5">
-                  New password
-                </label>
-                <div className="relative">
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="At least 8 characters"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    required
-                    className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#22222A] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl pr-12"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword((v) => !v)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-300 ease-smooth"
-                    tabIndex={-1}
-                  >
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {error && (
+                <div style={{ padding: '0.75rem 1rem', background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.3)', borderRadius: '10px' }}>
+                  <p style={{ margin: 0, fontSize: '0.83rem', fontWeight: 600, color: '#F87171' }}>{error}</p>
+                </div>
+              )}
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>New password</label>
+                <div style={{ position: 'relative' }}>
+                  <input type={showPassword ? 'text' : 'password'} placeholder="At least 8 characters" value={newPassword} onChange={e => setNewPassword(e.target.value)} required
+                    onFocus={() => setFocusedField('new')} onBlur={() => setFocusedField(null)}
+                    style={{ ...inputStyle(isDark, focusedField === 'new'), paddingRight: '3rem' }} />
+                  <button type="button" onClick={() => setShowPassword(v => !v)} tabIndex={-1} style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: isDark ? '#6A6A78' : '#9CA3AF', cursor: 'pointer', display: 'flex', lineHeight: 0, padding: 0 }}>
                     <EyeIcon open={showPassword} />
                   </button>
                 </div>
               </div>
-
-              <div className="animate-fade-up" style={{ animationDelay: '0.15s' }}>
-                <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 tracking-wide mb-1.5">
-                  Confirm password
-                </label>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Re-enter your password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                  className="w-full font-medium outline-none transition-all duration-300 ease-smooth bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-gray-700 focus:bg-white dark:focus:bg-[#22222A] focus:border-brand-900 dark:focus:border-gray-400 focus:shadow-[0_0_0_4px_rgba(26,26,26,0.06),0_4px_16px_rgba(0,0,0,0.04)] focus:-translate-y-px placeholder-gray-400 text-brand-900 dark:text-gray-100 px-5 py-3.5 text-base rounded-xl"
-                />
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Confirm password</label>
+                <input type={showPassword ? 'text' : 'password'} placeholder="Re-enter your password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required
+                  onFocus={() => setFocusedField('confirm')} onBlur={() => setFocusedField(null)}
+                  style={inputStyle(isDark, focusedField === 'confirm')} />
               </div>
-
-              {error && (
-                <div className="animate-fade-up">
-                  <p className="text-xs font-semibold text-red-600 dark:text-red-400 mt-1">{error}</p>
-                </div>
-              )}
-
-              <div className="animate-fade-up pt-1" style={{ animationDelay: '0.2s' }}>
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  shimmer
-                  disabled={loading}
-                  className="w-full"
-                >
-                  {loading ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <svg className="animate-spin" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
-                      </svg>
-                      Resetting...
-                    </span>
-                  ) : (
-                    'Reset password'
-                  )}
-                </Button>
-              </div>
-            </form>
-          )}
-
-          {!success && (
-            <p className="text-center text-sm font-medium text-gray-500 dark:text-gray-400 mt-5">
-              <button
-                type="button"
-                onClick={() => navigate('/')}
-                className="font-bold text-brand-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300 ease-smooth underline underline-offset-2"
-              >
-                Back to login
+              <button type="submit" disabled={loading} style={{ marginTop: '0.25rem', width: '100%', padding: '0.85rem', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}>
+                {loading ? (
+                  <><svg style={{ animation: 'spin 0.8s linear infinite' }} width="16" height="16" fill="none" viewBox="0 0 24 24"><circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path style={{ opacity: 0.9 }} fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/></svg> Updating…</>
+                ) : 'Update password'}
               </button>
-            </p>
+            </form>
           )}
         </div>
       </div>
+
+      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 };

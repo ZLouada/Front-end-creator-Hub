@@ -406,7 +406,7 @@ export default function ProfilePage() {
           maxWidth="1100px"
           title="Select Your Membership"
         >
-          <TierSelection /> 
+          <TierSelection isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </EditorialModal>
         
         {/* Two columns */}

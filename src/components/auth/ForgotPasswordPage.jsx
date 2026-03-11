@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { authService } from '../../services/api';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
 
-const Blob = ({ className, style }) => (
-  <div className={`absolute rounded-full blur-3xl pointer-events-none ${className}`} style={style} />
-);
+const inputStyle = (isDark, focused) => ({
+  width: '100%', boxSizing: 'border-box',
+  background: isDark ? '#111115' : '#F9FAFB',
+  border: `1.5px solid ${focused ? '#FFDD00' : isDark ? '#27272F' : '#E5E7EB'}`,
+  borderRadius: '12px',
+  padding: '0.75rem 1rem',
+  fontSize: '0.9rem', fontWeight: 500,
+  color: isDark ? '#F0F0F3' : '#1A1A1A',
+  fontFamily: 'inherit',
+  outline: 'none',
+  boxShadow: focused ? '0 0 0 3px rgba(255,221,0,0.12)' : 'none',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
+});
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
@@ -15,11 +23,9 @@ const ForgotPasswordPage = () => {
   const [loading, setLoading] = useState(false);
   const [codeSent, setCodeSent] = useState(false);
   const [error, setError] = useState('');
-  const [mounted, setMounted] = useState(false);
+  const [focusedField, setFocusedField] = useState(null);
   const navigate = useNavigate();
   const { isDark } = useTheme();
-
-  useEffect(() => { setMounted(true); }, []);
 
   const handleSendCode = async (e) => {
     e.preventDefault();
@@ -37,182 +43,137 @@ const ForgotPasswordPage = () => {
 
   const handleContinue = (e) => {
     e.preventDefault();
-    if (!code.trim()) {
-      setError('Please enter the code you received.');
-      return;
-    }
+    if (!code.trim()) { setError('Please enter the code you received.'); return; }
     navigate('/reset-password', { state: { email, code } });
   };
 
   return (
-    <div
-      className="relative min-h-screen flex items-center justify-center overflow-hidden font-sans bg-surface"
-      style={{ background: isDark
-        ? 'linear-gradient(135deg, #0A0A0A 0%, #141414 40%, #1A1A1A 70%, #0A0A0A 100%)'
-        : 'linear-gradient(135deg, #FFFFFF 0%, #FBF9F6 30%, #F3F4F6 60%, #E5E7EB 100%)'
-      }}
-    >
-      <div
-        className="absolute inset-0 animate-gradient-bg pointer-events-none"
-        style={{
-          background: isDark
-            ? 'linear-gradient(270deg, #0A0A0A, #1A1A1A, #0A0A0A, #141414)'
-            : 'linear-gradient(270deg, #FFFFFF, #F3F4F6, #FFFFFF, #FBF9F6)',
-          backgroundSize: '400% 400%',
-          opacity: isDark ? 0.3 : 0.6,
-        }}
-      />
+    <div style={{
+      minHeight: '100vh', display: 'flex',
+      background: isDark ? '#0C0C0F' : '#FAFAF8',
+      fontFamily: "'Inter', system-ui, sans-serif",
+    }}>
 
-      <Blob
-        className="w-96 h-96 animate-float-slow"
-        style={{ background: isDark ? '#333333' : '#E5E7EB', opacity: isDark ? 0.08 : 0.25, top: '-8rem', left: '-8rem' }}
-      />
-      <Blob
-        className="w-80 h-80 animate-drift"
-        style={{ background: isDark ? '#2D2D2D' : '#D1D5DB', opacity: isDark ? 0.06 : 0.18, bottom: '-6rem', right: '-6rem', animationDelay: '2s' }}
-      />
-      <Blob
-        className="w-64 h-64 animate-float-fast"
-        style={{ background: isDark ? '#333333' : '#E5E7EB', opacity: isDark ? 0.04 : 0.12, top: '60%', left: '10%', animationDelay: '1s' }}
-      />
+      {/* Left panel */}
+      <div style={{
+        width: '48%', minHeight: '100vh', flexShrink: 0,
+        background: 'linear-gradient(145deg, #1A1A1A 0%, #111115 40%, #0C0C0F 100%)',
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'center', alignItems: 'center',
+        padding: '4rem 3.5rem', position: 'relative', overflow: 'hidden',
+      }} className="hidden lg:flex">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,221,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,221,0,0.04) 1px, transparent 1px)`, backgroundSize: '48px 48px' }} />
+        <div style={{ position: 'absolute', top: '-6rem', left: '-6rem', width: '28rem', height: '28rem', background: 'radial-gradient(circle, rgba(255,221,0,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '380px' }}>
+          <div style={{ width: 80, height: 80, borderRadius: '20px', background: 'rgba(255,221,0,0.15)', border: '1px solid rgba(255,221,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem' }}>
+            <svg width="36" height="36" fill="none" stroke="#FFDD00" strokeWidth="1.5" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="3"/>
+              <path d="M2 7l10 7 10-7"/>
+            </svg>
+          </div>
+          <h2 style={{ color: '#fff', fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.04em', margin: '0 0 1rem', fontFamily: "'Playfair Display', Georgia, serif" }}>
+            Check your<br /><span style={{ color: '#FFDD00' }}>inbox.</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+            We'll send a secure code to your email so you can reset your password safely.
+          </p>
+          <div style={{ marginTop: '2.5rem', padding: '1.5rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.82rem', margin: 0, lineHeight: 1.65 }}>
+              💡 <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Tip:</strong> Check your spam folder if you don't see it within 2 minutes. Code expires in 15 minutes.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <div
-        className={`glass-card relative z-10 w-full max-w-[440px] mx-4 rounded-[2.5rem] shadow-soft-xl overflow-hidden
-          ${mounted ? 'animate-fade-up' : 'opacity-0'}`}
-        style={{ boxShadow: isDark
-          ? '0 32px 80px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)'
-          : '0 32px 80px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04)',
-          backgroundColor: isDark ? '#141414' : undefined,
-        }}
-      >
-        <div className="h-1.5 w-full bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500" />
+      {/* Right panel */}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', minHeight: '100vh' }}>
+        <div style={{
+          width: '100%', maxWidth: '440px',
+          background: isDark ? '#1A1A1F' : '#FFFFFF',
+          border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`,
+          borderRadius: '24px', padding: '2.5rem',
+          boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)',
+        }}>
+          {/* Back link */}
+          <button type="button" onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'none', border: 'none', fontSize: '0.82rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, marginBottom: '2rem', fontFamily: 'inherit', transition: 'color 0.15s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#FFDD00'}
+            onMouseLeave={e => e.currentTarget.style.color = isDark ? '#9A9AAB' : '#6B7280'}
+          >
+            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M19 12H5m0 0l7-7m-7 7l7 7"/></svg>
+            Back to login
+          </button>
 
-        <div className="p-8 pt-7">
-          <div className="flex flex-col items-center mb-7">
-            <div className="mb-4 animate-fade-up">
-              <span
-                className="text-4xl font-bold tracking-tight"
-                style={{
-                  background: isDark
-                    ? 'linear-gradient(135deg, #F0F0F0 30%, #9CA3AF 100%)'
-                    : 'linear-gradient(135deg, #1A1A1A 30%, #6B7280 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                CreatorHub
-              </span>
+          {/* Heading */}
+          <div style={{ marginBottom: '1.75rem' }}>
+            <div style={{ width: 48, height: 48, borderRadius: '12px', background: isDark ? 'rgba(255,221,0,0.1)' : 'rgba(255,221,0,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
+              <svg width="22" height="22" fill="none" stroke="#FFDD00" strokeWidth="1.8" viewBox="0 0 24 24">
+                {codeSent
+                  ? <><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></>
+                  : <><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></>
+                }
+              </svg>
             </div>
-
-            <h1 className="text-[1.7rem] font-semibold font-serif text-brand-900 dark:text-gray-100 tracking-tight leading-tight">
-              {codeSent ? 'Check your email' : 'Forgot password?'}
-            </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium text-center">
+            <h2 style={{ margin: '0 0 0.3rem', fontSize: '1.65rem', fontWeight: 700, letterSpacing: '-0.03em', color: isDark ? '#F0F0F3' : '#1A1A1A', fontFamily: "'Playfair Display', Georgia, serif" }}>
+              {codeSent ? 'Code sent!' : 'Forgot password?'}
+            </h2>
+            <p style={{ margin: 0, fontSize: '0.88rem', color: isDark ? '#9A9AAB' : '#6B7280', fontWeight: 500 }}>
               {codeSent
                 ? `We sent a reset code to ${email}`
-                : 'Enter your email and we\'ll send you a code to reset your password'}
+                : "Enter your email and we'll send you a reset code"}
             </p>
           </div>
 
-          {!codeSent ? (
-            <form onSubmit={handleSendCode} className="space-y-3.5">
-              <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
-                <Input
-                  label="Email address"
-                  variant="default"
-                  size="lg"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  error={error}
-                />
-              </div>
-
-              <div className="animate-fade-up pt-1" style={{ animationDelay: '0.2s' }}>
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  shimmer
-                  disabled={loading}
-                  className="w-full"
-                >
-                  {loading ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <svg className="animate-spin" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    'Send reset code'
-                  )}
-                </Button>
-              </div>
-            </form>
-          ) : (
-            <form onSubmit={handleContinue} className="space-y-3.5">
-              <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 mb-4">
-                  <svg width="20" height="20" fill="none" stroke="#16a34a" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
-                    <polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span className="text-sm font-semibold text-green-700 dark:text-green-400">
-                    Code sent! Check your inbox and spam folder.
-                  </span>
-                </div>
-
-                <Input
-                  label="Reset code"
-                  variant="default"
-                  size="lg"
-                  type="text"
-                  placeholder="Enter the code from your email"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  required
-                  error={error}
-                />
-              </div>
-
-              <div className="animate-fade-up pt-1" style={{ animationDelay: '0.15s' }}>
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  shimmer
-                  className="w-full"
-                >
-                  Continue
-                </Button>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => { setCodeSent(false); setError(''); setCode(''); }}
-                className="w-full text-center text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-300 ease-smooth mt-2"
-              >
-                Didn't receive the code? Send again
-              </button>
-            </form>
+          {/* Error */}
+          {error && (
+            <div style={{ padding: '0.75rem 1rem', background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.3)', borderRadius: '10px', marginBottom: '1rem' }}>
+              <p style={{ margin: 0, fontSize: '0.83rem', fontWeight: 600, color: '#F87171' }}>{error}</p>
+            </div>
           )}
 
-          <p className="text-center text-sm font-medium text-gray-500 dark:text-gray-400 mt-5">
-            <button
-              type="button"
-              onClick={() => navigate('/')}
-              className="font-bold text-brand-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300 ease-smooth underline underline-offset-2"
-            >
-              Back to login
-            </button>
-          </p>
+          {!codeSent ? (
+            <form onSubmit={handleSendCode} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Email address</label>
+                <input type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} required
+                  onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField(null)}
+                  style={inputStyle(isDark, focusedField === 'email')} />
+              </div>
+              <button type="submit" disabled={loading} style={{ marginTop: '0.25rem', width: '100%', padding: '0.85rem', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
+                onMouseEnter={e => { if (!loading) e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,221,0,0.45)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)'; }}
+              >
+                {loading ? (
+                  <><svg style={{ animation: 'spin 0.8s linear infinite' }} width="16" height="16" fill="none" viewBox="0 0 24 24"><circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path style={{ opacity: 0.9 }} fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/></svg> Sending…</>
+                ) : 'Send reset code'}
+              </button>
+            </form>
+          ) : (
+            <form onSubmit={handleContinue} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ padding: '0.85rem 1rem', background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.25)', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <svg width="18" height="18" fill="none" stroke="#4ADE80" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round"/><polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round"/></svg>
+                <span style={{ fontSize: '0.83rem', fontWeight: 600, color: '#4ADE80' }}>Code sent! Check your inbox.</span>
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Reset code</label>
+                <input type="text" placeholder="Enter the code from your email" value={code} onChange={e => setCode(e.target.value)} required
+                  onFocus={() => setFocusedField('code')} onBlur={() => setFocusedField(null)}
+                  style={{ ...inputStyle(isDark, focusedField === 'code'), letterSpacing: '0.1em', fontSize: '1rem' }} />
+              </div>
+              <button type="submit" style={{ width: '100%', padding: '0.85rem', background: '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
+                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,221,0,0.45)'}
+                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 4px 18px rgba(255,221,0,0.35)'}
+              >Continue</button>
+              <button type="button" onClick={() => { setCodeSent(false); setError(''); setCode(''); }}
+                style={{ background: 'none', border: 'none', fontSize: '0.8rem', fontWeight: 600, color: isDark ? '#6A6A78' : '#9CA3AF', cursor: 'pointer', fontFamily: 'inherit', padding: '0.25rem 0', transition: 'color 0.15s' }}
+                onMouseEnter={e => e.currentTarget.style.color = isDark ? '#F0F0F3' : '#1A1A1A'}
+                onMouseLeave={e => e.currentTarget.style.color = isDark ? '#6A6A78' : '#9CA3AF'}
+              >Didn't receive the code? Send again</button>
+            </form>
+          )}
         </div>
       </div>
+
+      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 };
