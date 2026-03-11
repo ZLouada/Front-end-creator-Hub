@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   User, MapPin, Edit2, Camera, Check, X, UserPlus,
   Search, Plus, Trash2, ExternalLink,
   Twitter, Youtube, Instagram, Globe, Linkedin, Facebook,
-  Github, Mail, Phone, Briefcase, Calendar
+  Github, Mail, Phone, Briefcase, Calendar,
+  ChevronDown, ChevronUp, Image, Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, Users, Lock
 } from 'lucide-react';
 import { Header } from '../header/Header';
 import { EditorialModal } from '../tierSelection/components/EditorialModal';
@@ -57,6 +58,40 @@ const INITIAL_SOCIALS: SocialLink[] = [
   { id: 's1', platform: 'Twitter', handle: '@creator_hub', url: 'https://twitter.com/creator_hub' },
   { id: 's2', platform: 'Instagram', handle: '@creator.hub', url: 'https://instagram.com/creator.hub' },
   { id: 's3', platform: 'YouTube', handle: 'CreatorHub SA', url: 'https://youtube.com/@creatorhubsa' },
+];
+
+/* ─── Mock Posts ────────────────────────────────────────────────── */
+interface Post {
+  id: string;
+  content: string;
+  image?: string;
+  likes: number;
+  comments: number;
+  shares: number;
+  timestamp: string;
+  liked: boolean;
+  saved: boolean;
+  visibility?: 'everyone' | 'connections' | 'only-me';
+}
+
+const INITIAL_POSTS: Post[] = [
+  {
+    id: 'p1',
+    content: 'Just wrapped up filming our latest tech review — the new gear is mind-blowing. Full video drops this Friday! 🎬',
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800',
+    likes: 142, comments: 28, shares: 17, timestamp: '2h ago', liked: false, saved: false,
+  },
+  {
+    id: 'p2',
+    content: 'Building in public: here\'s how I grew from 0 to 10k subscribers in 6 months. Thread 🧵👇',
+    likes: 384, comments: 52, shares: 91, timestamp: '1d ago', liked: true, saved: true,
+  },
+  {
+    id: 'p3',
+    content: 'Riyadh content creator meetup was incredible last night. So many talented people doing amazing things in the local scene 🇸🇦',
+    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800',
+    likes: 217, comments: 41, shares: 33, timestamp: '3d ago', liked: false, saved: false,
+  },
 ];
 
 /* ─── Platform config ───────────────────────────────────────────── */
@@ -166,6 +201,15 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<'connections' | 'requests' | 'suggestions'>('connections');
   const [connSearch, setConnSearch] = useState('');
 
+  // Posts
+  const [posts, setPosts] = useState<Post[]>(INITIAL_POSTS);
+  const [newPostContent, setNewPostContent] = useState('');
+  const [isWritingPost, setIsWritingPost] = useState(false);
+  const [postMenuOpen, setPostMenuOpen] = useState<string | null>(null);
+  const [postVisibility, setPostVisibility] = useState<'everyone' | 'connections' | 'only-me'>('everyone');
+  const [mediaPreview, setMediaPreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   /* ── Bio handlers ─────────────────────────────────────────────── */
   const startEditBio = () => { setTempBio(bio); setIsEditingBio(true); };
   const saveBio = () => {
@@ -226,6 +270,41 @@ export default function ProfilePage() {
     c.name.toLowerCase().includes(connSearch.toLowerCase()) ||
     c.role.toLowerCase().includes(connSearch.toLowerCase())
   );
+
+  /* ── Post handlers ─────────────────────────────────────────────── */
+  const submitPost = (asDraft = false) => {
+    if (!newPostContent.trim()) return;
+    const newPost: Post = {
+      id: `p${Date.now()}`,
+      content: newPostContent.trim(),
+      image: mediaPreview ?? undefined,
+      likes: 0, comments: 0, shares: 0,
+      timestamp: asDraft ? 'Draft · saved' : 'Just now',
+      liked: false, saved: asDraft,
+      visibility: postVisibility,
+    };
+    setPosts(prev => [newPost, ...prev]);
+    setNewPostContent('');
+    setIsWritingPost(false);
+    setMediaPreview(null);
+    setPostVisibility('everyone');
+  };
+  const handleMediaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setMediaPreview(url);
+  };
+  const toggleLike = (id: string) => {
+    setPosts(prev => prev.map(p => p.id === id
+      ? { ...p, liked: !p.liked, likes: p.likes + (p.liked ? -1 : 1) }
+      : p
+    ));
+  };
+  const toggleSave = (id: string) => {
+    setPosts(prev => prev.map(p => p.id === id ? { ...p, saved: !p.saved } : p));
+  };
+  const deletePost = (id: string) => setPosts(prev => prev.filter(p => p.id !== id));
 
   const initials = `${firstName[0] ?? ''}${lastName[0] ?? ''}`;
 
@@ -543,16 +622,205 @@ export default function ProfilePage() {
 
           </div>
 
-          {/* ── RIGHT COLUMN ─────────────────────────────────────── */}
-          <div className={styles.rightCol}>
+          {/* ── CENTER COLUMN — Posts ─────────────────────────────── */}
+          <div className={styles.centerCol}>
 
-            {/* Connections Card */}
             <div className={styles.card}>
               <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>Network</h2>
+                <h2 className={styles.cardTitle}>Posts</h2>
                 <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                  {connections.length} connections
+                  {posts.length} posts
                 </span>
+              </div>
+
+              {/* Compose */}
+              <div className={styles.postCompose}>
+                <div
+                  className={styles.postAvatar}
+                  style={{ background: 'linear-gradient(135deg,#1A1A1A,#FFDD00)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#fff' }}>{initials}</span>
+                </div>
+                {isWritingPost ? (
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <textarea
+                      className={styles.postTextarea}
+                      placeholder="What's on your mind?"
+                      value={newPostContent}
+                      onChange={e => setNewPostContent(e.target.value)}
+                      rows={3}
+                      autoFocus
+                    />
+                    {/* Media preview */}
+                    {mediaPreview && (
+                      <div className={styles.mediaPreviewWrap}>
+                        <img src={mediaPreview} alt="preview" className={styles.mediaPreviewImg} />
+                        <button
+                          className={styles.mediaRemoveBtn}
+                          onClick={() => setMediaPreview(null)}
+                          aria-label="Remove media"
+                          type="button"
+                        >
+                          <X size={14} />
+                        </button>
+                      </div>
+                    )}
+                    {/* Toolbar: media + visibility */}
+                    <div className={styles.postToolbar}>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*,video/*"
+                        style={{ display: 'none' }}
+                        onChange={handleMediaChange}
+                      />
+                      <button
+                        className={styles.postToolbarBtn}
+                        onClick={() => fileInputRef.current?.click()}
+                        title="Add photo / video"
+                        type="button"
+                      >
+                        <Image size={15} />
+                      </button>
+                      <select
+                        className={styles.visibilitySelect}
+                        value={postVisibility}
+                        onChange={e => setPostVisibility(e.target.value as 'everyone' | 'connections' | 'only-me')}
+                      >
+                        <option value="everyone">🌐 Everyone</option>
+                        <option value="connections">👥 Connections</option>
+                        <option value="only-me">🔒 Only me</option>
+                      </select>
+                    </div>
+                    <div className={styles.btnGroup}>
+                      <button className={styles.saveBtn} onClick={() => submitPost(true)}>
+                        <Bookmark size={14} /> Save Draft
+                      </button>
+                      <button className={styles.saveBtn} onClick={() => submitPost(false)} disabled={!newPostContent.trim()}>
+                        <Check size={14} /> Post
+                      </button>
+                      <button className={styles.cancelBtn} onClick={() => { setIsWritingPost(false); setNewPostContent(''); setMediaPreview(null); }}>
+                        <X size={14} /> Cancel
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button className={styles.postComposeTrigger} onClick={() => setIsWritingPost(true)}>
+                    What's on your mind?
+                  </button>
+                )}
+              </div>
+
+              {/* Posts Feed */}
+              <div className={styles.postFeed}>
+                {posts.map(post => (
+                  <div key={post.id} className={styles.postCard}>
+                    <div className={styles.postCardHeader}>
+                      <div
+                        className={styles.postAvatar}
+                        style={{ background: 'linear-gradient(135deg,#1A1A1A,#FFDD00)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+                      >
+                        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#fff' }}>{initials}</span>
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <p className={styles.postAuthor}>{displayName}</p>
+                        <p className={styles.postTime}>{post.timestamp}</p>
+                      </div>
+                      {/* 3-dot menu */}
+                      <div style={{ position: 'relative' }}>
+                        <button
+                          className={styles.postMenuBtn}
+                          onClick={() => setPostMenuOpen(postMenuOpen === post.id ? null : post.id)}
+                          aria-label="Post options"
+                        >
+                          <MoreHorizontal size={16} />
+                        </button>
+                        {postMenuOpen === post.id && (
+                          <div className={styles.postMenuDropdown}>
+                            <button
+                              className={styles.postMenuDropdownItem}
+                              onClick={() => setPostMenuOpen(null)}
+                            >
+                              <Share2 size={14} /> Share
+                            </button>
+                            <button
+                              className={styles.postMenuDropdownItem}
+                              onClick={() => setPostMenuOpen(null)}
+                            >
+                              {post.visibility === 'connections'
+                                ? <Users size={14} />
+                                : post.visibility === 'only-me'
+                                ? <Lock size={14} />
+                                : <Globe size={14} />}{' '}
+                              {post.visibility === 'connections'
+                                ? 'Connections only'
+                                : post.visibility === 'only-me'
+                                ? 'Only me'
+                                : 'Everyone'}
+                            </button>
+                            <button
+                              className={`${styles.postMenuDropdownItem} ${styles.postMenuDropdownItemDanger}`}
+                              onClick={() => { deletePost(post.id); setPostMenuOpen(null); }}
+                            >
+                              <Trash2 size={14} /> Delete
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <p className={styles.postContent}>{post.content}</p>
+                    {post.image && (
+                      <div className={styles.postImageWrap}>
+                        <img src={post.image} alt="" className={styles.postImage} />
+                      </div>
+                    )}
+                    <div className={styles.postActions}>
+                      <button
+                        className={`${styles.postAction} ${post.liked ? styles.postActionLiked : ''}`}
+                        onClick={() => toggleLike(post.id)}
+                      >
+                        <Heart size={15} fill={post.liked ? 'currentColor' : 'none'} />
+                        <span>{post.likes}</span>
+                      </button>
+                      <button className={styles.postAction}>
+                        <MessageCircle size={15} />
+                        <span>{post.comments}</span>
+                      </button>
+                      <button className={styles.postAction}>
+                        <Share2 size={15} />
+                        <span>{post.shares}</span>
+                      </button>
+                      <button
+                        className={`${styles.postAction} ${styles.postActionSave} ${post.saved ? styles.postActionSaved : ''}`}
+                        onClick={() => toggleSave(post.id)}
+                        title={post.saved ? 'Unsave' : 'Save'}
+                      >
+                        <Bookmark size={15} fill={post.saved ? 'currentColor' : 'none'} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {posts.length === 0 && (
+                  <div className={styles.emptyState}>No posts yet. Share something!</div>
+                )}
+              </div>
+            </div>
+
+          </div>
+
+          {/* ── RIGHT COLUMN — Network sidebar ───────────────────── */}
+          <div className={styles.rightCol}>
+
+            {/* Network Card */}
+            <div className={styles.card}>
+              <div className={styles.cardHeader}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <h2 className={styles.cardTitle} style={{ margin: 0 }}>Network</h2>
+                  <span className={styles.networkBadge}>{connections.length}</span>
+                  {requests.length > 0 && (
+                    <span className={styles.networkRequestBadge}>{requests.length} new</span>
+                  )}
+                </div>
               </div>
 
               {/* Tabs */}
@@ -561,7 +829,7 @@ export default function ProfilePage() {
                   [
                     { key: 'connections', label: 'Connections', count: connections.length },
                     { key: 'requests',    label: 'Requests',    count: requests.length },
-                    { key: 'suggestions', label: 'Suggestions', count: suggestions.length },
+                    { key: 'suggestions', label: 'Suggest',     count: suggestions.length },
                   ] as const
                 ).map(t => (
                   <button
@@ -584,7 +852,7 @@ export default function ProfilePage() {
                   </span>
                   <div className={styles.requestBannerActions}>
                     <button className={styles.connBtnPrimary} onClick={() => setActiveTab('requests')}>
-                      View Requests
+                      View
                     </button>
                   </div>
                 </div>
@@ -603,7 +871,7 @@ export default function ProfilePage() {
                 </div>
               )}
 
-              {/* Grid */}
+              {/* Connections grid */}
               {activeTab === 'connections' && (
                 filteredConnections.length > 0 ? (
                   <div className={styles.connectionGrid}>
@@ -641,8 +909,8 @@ export default function ProfilePage() {
                   <div className={styles.emptyState}>No suggestions right now.</div>
                 )
               )}
-
             </div>
+
           </div>
         </div>
       </div>

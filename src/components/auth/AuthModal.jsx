@@ -74,7 +74,7 @@ const AuthModal = () => {
     <div
       className="relative min-h-screen flex items-center justify-center overflow-hidden font-sans bg-surface"
       style={{ background: isDark
-        ? 'linear-gradient(135deg, #0A0A0A 0%, #141414 40%, #1A1A1A 70%, #0A0A0A 100%)'
+        ? 'linear-gradient(135deg, #0C0C0F 0%, #111115 40%, #1A1A1F 70%, #0C0C0F 100%)'
         : 'linear-gradient(135deg, #FFFFFF 0%, #FBF9F6 30%, #F3F4F6 60%, #E5E7EB 100%)'
       }}
     >
@@ -82,7 +82,7 @@ const AuthModal = () => {
         className="absolute inset-0 animate-gradient-bg pointer-events-none"
         style={{
           background: isDark
-            ? 'linear-gradient(270deg, #0A0A0A, #1A1A1A, #0A0A0A, #141414)'
+            ? 'linear-gradient(270deg, #0C0C0F, #1A1A1F, #0C0C0F, #111115)'
             : 'linear-gradient(270deg, #FFFFFF, #F3F4F6, #FFFFFF, #FBF9F6)',
           backgroundSize: '400% 400%',
           opacity: isDark ? 0.3 : 0.6,
@@ -91,19 +91,19 @@ const AuthModal = () => {
 
       <Blob
         className="w-96 h-96 animate-float-slow"
-        style={{ background: isDark ? '#333333' : '#E5E7EB', opacity: isDark ? 0.08 : 0.25, top: '-8rem', left: '-8rem' }}
+        style={{ background: isDark ? '#22222A' : '#E5E7EB', opacity: isDark ? 0.08 : 0.25, top: '-8rem', left: '-8rem' }}
       />
       <Blob
         className="w-80 h-80 animate-drift"
-        style={{ background: isDark ? '#2D2D2D' : '#D1D5DB', opacity: isDark ? 0.06 : 0.18, bottom: '-6rem', right: '-6rem', animationDelay: '2s' }}
+        style={{ background: isDark ? '#1A1A1F' : '#D1D5DB', opacity: isDark ? 0.06 : 0.18, bottom: '-6rem', right: '-6rem', animationDelay: '2s' }}
       />
       <Blob
         className="w-64 h-64 animate-float-fast"
-        style={{ background: isDark ? '#333333' : '#E5E7EB', opacity: isDark ? 0.04 : 0.12, top: '60%', left: '10%', animationDelay: '1s' }}
+        style={{ background: isDark ? '#22222A' : '#E5E7EB', opacity: isDark ? 0.04 : 0.12, top: '60%', left: '10%', animationDelay: '1s' }}
       />
       <Blob
         className="w-48 h-48 animate-drift"
-        style={{ background: isDark ? '#2D2D2D' : '#D1D5DB', opacity: isDark ? 0.05 : 0.15, top: '20%', right: '8%', animationDelay: '3s' }}
+        style={{ background: isDark ? '#1A1A1F' : '#D1D5DB', opacity: isDark ? 0.05 : 0.15, top: '20%', right: '8%', animationDelay: '3s' }}
       />
 
       <div
@@ -141,7 +141,7 @@ const AuthModal = () => {
         style={{ boxShadow: isDark
           ? '0 32px 80px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)'
           : '0 32px 80px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04)',
-          backgroundColor: isDark ? '#141414' : undefined,
+          backgroundColor: isDark ? '#1A1A1F' : undefined,
         }}
       >
         <div className="h-1.5 w-full bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500" />

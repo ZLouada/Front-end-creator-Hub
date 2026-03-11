@@ -125,7 +125,7 @@ export default function SettingsPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {paymentHistory.map((row) => (
-                    <tr key={row.date} className="hover:bg-gray-50 dark:hover:bg-[#1A1A1A] transition-colors">
+                    <tr key={row.date} className="hover:bg-gray-50 dark:hover:bg-[#1A1A1F] transition-colors">
                       <td className="py-3.5 pl-2 text-sm text-gray-500 dark:text-gray-400 font-medium">{row.date}</td>
                       <td className="py-3.5 text-sm text-gray-700 dark:text-gray-300 font-semibold">{row.desc}</td>
                       <td className="py-3.5 text-sm text-gray-900 dark:text-gray-100 font-bold">{row.amount}</td>

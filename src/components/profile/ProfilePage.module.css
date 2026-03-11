@@ -262,7 +262,7 @@
   color: var(--text-secondary);
 }
 
-/* ── Two-column layout ───────────────────────────────────────────── */
+/* ── Three-column layout ─────────────────────────────────────────── */
 
 .columns {
   display: grid;
@@ -272,11 +272,23 @@
 
 @media (min-width: 768px) {
   .columns {
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .columns {
+    grid-template-columns: 300px 1fr 280px;
   }
 }
 
 .leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.centerCol {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -362,7 +374,7 @@
 }
 .bioTextarea:focus {
   border-color: var(--text-primary);
-  box-shadow: 0 0 0 3px rgba(26,26,26,0.06);
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.06);
 }
 
 /* ── Form Fields ─────────────────────────────────────────────────── */
@@ -403,7 +415,7 @@
 }
 .fieldInput:focus {
   border-color: var(--text-primary);
-  box-shadow: 0 0 0 3px rgba(26,26,26,0.06);
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.06);
 }
 .fieldInput:disabled {
   opacity: 0.5;
@@ -779,10 +791,484 @@
   box-shadow: 0 0 0 3px rgba(26,26,26,0.06);
 }
 
+/* ── Network Collapsible Header ──────────────────────────────────── */
+
+.networkToggleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: inherit;
+  transition: background 0.15s;
+  text-align: left;
+}
+.networkToggleHeader:hover {
+  background: var(--hover-bg);
+}
+
+.networkBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hover-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+}
+
+.networkRequestBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 221, 0, 0.1);
+  border: 1px solid rgba(255, 221, 0, 0.25);
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #B8A000;
+  padding: 2px 8px;
+}
+
+/* ── Posts Section ───────────────────────────────────────────────── */
+
+.postCompose {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.postAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.postComposeTrigger {
+  flex: 1;
+  background: var(--hover-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 24px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.postComposeTrigger:hover {
+  background: var(--bg-card);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.postTextarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  background: var(--hover-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.postTextarea:focus {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.06);
+}
+
+.postFeed {
+  display: flex;
+  flex-direction: column;
+}
+
+.postCard {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border-primary);
+  transition: background 0.15s;
+}
+
+.postCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.postAuthor {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.postTime {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.postMenuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  transition: background 0.15s, color 0.15s;
+  margin-left: auto;
+}
+.postMenuBtn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  color: #EF4444;
+}
+
+.postContent {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 0.8rem;
+  white-space: pre-wrap;
+}
+
+.postImageWrap {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--border-primary);
+}
+
+.postImage {
+  width: 100%;
+  display: block;
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.postActions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.postAction {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.postAction:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.postActionLiked {
+  color: #EF4444 !important;
+}
+
+.postActionSave {
+  margin-left: auto;
+}
+
+.postActionSaved {
+  color: #B8A000 !important;
+}
+
 /* ── Dark mode overrides ─────────────────────────────────────────── */
 
-.dark .bannerWrapper {
-  background: linear-gradient(135deg, #111 0%, #2a2a2a 50%, #111 100%);
+:global(.dark) .bannerWrapper {
+  background: linear-gradient(135deg, #0C0C0F 0%, #1A1A1F 50%, #0C0C0F 100%);
+}
+
+/* Inputs turn dark */
+:global(.dark) .fieldInput,
+:global(.dark) .bioTextarea,
+:global(.dark) .socialPlatformSelect,
+:global(.dark) .searchInput,
+:global(.dark) .postTextarea {
+  background: #1A1A1F;
+  border-color: #27272F;
+  color: #F0F0F3;
+}
+:global(.dark) .fieldInput:focus,
+:global(.dark) .bioTextarea:focus,
+:global(.dark) .searchInput:focus,
+:global(.dark) .postTextarea:focus {
+  border-color: #FFDD00;
+  box-shadow: 0 0 0 3px rgba(255, 221, 0, 0.1);
+}
+:global(.dark) .fieldInput::placeholder,
+:global(.dark) .bioTextarea::placeholder,
+:global(.dark) .searchInput::placeholder,
+:global(.dark) .postTextarea::placeholder {
+  color: #6A6A78;
+}
+
+/* connBtnPrimary: in dark mode var(--text-primary) = #F0F0F3 — needs explicit colors */
+:global(.dark) .connBtnPrimary {
+  background: #F0F0F3;
+  color: #111115;
+}
+:global(.dark) .connBtnPrimary:hover {
+  background: #FFFFFF;
+}
+
+/* Network collapsed header */
+:global(.dark) .networkToggleHeader:hover {
+  background: #1A1A1F;
+}
+
+/* Post compose trigger */
+:global(.dark) .postComposeTrigger {
+  background: #1A1A1F;
+  border-color: #27272F;
+  color: #6A6A78;
+}
+:global(.dark) .postComposeTrigger:hover {
+  background: #22222A;
+  color: #9A9AAB;
+}
+
+/* Post card */
+:global(.dark) .postCard {
+  border-color: #27272F;
+}
+:global(.dark) .postCard:hover {
+  background: #1A1A1F;
+}
+:global(.dark) .postAuthor {
+  color: #F0F0F3;
+}
+:global(.dark) .postTime {
+  color: #6A6A78;
+}
+:global(.dark) .postContent {
+  color: #C8C8D4;
+}
+:global(.dark) .postAction {
+  color: #6A6A78;
+}
+:global(.dark) .postAction:hover {
+  color: #9A9AAB;
+  background: #22222A;
+}
+:global(.dark) .postActionLiked {
+  color: #F87171 !important;
+}
+:global(.dark) .postActionSaved {
+  color: #FFDD00 !important;
+}
+:global(.dark) .postMenuBtn {
+  color: #6A6A78;
+}
+:global(.dark) .postMenuBtn:hover {
+  color: #F87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+:global(.dark) .postImageWrap {
+  border-color: #27272F;
+}
+
+/* Network badges */
+:global(.dark) .networkBadge {
+  background: #22222A;
+  color: #9A9AAB;
+  border-color: #27272F;
+}
+:global(.dark) .networkRequestBadge {
+  background: rgba(255, 221, 0, 0.15);
+  color: #FFDD00;
+  border-color: rgba(255, 221, 0, 0.3);
+}
+
+/* ── Post compose toolbar ────────────────────────────────────────── */
+
+.postToolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-primary);
+}
+
+.postToolbarBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.postToolbarBtn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.visibilitySelect {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ── Media preview ──────────────────────────────────────────────── */
+
+.mediaPreviewWrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  max-height: 280px;
+}
+
+.mediaPreviewImg {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  max-height: 280px;
+}
+
+.mediaRemoveBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.65);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.mediaRemoveBtn:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* ── Post 3-dot dropdown ────────────────────────────────────────── */
+
+.postMenuDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 50;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  min-width: 168px;
+  overflow: hidden;
+}
+
+.postMenuDropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+
+.postMenuDropdownItem:hover {
+  background: var(--bg-hover);
+}
+
+.postMenuDropdownItem + .postMenuDropdownItem {
+  border-top: 1px solid var(--border-primary);
+}
+
+.postMenuDropdownItemDanger {
+  color: #F87171;
+}
+
+.postMenuDropdownItemDanger:hover {
+  background: rgba(248, 113, 113, 0.08);
+}
+
+/* Dark mode — new compose & dropdown classes */
+:global(.dark) .postToolbarBtn {
+  border-color: #27272F;
+  color: #9A9AAB;
+}
+:global(.dark) .postToolbarBtn:hover {
+  background: #22222A;
+  color: #F0F0F3;
+}
+:global(.dark) .visibilitySelect {
+  background: #1A1A1F;
+  border-color: #27272F;
+  color: #F0F0F3;
+}
+:global(.dark) .mediaPreviewWrap {
+  border-color: #27272F;
+}
+:global(.dark) .postMenuDropdown {
+  background: #1A1A1F;
+  border-color: #27272F;
+}
+:global(.dark) .postMenuDropdownItem {
+  color: #F0F0F3;
+}
+:global(.dark) .postMenuDropdownItem:hover {
+  background: #22222A;
+}
+:global(.dark) .postMenuDropdownItem + .postMenuDropdownItem {
+  border-top-color: #27272F;
 }
 
 /* ── Mobile responsiveness ───────────────────────────────────────── */
