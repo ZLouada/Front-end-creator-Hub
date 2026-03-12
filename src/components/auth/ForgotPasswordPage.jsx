@@ -9,7 +9,9 @@ const inputStyle = (isDark, focused) => ({
   border: `1.5px solid ${focused ? '#FFDD00' : isDark ? '#27272F' : '#E5E7EB'}`,
   borderRadius: '12px',
   padding: '0.75rem 1rem',
-  fontSize: '0.9rem', fontWeight: 500,
+  /* 1rem = 16px — prevents iOS Safari from auto-zooming on focus */
+  fontSize: '1rem', fontWeight: 500,
+  minHeight: '48px',
   color: isDark ? '#F0F0F3' : '#1A1A1A',
   fontFamily: 'inherit',
   outline: 'none',
@@ -56,11 +58,15 @@ const ForgotPasswordPage = () => {
       fontFamily: "'Inter', system-ui, sans-serif",
     }}>
       <style>{`
-        .fp-right-wrap { padding: 2rem; }
+        .fp-right-wrap { padding: 2rem; overflow-x: hidden; }
         .fp-card       { padding: 2.5rem; }
-        @media (max-width: 480px) {
-          .fp-right-wrap { padding: 1.25rem 1rem !important; align-items: flex-start !important; padding-top: 2rem !important; }
-          .fp-card       { padding: 1.75rem 1.5rem !important; border-radius: 20px !important; }
+        @media (max-width: 640px) {
+          .fp-right-wrap { padding: 1.5rem 1rem !important; align-items: flex-start !important; padding-top: 2.5rem !important; }
+          .fp-card       { padding: 1.75rem 1.25rem !important; border-radius: 20px !important; box-shadow: none !important; }
+        }
+        @media (max-width: 390px) {
+          .fp-right-wrap { padding: 1rem 0.75rem !important; padding-top: 2rem !important; }
+          .fp-card       { padding: 1.5rem 1rem !important; }
         }
       `}</style>
 
@@ -97,7 +103,7 @@ const ForgotPasswordPage = () => {
       </div>
 
       {/* Right panel */}
-      <div className="fp-right-wrap" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+      <div className="fp-right-wrap" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', overflowX: 'hidden' }}>
         <div className="fp-card" style={{
           width: '100%', maxWidth: '440px',
           background: isDark ? '#1A1A1F' : '#FFFFFF',
@@ -151,7 +157,7 @@ const ForgotPasswordPage = () => {
                   onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField(null)}
                   style={inputStyle(isDark, focusedField === 'email')} />
               </div>
-              <button type="submit" disabled={loading} style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.1s both', marginTop: '0.25rem', width: '100%', padding: '0.85rem', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
+              <button type="submit" disabled={loading} style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.1s both', marginTop: '0.25rem', width: '100%', padding: '0.85rem', minHeight: '52px', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '1rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
                 onMouseEnter={e => { if (!loading) e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,221,0,0.45)'; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)'; }}
               >
@@ -172,7 +178,7 @@ const ForgotPasswordPage = () => {
                   onFocus={() => setFocusedField('code')} onBlur={() => setFocusedField(null)}
                   style={{ ...inputStyle(isDark, focusedField === 'code'), letterSpacing: '0.1em', fontSize: '1rem' }} />
               </div>
-              <button type="submit" style={{ width: '100%', padding: '0.85rem', background: '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
+              <button type="submit" style={{ width: '100%', padding: '0.85rem', minHeight: '52px', background: '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '1rem', fontWeight: 800, color: '#1A1A1A', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}
                 onMouseEnter={e => e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,221,0,0.45)'}
                 onMouseLeave={e => e.currentTarget.style.boxShadow = '0 4px 18px rgba(255,221,0,0.35)'}
               >Continue</button>
