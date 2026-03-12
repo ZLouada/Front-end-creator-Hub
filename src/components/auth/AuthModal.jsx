@@ -78,7 +78,9 @@ const inputStyle = (isDark) => ({
   border: `1.5px solid ${isDark ? '#27272F' : '#E5E7EB'}`,
   borderRadius: '12px',
   padding: '0.75rem 1rem',
-  fontSize: '0.9rem', fontWeight: 500,
+  /* 1rem = 16px — prevents iOS Safari from auto-zooming on focus */
+  fontSize: '1rem', fontWeight: 500,
+  minHeight: '48px',
   color: isDark ? '#F0F0F3' : '#1A1A1A',
   fontFamily: 'inherit',
   outline: 'none',
@@ -139,11 +141,16 @@ const AuthModal = () => {
         @keyframes authFadeUp  { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
         @keyframes authBlobA   { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(24px,-32px) scale(1.05)} 66%{transform:translate(-16px,22px) scale(0.97)} }
         @keyframes authBlobB   { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-28px,22px) scale(1.04)} 80%{transform:translate(18px,-28px) scale(0.96)} }
-        .auth-right-wrap { padding: 2rem; }
+        .auth-right-wrap { padding: 2rem; overflow-x: hidden; }
         .auth-card       { padding: 2.5rem; }
-        @media (max-width: 480px) {
-          .auth-right-wrap { padding: 1.25rem 1rem !important; align-items: flex-start; padding-top: 2rem; }
-          .auth-card       { padding: 1.75rem 1.5rem !important; border-radius: 20px !important; }
+        @media (max-width: 640px) {
+          .auth-right-wrap { padding: 1.5rem 1rem !important; align-items: flex-start !important; padding-top: 2.5rem !important; }
+          .auth-card       { padding: 1.75rem 1.25rem !important; border-radius: 20px !important; box-shadow: none !important; }
+          .auth-trust-row  { gap: 0.75rem !important; flex-wrap: wrap !important; justify-content: center !important; }
+        }
+        @media (max-width: 390px) {
+          .auth-right-wrap { padding: 1rem 0.75rem !important; padding-top: 2rem !important; }
+          .auth-card       { padding: 1.5rem 1rem !important; }
         }
       `}</style>
 
@@ -234,6 +241,7 @@ const AuthModal = () => {
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: isDark ? '#0C0C0F' : '#FAFAF8',
         minHeight: '100vh',
+        overflowX: 'hidden',
       }}>
         <div className="auth-card" style={{
           width: '100%', maxWidth: '440px',
@@ -280,10 +288,11 @@ const AuthModal = () => {
             style={{ animation: mounted ? 'authFadeUp 0.45s cubic-bezier(0.22,1,0.36,1) 0.1s both' : 'none',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.65rem',
               width: '100%', padding: '0.78rem',
+              minHeight: '52px',
               background: isDark ? '#111115' : '#F9FAFB',
               border: `1.5px solid ${isDark ? '#27272F' : '#E5E7EB'}`,
               borderRadius: '12px',
-              fontSize: '0.88rem', fontWeight: 600,
+              fontSize: '1rem', fontWeight: 600,
               color: isDark ? '#F0F0F3' : '#1A1A1A',
               cursor: 'pointer',
               transition: 'all 0.18s',
@@ -340,9 +349,9 @@ const AuthModal = () => {
             </div>
 
             <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}>
-            <Field label="Password" isDark={isDark}>
+            <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Password</span>
+                <label style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Password</label>
                 {isLogin && (
                   <button type="button" onClick={() => navigate('/forgot-password')}
                     style={{ background: 'none', border: 'none', fontSize: '0.78rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}
@@ -365,11 +374,11 @@ const AuthModal = () => {
                   style={{ ...inputStyle(isDark), border: fieldBorder('password'), boxShadow: fieldShadow('password'), paddingRight: '3rem' }}
                 />
                 <button type="button" onClick={() => setShowPassword(v => !v)} tabIndex={-1}
-                  style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: isDark ? '#6A6A78' : '#9CA3AF', cursor: 'pointer', display: 'flex', lineHeight: 0, padding: 0 }}>
+                  style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: isDark ? '#6A6A78' : '#9CA3AF', cursor: 'pointer', display: 'flex', lineHeight: 0, padding: '0.25rem', minWidth: '44px', minHeight: '44px', alignItems: 'center', justifyContent: 'flex-end' }}>
                   <EyeIcon open={showPassword} />
                 </button>
               </div>
-            </Field>
+            </div>
             </div>
 
             {/* Submit */}
@@ -380,9 +389,10 @@ const AuthModal = () => {
                 animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.15s both',
                 marginTop: '0.5rem',
                 width: '100%', padding: '0.85rem',
+                minHeight: '52px',
                 background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00',
                 border: 'none', borderRadius: '12px',
-                fontSize: '0.92rem', fontWeight: 800, letterSpacing: '-0.01em',
+                fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em',
                 color: '#1A1A1A',
                 cursor: loading ? 'not-allowed' : 'pointer',
                 transition: 'all 0.18s',
@@ -415,8 +425,9 @@ const AuthModal = () => {
           </p>
 
           {/* Trust row */}
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem',
+          <div className="auth-trust-row" style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.25rem',
+            flexWrap: 'wrap',
             marginTop: '1.75rem', paddingTop: '1.5rem',
             borderTop: `1px solid ${isDark ? '#27272F' : '#F3F4F6'}`,
           }}>

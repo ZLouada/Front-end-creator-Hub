@@ -8,7 +8,9 @@ const inputStyle = (isDark, focused) => ({
   background: isDark ? '#111115' : '#F9FAFB',
   border: `1.5px solid ${focused ? '#FFDD00' : isDark ? '#27272F' : '#E5E7EB'}`,
   borderRadius: '12px', padding: '0.75rem 1rem',
-  fontSize: '0.9rem', fontWeight: 500,
+  /* 1rem = 16px — prevents iOS Safari from auto-zooming on focus */
+  fontSize: '1rem', fontWeight: 500,
+  minHeight: '48px',
   color: isDark ? '#F0F0F3' : '#1A1A1A',
   fontFamily: 'inherit', outline: 'none',
   boxShadow: focused ? '0 0 0 3px rgba(255,221,0,0.12)' : 'none',
@@ -66,11 +68,15 @@ const ResetPasswordPage = () => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', background: isDark ? '#0C0C0F' : '#FAFAF8', fontFamily: "'Inter', system-ui, sans-serif" }}>
       <style>{`
-        .rp-right-wrap { padding: 2rem; }
+        .rp-right-wrap { padding: 2rem; overflow-x: hidden; }
         .rp-card       { padding: 2.5rem; }
-        @media (max-width: 480px) {
-          .rp-right-wrap { padding: 1.25rem 1rem !important; align-items: flex-start !important; padding-top: 2rem !important; }
-          .rp-card       { padding: 1.75rem 1.5rem !important; border-radius: 20px !important; }
+        @media (max-width: 640px) {
+          .rp-right-wrap { padding: 1.5rem 1rem !important; align-items: flex-start !important; padding-top: 2.5rem !important; }
+          .rp-card       { padding: 1.75rem 1.25rem !important; border-radius: 20px !important; box-shadow: none !important; }
+        }
+        @media (max-width: 390px) {
+          .rp-right-wrap { padding: 1rem 0.75rem !important; padding-top: 2rem !important; }
+          .rp-card       { padding: 1.5rem 1rem !important; }
         }
       `}</style>
 
@@ -104,7 +110,7 @@ const ResetPasswordPage = () => {
       </div>
 
       {/* Right panel */}
-      <div className="rp-right-wrap" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+      <div className="rp-right-wrap" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', overflowX: 'hidden' }}>
         <div className="rp-card" style={{ width: '100%', maxWidth: '440px', background: isDark ? '#1A1A1F' : '#FFFFFF', border: `1px solid ${isDark ? '#27272F' : '#E5E7EB'}`, borderRadius: '24px', boxShadow: isDark ? '0 24px 64px rgba(0,0,0,0.5)' : '0 24px 64px rgba(0,0,0,0.06)', animation: mounted ? 'authCardIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards' : 'none', opacity: mounted ? undefined : 0 }}>
 
           <button type="button" onClick={() => navigate('/forgot-password')} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'none', border: 'none', fontSize: '0.82rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, marginBottom: '2rem', fontFamily: 'inherit', transition: 'color 0.15s' }}
@@ -138,7 +144,7 @@ const ResetPasswordPage = () => {
                 <svg width="18" height="18" fill="none" stroke="#4ADE80" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round"/><polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round"/></svg>
                 <span style={{ fontSize: '0.83rem', fontWeight: 600, color: '#4ADE80' }}>Password updated successfully!</span>
               </div>
-              <button type="button" onClick={() => navigate('/auth')} style={{ width: '100%', padding: '0.85rem', background: '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 18px rgba(255,221,0,0.35)' }}>
+              <button type="button" onClick={() => navigate('/auth')} style={{ width: '100%', padding: '0.85rem', minHeight: '52px', background: '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '1rem', fontWeight: 800, color: '#1A1A1A', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 18px rgba(255,221,0,0.35)' }}>
                 Go to login
               </button>
             </div>
@@ -155,7 +161,7 @@ const ResetPasswordPage = () => {
                   <input type={showPassword ? 'text' : 'password'} placeholder="At least 8 characters" value={newPassword} onChange={e => setNewPassword(e.target.value)} required
                     onFocus={() => setFocusedField('new')} onBlur={() => setFocusedField(null)}
                     style={{ ...inputStyle(isDark, focusedField === 'new'), paddingRight: '3rem' }} />
-                  <button type="button" onClick={() => setShowPassword(v => !v)} tabIndex={-1} style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: isDark ? '#6A6A78' : '#9CA3AF', cursor: 'pointer', display: 'flex', lineHeight: 0, padding: 0 }}>
+                  <button type="button" onClick={() => setShowPassword(v => !v)} tabIndex={-1} style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: isDark ? '#6A6A78' : '#9CA3AF', cursor: 'pointer', display: 'flex', lineHeight: 0, padding: '0.25rem', minWidth: '44px', minHeight: '44px', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <EyeIcon open={showPassword} />
                   </button>
                 </div>
@@ -166,7 +172,7 @@ const ResetPasswordPage = () => {
                   onFocus={() => setFocusedField('confirm')} onBlur={() => setFocusedField(null)}
                   style={inputStyle(isDark, focusedField === 'confirm')} />
               </div>
-              <button type="submit" disabled={loading} style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.15s both', marginTop: '0.25rem', width: '100%', padding: '0.85rem', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}>
+              <button type="submit" disabled={loading} style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.15s both', marginTop: '0.25rem', width: '100%', padding: '0.85rem', minHeight: '52px', background: loading ? (isDark ? '#3A3A2A' : '#E5D800') : '#FFDD00', border: 'none', borderRadius: '12px', fontSize: '1rem', fontWeight: 800, color: '#1A1A1A', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: loading ? 'none' : '0 4px 18px rgba(255,221,0,0.35)', transition: 'all 0.18s' }}>
                 {loading ? (
                   <><svg style={{ animation: 'spin 0.8s linear infinite' }} width="16" height="16" fill="none" viewBox="0 0 24 24"><circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path style={{ opacity: 0.9 }} fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/></svg> Updating…</>
                 ) : 'Update password'}
