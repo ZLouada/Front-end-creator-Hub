@@ -47,8 +47,26 @@ const CREATORS = [
   }
 ];
 
+async function fetchUsers() {
+  const apiUrl = 'https://api-creators-hub.vercel.app/api/v1/users/all';
+  console.log("test");
+  const response = await fetch(apiUrl);
+  const users = await response.json();
+
+  return users;
+}
+
+
+
 
 export default function ExplorePage() {
+  fetchUsers()
+  .then((users) => {
+    console.log('List of users:', users);
+  })
+  .catch((error) => {
+    console.error('Failed to retrieve users:', error);
+  });
     const [searchQuery, setSearchQuery] = useState("");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);

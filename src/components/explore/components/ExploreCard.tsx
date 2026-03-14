@@ -13,43 +13,55 @@ interface ExploreCardProps {
   startingPrice: string;
 }
 
-const ExploreCard = ({
-  name,
-  category,
-  supporters,
-  rating,
-  imageUrl,
-  startingPrice
-}: ExploreCardProps) => {
+async function fetchUsers() {
+  const apiUrl = 'https://api-creators-hub.vercel.app/api/v1/users/all';
+  console.log("test");
+  const response = await fetch(apiUrl);
+  const users = await response.json();
+
+  return users;
+}
+
+fetchUsers()
+  .then((users) => {
+    console.log('List of users:', users);
+  })
+  .catch((error) => {
+    console.error('Failed to retrieve users:', error);
+  });
+
+
+const ExploreCard = (
+  data : ExploreCardProps) => {
   return (
     <div className={styles.card}>
       {/* Top Image Section */}
       <div className={styles.imageWrapper}>
-        <span className={styles.categoryBadge}>{category}</span>
+        <span className={styles.categoryBadge}>{data.category}</span>
         <img
-          src={imageUrl}
-          alt={name}
+          src={data.imageUrl}
+          alt={data.name}
           className={styles.creatorImage}
         />
       </div>
 
       {/* Info Section */}
       <div className={styles.content}>
-        <h3 className={`${styles.name} font-serif`}>{name}</h3>
+        <h3 className={`${styles.name} font-serif`}>{data.name}</h3>
 
         <div className={styles.statsRow}>
           <div className={styles.statItem}>
             <Users size={16} />
-            {supporters}
+            {data.supporters}
           </div>
           <div className={styles.statItem}>
             <Star size={16} fill="#D1D5DB" className="text-gray-300" />
-            {rating}
+            {data.rating}
           </div>
         </div>
 
         <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 tracking-wider">
-          Support starting at <span className="text-brand-900 font-bold">{startingPrice}</span>
+          Support starting at <span className="text-brand-900 font-bold">{data.startingPrice}</span>
         </p>
       </div>
 

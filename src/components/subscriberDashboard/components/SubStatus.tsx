@@ -51,7 +51,7 @@ const SubStatus = ({
         </div>
       </div>
 
-      <div className={styles.billingSection}>
+      {/* <div className={styles.billingSection}>
         <div className="flex items-start gap-3">
           <Calendar size={18} className="mt-1" />
           <p className={styles.billingText}>
@@ -61,25 +61,7 @@ const SubStatus = ({
           </p>
         </div>
         <div className={styles.savingsBadge}>Annual Plan Active</div>
-      </div>
-
-      <div className={styles.perksSection}>
-        <div className={styles.perksHeader}>
-          <span className={styles.perksLabel}>{perkName}</span>
-          <span className={styles.perksLabel}>
-            {perkUsed}/{perkTotal}
-          </span>
-        </div>
-        <div className={styles.progressBarContainer}>
-          <div 
-            className={styles.progressBarFill} 
-            style={{ width: `${progressPercentage}%` }}
-          />
-        </div>
-        <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-2 uppercase">
-          Resets in {daysRemaining} days
-        </p>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -14,7 +14,7 @@ import {
 import styles from './FeedPost.module.css';
 
 interface FeedPostProps {
-  type: 'video' | 'image' | 'audio' | 'pdf';
+  type: 'video' | 'image' | 'audio' | 'pdf' | 'text';
   creator: string;
   timestamp: string;
   tier: string;
@@ -27,6 +27,8 @@ const FeedPost = ({ type, creator, timestamp, tier, content, mediaUrl, isLocked 
   
   const renderMedia = () => {
     switch (type) {
+      case 'text':
+        return null; // Text posts don't have media to render
       case 'video':
         return (
           <div className={styles.videoPlaceholder} style={{ backgroundImage: `url(${mediaUrl})` }}>
@@ -59,8 +61,10 @@ const FeedPost = ({ type, creator, timestamp, tier, content, mediaUrl, isLocked 
             <Download size={20} className="cursor-pointer hover:text-gray-700 dark:hover:text-gray-200" />
           </div>
         );
+      case 'image':
       default:
-        return <img src={mediaUrl} alt="Post content" className="w-full h-auto" />;
+        // Only render image if mediaUrl exists
+        return mediaUrl ? <img src={mediaUrl} alt="Post content" className="w-full h-auto" /> : null;
     }
   };
 
@@ -79,19 +83,22 @@ const FeedPost = ({ type, creator, timestamp, tier, content, mediaUrl, isLocked 
       <div className={styles.body}>
         <p className={styles.postText}>{content}</p>
         
-        <div className={styles.mediaContainer}>
-          {isLocked && (
-            <div className={styles.lockedOverlay}>
-              <div className="p-4 bg-white dark:bg-[#22222A] border border-gray-200 dark:border-[#27272F] rounded-full mb-4">
-                <Lock size={32} />
+        {/* Only render mediaContainer if it's NOT a text-only post */}
+        {type !== 'text' && (
+          <div className={styles.mediaContainer}>
+            {isLocked && (
+              <div className={styles.lockedOverlay}>
+                <div className="p-4 bg-white dark:bg-[#22222A] border border-gray-200 dark:border-[#27272F] rounded-full mb-4">
+                  <Lock size={32} />
+                </div>
+                <p className="font-semibold text-sm">Content Locked</p>
+                <p className="text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">Upgrade to the {tier} to view this post</p>
+                <button className={styles.upgradeBtn}>Upgrade Now</button>
               </div>
-              <p className="font-semibold text-sm">Content Locked</p>
-              <p className="text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">Upgrade to the {tier} to view this post</p>
-              <button className={styles.upgradeBtn}>Upgrade Now</button>
-            </div>
-          )}
-          {renderMedia()}
-        </div>
+            )}
+            {renderMedia()}
+          </div>
+        )}
       </div>
 
       {/* Footer Interaction Bar */}

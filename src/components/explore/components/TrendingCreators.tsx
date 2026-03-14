@@ -1,17 +1,54 @@
 "use client";
 
-import React from 'react';
-import { Zap, Heart, Coffee } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Zap, Heart } from 'lucide-react';
 import styles from './TrendingCreators.module.css';
 
-const RECENT_ACTIVITY = [
-  { id: 1, user: "Sami", creator: "Ali Solangi", action: "bought 5 coffees", time: "2m ago" },
-  { id: 2, user: "Fatima", creator: "Chef Rahat", action: "joined Biryani Tier", time: "12m ago" },
-  { id: 3, user: "Zayan", creator: "TechWithK", action: "supported", time: "25m ago" },
-  { id: 4, user: "Sara", creator: "VlogLife", action: "bought 3 coffees", time: "1h ago" },
-];
+// 1. Define the shape of a "Live Event"
+interface ActivityEvent {
+  id: string;
+  user: string;
+  creator: string;
+  action: string;
+  time: string;
+}
 
 const TrendingCreators = () => {
+  const [activities, setActivities] = useState<ActivityEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchLiveActivity() {
+      try {
+        // We fetch subscriptions to see who joined what recently
+        const response = await fetch('https://api-creators-hub.vercel.app/api/v1/subscriptions');
+        const data = await response.json();
+
+        // 2. Map the "Subscription" data into "Activity" format
+        // In a real app, your backend should join these tables so you get names, not just IDs
+        const formattedActivities = data.slice(0, 5).map((sub: any, index: number) => ({
+          id: sub.id || index.toString(),
+          user: `User_${sub.userId.slice(0, 4)}`, // Fallback since names aren't in this API yet
+          creator: `Creator_${sub.creatorId.slice(0, 4)}`,
+          action: "joined the inner circle",
+          time: "Just now"
+        }));
+
+        setActivities(formattedActivities);
+      } catch (error) {
+        console.error("Failed to fetch activity:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchLiveActivity();
+    
+    // Optional: Poll every 30 seconds to keep it "Live"
+    const interval = setInterval(fetchLiveActivity, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.header}>
@@ -20,7 +57,9 @@ const TrendingCreators = () => {
       </div>
 
       <div className={styles.feedList}>
-        {RECENT_ACTIVITY.map((item) => (
+        {loading ? (
+          <div className="p-4 text-xs text-gray-400 animate-pulse">Syncing live events...</div>
+        ) : activities.map((item) => (
           <div key={item.id} className={styles.feedItem}>
             <div className={styles.avatarWrapper}>
                <Heart size={16} fill="#1A1A1A" />
@@ -36,9 +75,9 @@ const TrendingCreators = () => {
         ))}
       </div>
 
-      <button className={styles.footerBtn}>
+      {/* <button className={styles.footerBtn}>
         View Leaderboard
-      </button>
+      </button> */}
     </aside>
   );
 };
