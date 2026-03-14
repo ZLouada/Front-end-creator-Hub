@@ -341,8 +341,7 @@ const AuthModal = () => {
 
             <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}>
             <Field label="Password" isDark={isDark}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280' }}>Password</span>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '0.45rem' }}>
                 {isLogin && (
                   <button type="button" onClick={() => navigate('/forgot-password')}
                     style={{ background: 'none', border: 'none', fontSize: '0.78rem', fontWeight: 600, color: isDark ? '#9A9AAB' : '#6B7280', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}
