@@ -11,13 +11,13 @@ const OAuthRecommendation = ({ onSkip }) => {
         {/* Decorative background blob */}
         <div className="absolute top-[-50px] right-[-50px] w-40 h-40 bg-gray-300 opacity-15 rounded-full blur-3xl pointer-events-none"></div>
 
-        <h2 className="text-3xl font-semibold font-serif text-brand-900 dark:text-gray-100 mb-3 relative z-10">One last thing...</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-8 relative z-10">
+        <h2 className="text-3xl font-semibold font-serif text-primary mb-3 relative z-10">One last thing...</h2>
+        <p className="text-secondary mb-8 relative z-10">
           Creators who link a social account get set up 3x faster and enjoy enhanced security.
         </p>
 
         <div className="space-y-4 relative z-10">
-          <button className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-editorial-border bg-gray-50/50 dark:bg-[#1A1A1F] hover:bg-white dark:hover:bg-[#22222A] hover:border-brand-900 dark:hover:border-gray-500 hover:shadow-soft transition-all duration-300 ease-smooth font-bold text-brand-900 dark:text-gray-100 hover:-translate-y-0.5 active:translate-y-0">
+          <button className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-editorial-border bg-gray-50/50 bg-surface-card hover:bg-surface-elevated hover:border-brand-900 dark:hover:border-gray-500 hover:shadow-soft transition-all duration-300 ease-smooth font-bold text-primary hover:-translate-y-0.5 active:translate-y-0">
             <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
               <path d="M44.5 20H24v8.5h11.8C34.7 33.9 29.8 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c10.5 0 20-7.5 20-21 0-1.4-.2-2.7-.5-4z" fill="#FFC107"/>
               <path d="M6.3 14.7l7 5.1C15 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 16.3 3 9.7 7.9 6.3 14.7z" fill="#FF3D00"/>

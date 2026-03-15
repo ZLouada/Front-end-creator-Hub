@@ -26,8 +26,8 @@ export default function LoginPage() {
 	if (user) {
 		return (
 			<div className="max-w-md mx-auto bg-surface-card rounded-2xl shadow-soft p-6 space-y-4">
-				<h1 className="text-2xl font-semibold font-serif text-brand-900 dark:text-gray-100">Welcome</h1>
-				<p className="text-gray-600 dark:text-gray-400">Signed in as {user.displayName || user.email}</p>
+				<h1 className="text-2xl font-semibold font-serif text-primary">Welcome</h1>
+				<p className="text-secondary">Signed in as {user.displayName || user.email}</p>
 				<button
 					onClick={logout}
 					className="px-4 py-2 bg-brand-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
@@ -41,7 +41,7 @@ export default function LoginPage() {
 	return (
 		<div className="max-w-md mx-auto bg-surface-card rounded-2xl shadow-soft p-6">
 			<div className="flex items-center justify-between mb-4">
-				<h1 className="text-2xl font-semibold font-serif text-brand-900 dark:text-gray-100">{mode === 'login' ? 'Sign in' : 'Create account'}</h1>
+				<h1 className="text-2xl font-semibold font-serif text-primary">{mode === 'login' ? 'Sign in' : 'Create account'}</h1>
 				<button
 					onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
 					className="text-sm text-info hover:text-info-600 hover:underline transition-colors"
@@ -53,35 +53,35 @@ export default function LoginPage() {
 			<form className="space-y-4" onSubmit={handleSubmit}>
 				{mode === 'register' && (
 					<div>
-						<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Display name</label>
+						<label className="block text-sm font-medium text-secondary mb-1">Display name</label>
 						<input
 							type="text"
 							value={displayName}
 							onChange={(e) => setDisplayName(e.target.value)}
-							className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1F] dark:text-gray-100"
+							className="input-modern w-full px-4 py-2 border border-editorial-border rounded-lg bg-surface-card dark:text-gray-100"
 							required
 						/>
 					</div>
 				)}
 
 				<div>
-					<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+					<label className="block text-sm font-medium text-secondary mb-1">Email</label>
 					<input
 						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1F] dark:text-gray-100"
+						className="input-modern w-full px-4 py-2 border border-editorial-border rounded-lg bg-surface-card dark:text-gray-100"
 						required
 					/>
 				</div>
 
 				<div>
-					<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+					<label className="block text-sm font-medium text-secondary mb-1">Password</label>
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						className="input-modern w-full px-4 py-2 border border-editorial-border dark:border-gray-700 rounded-lg dark:bg-[#1A1A1F] dark:text-gray-100"
+						className="input-modern w-full px-4 py-2 border border-editorial-border rounded-lg bg-surface-card dark:text-gray-100"
 						required
 					/>
 				</div>

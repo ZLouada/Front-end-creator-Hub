@@ -177,6 +177,10 @@
   color: #F0F0F3;
 }
 
+:global(.dark) .serifQuote {
+  color: #F0F0F3;
+}
+
 :global(.dark) .italicHighlight {
   color: #FFDD00;
 }

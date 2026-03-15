@@ -92,7 +92,7 @@ function StatCard({ icon, label, value, suffix = '', badge, badgeColor, gradient
 
 function AnalyticsSkeleton() {
   return (
-    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-6 sm:p-10">
+    <div className="min-h-full bg-surface p-6 sm:p-10">
       <div className="max-w-6xl mx-auto space-y-10">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -113,7 +113,7 @@ function AnalyticsSkeleton() {
         {/* 2 Chart Areas */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {[0, 1].map((i) => (
-            <div key={i} className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-8 border border-editorial-border dark:border-[#27272F]">
+            <div key={i} className="bg-surface-card rounded-2xl p-8 border border-editorial-border">
               <div className="flex items-center justify-between mb-7">
                 <div>
                   <Skeleton className="h-5 w-36 mb-2" />
@@ -127,8 +127,8 @@ function AnalyticsSkeleton() {
         </div>
 
         {/* Activity Table */}
-        <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl border border-editorial-border dark:border-[#27272F] overflow-hidden">
-          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border dark:border-[#27272F]">
+        <div className="bg-surface-card rounded-2xl border border-editorial-border overflow-hidden">
+          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border">
             <Skeleton className="h-5 w-36" />
             <Skeleton className="h-4 w-16" />
           </div>
@@ -165,13 +165,13 @@ export default function AnalyticsDashboard() {
   if (isLoading) return <AnalyticsSkeleton />;
 
   return (
-    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-6 sm:p-10">
+    <div className="min-h-full bg-surface p-6 sm:p-10">
       <div className="max-w-6xl mx-auto space-y-10">
 
         <div className="flex items-center justify-between animate-fade-up">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-semibold font-serif text-gray-900 dark:text-gray-100 tracking-tight">Analytics</h1>
-            <p className="text-gray-500 dark:text-gray-400 font-medium mt-1 text-sm">Your creator dashboard — last 6 months</p>
+            <h1 className="text-2xl sm:text-3xl font-semibold font-serif text-primary tracking-tight">Analytics</h1>
+            <p className="text-muted font-medium mt-1 text-sm">Your creator dashboard — last 6 months</p>
           </div>
           <button
             className="hidden sm:flex items-center gap-2.5 px-6 py-3 rounded-2xl text-sm font-bold text-white bg-brand-900 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-soft-lg active:scale-95"
@@ -201,17 +201,17 @@ export default function AnalyticsDashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-          <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-8 shadow-soft border border-editorial-border dark:border-[#27272F] animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <div className="bg-surface-card rounded-2xl p-8 shadow-soft border border-editorial-border animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="flex items-center justify-between mb-7">
               <div>
-                <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Revenue Growth</h3>
-                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">vs previous period</p>
+                <h3 className="text-base font-bold text-primary">Revenue Growth</h3>
+                <p className="text-xs text-muted font-medium mt-0.5">vs previous period</p>
               </div>
-              <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-gray-100 dark:bg-[#22222A] text-gray-600 dark:text-gray-300 border border-editorial-border">
+              <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-surface-elevated text-secondary border border-editorial-border">
                 6 months
               </span>
             </div>
-            <div className="h-48 sm:h-64">
+            <div className="h-48 sm:h-64 w-full min-w-0 overflow-hidden">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={revenueData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                   <defs>
@@ -235,17 +235,17 @@ export default function AnalyticsDashboard() {
             </div>
           </div>
 
-          <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-8 shadow-soft border border-editorial-border dark:border-[#27272F] animate-fade-up" style={{ animationDelay: '0.26s' }}>
+          <div className="bg-surface-card rounded-2xl p-8 shadow-soft border border-editorial-border animate-fade-up" style={{ animationDelay: '0.26s' }}>
             <div className="flex items-center justify-between mb-7">
               <div>
-                <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">New Supporters</h3>
-                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">Monthly signups</p>
+                <h3 className="text-base font-bold text-primary">New Supporters</h3>
+                <p className="text-xs text-muted font-medium mt-0.5">Monthly signups</p>
               </div>
               <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-brand-900 text-white">
                 +42% avg
               </span>
             </div>
-            <div className="h-48 sm:h-64">
+            <div className="h-48 sm:h-64 w-full min-w-0 overflow-hidden">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={subscriberData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#27272F' : '#f3f4f6'} />
@@ -259,26 +259,26 @@ export default function AnalyticsDashboard() {
           </div>
         </div>
 
-        <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl shadow-soft border border-editorial-border dark:border-[#27272F] overflow-hidden animate-fade-up" style={{ animationDelay: '0.32s' }}>
-          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border dark:border-[#27272F]">
-            <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Recent Activity</h3>
-            <button className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">View all →</button>
+        <div className="bg-surface-card rounded-2xl shadow-soft border border-editorial-border overflow-hidden animate-fade-up" style={{ animationDelay: '0.32s' }}>
+          <div className="flex items-center justify-between px-8 py-6 border-b border-editorial-border">
+            <h3 className="text-base font-bold text-primary">Recent Activity</h3>
+            <button className="text-xs font-bold text-muted hover:text-primary transition-colors">View all →</button>
           </div>
-          <div className="divide-y divide-gray-50 dark:divide-[#27272F]">
+          <div className="divide-y divide-editorial-divider">
             {recentActivity.map((item) => (
-              <div key={item.id} className="flex items-center justify-between px-8 py-5 hover:bg-gray-50 dark:hover:bg-[#1E1E25] transition-colors">
+              <div key={item.id} className="flex items-center justify-between px-8 py-5 hover:bg-editorial-hover transition-colors">
                 <div className="flex items-center gap-5">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-[#22222A] flex items-center justify-center text-lg shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-surface-elevated flex items-center justify-center text-lg shrink-0">
                     {item.avatar}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{item.name}</p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500 font-medium">{item.type}</p>
+                    <p className="text-sm font-bold text-primary">{item.name}</p>
+                    <p className="text-xs text-muted font-medium">{item.type}</p>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-sm font-bold text-success">{item.amount}</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 font-medium">{item.time}</p>
+                  <p className="text-xs text-muted font-medium">{item.time}</p>
                 </div>
               </div>
             ))}

@@ -87,7 +87,7 @@ export default function ExplorePage() {
     });
 
   return (
-    <main className="min-h-screen bg-surface dark:bg-[#0C0C0F] pb-20">
+    <main className="min-h-screen bg-surface pb-20">
       <Header />
       {/* 1. Full-Width Search Header */}
       <SearchHero onSearchChange={setSearchQuery} />
@@ -99,7 +99,7 @@ export default function ExplorePage() {
           {/* LEFT SIDE: Feed & Filters (8 Columns) */}
           <div className="lg:col-span-8 space-y-8">
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold font-serif text-brand-900 dark:text-gray-100">
+              <h2 className="text-2xl font-semibold font-serif text-primary">
                 {searchQuery ? `Results for "${searchQuery}"` : "Browse Categories"}
               </h2>
               <CategoryPills />
@@ -169,7 +169,7 @@ export default function ExplorePage() {
                 {/* The Drawer Content */}
                 <div className="absolute right-0 top-0 h-full w-full sm:w-80 bg-surface border-l border-editorial-border p-6 shadow-soft-xl overflow-y-auto">
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="font-bold text-xl text-brand-900 dark:text-gray-100">Live Activity</h2>
+                    <h2 className="font-bold text-xl text-primary">Live Activity</h2>
                     <button
                     onClick={() => setIsSidebarOpen(false)}
                     aria-label="Close sidebar"

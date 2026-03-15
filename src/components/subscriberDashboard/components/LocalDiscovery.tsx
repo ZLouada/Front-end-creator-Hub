@@ -40,7 +40,7 @@ const LocalDiscovery = ({ city, creators }: LocalDiscoveryProps) => {
                 Accepts {creator.paymentMethod}
               </div>
             </div>
-            <ChevronRight size={16} className="text-gray-400 dark:text-gray-500" />
+            <ChevronRight size={16} className="text-muted" />
           </div>
         ))}
       </div>
@@ -49,7 +49,7 @@ const LocalDiscovery = ({ city, creators }: LocalDiscoveryProps) => {
         Explore {city} Creators
       </button>
 
-      <div className="flex items-center justify-center gap-2 text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase">
+      <div className="flex items-center justify-center gap-2 text-[10px] font-black text-muted uppercase">
         <CreditCard size={12} />
         Secure Local Payments
       </div>

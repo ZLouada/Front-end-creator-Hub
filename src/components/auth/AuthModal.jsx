@@ -66,7 +66,7 @@ const Field = ({ label, isDark, children }) => (
     <label style={{
       display: 'block', marginBottom: '0.45rem',
       fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase',
-      letterSpacing: '0.06em', color: isDark ? '#9A9AAB' : '#6B7280',
+      letterSpacing: '0.06em', color: isDark ? '#D1D5DB' : '#6B7280',
     }}>{label}</label>
     {children}
   </div>
@@ -151,10 +151,9 @@ const AuthModal = () => {
       <div style={{
         width: '48%', minHeight: '100vh', flexShrink: 0,
         background: 'linear-gradient(145deg, #1A1A1A 0%, #111115 40%, #0C0C0F 100%)',
-        display: 'flex', flexDirection: 'column',
         justifyContent: 'center', padding: '4rem 3.5rem',
         position: 'relative', overflow: 'hidden',
-      }} className="hidden lg:flex">
+      }} className="hidden lg:flex flex-col">
 
         {/* Background grid */}
         <div style={{

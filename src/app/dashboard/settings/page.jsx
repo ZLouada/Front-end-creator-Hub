@@ -11,10 +11,10 @@ const paymentHistory = [
 
 function Section({ title, subtitle, children }) {
   return (
-    <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl shadow-soft border border-editorial-border dark:border-[#27272F] overflow-hidden">
-      <div className="px-6 py-5 border-b border-editorial-border dark:border-[#27272F]">
-        <h2 className="text-base font-bold text-gray-900 dark:text-gray-100">{title}</h2>
-        {subtitle && <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">{subtitle}</p>}
+    <div className="bg-surface-card rounded-2xl shadow-soft border border-editorial-border overflow-hidden">
+      <div className="px-6 py-5 border-b border-editorial-border">
+        <h2 className="text-base font-bold text-primary">{title}</h2>
+        {subtitle && <p className="text-xs text-muted font-medium mt-0.5">{subtitle}</p>}
       </div>
       <div className="p-6">{children}</div>
     </div>
@@ -24,9 +24,9 @@ function Section({ title, subtitle, children }) {
 function Field({ label, hint, children }) {
   return (
     <div>
-      <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">{label}</label>
+      <label className="block text-xs font-bold text-muted uppercase tracking-wider mb-1.5">{label}</label>
       {children}
-      {hint && <p className="text-xs text-gray-400 dark:text-gray-500 mt-1.5">{hint}</p>}
+      {hint && <p className="text-xs text-muted mt-1.5">{hint}</p>}
     </div>
   );
 }
@@ -43,12 +43,12 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-5 sm:p-8">
+    <div className="min-h-full bg-surface p-5 sm:p-8">
       <div className="max-w-3xl mx-auto space-y-6">
 
         <div className="animate-fade-up">
-          <h1 className="text-2xl sm:text-3xl font-semibold font-serif text-gray-900 dark:text-gray-100 tracking-tight">Settings</h1>
-          <p className="text-gray-500 dark:text-gray-400 font-medium mt-1 text-sm">Manage your account and billing preferences</p>
+          <h1 className="text-2xl sm:text-3xl font-semibold font-serif text-primary tracking-tight">Settings</h1>
+          <p className="text-muted font-medium mt-1 text-sm">Manage your account and billing preferences</p>
         </div>
 
         <div className="animate-fade-up" style={{ animationDelay: '0.06s' }}>
@@ -59,7 +59,7 @@ export default function SettingsPage() {
                   type="text"
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  className="input-modern w-full px-4 py-3 bg-gray-50 dark:bg-[#1A1A1F] border border-editorial-border dark:border-[#27272F] rounded-xl text-gray-800 dark:text-gray-100 font-semibold text-sm placeholder-gray-400 outline-none focus:border-gray-900 dark:focus:border-gray-400 transition-colors"
+                  className="input-modern w-full px-4 py-3 bg-gray-50 bg-surface-card border border-editorial-border rounded-xl text-gray-800 dark:text-gray-100 font-semibold text-sm placeholder-gray-400 outline-none focus:border-gray-900 dark:focus:border-gray-400 transition-colors"
                 />
               </Field>
               <Field label="Email Address" hint="Contact support to change your email.">
@@ -67,7 +67,7 @@ export default function SettingsPage() {
                   type="email"
                   disabled
                   defaultValue={user?.email ?? 'user@example.com'}
-                  className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1F] border border-transparent rounded-xl text-gray-400 font-semibold text-sm cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-gray-100 bg-surface-card border border-transparent rounded-xl text-gray-400 font-semibold text-sm cursor-not-allowed"
                 />
               </Field>
               <button
@@ -105,7 +105,7 @@ export default function SettingsPage() {
 
         <div className="animate-fade-up" style={{ animationDelay: '0.14s' }}>
           <div className="mb-3">
-            <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">Active Subscription</h3>
+            <h3 className="text-base font-bold text-primary">Active Subscription</h3>
           </div>
           <SubscriptionManager />
         </div>
@@ -115,7 +115,7 @@ export default function SettingsPage() {
             <div className="overflow-x-auto -mx-2">
               <table className="w-full text-left min-w-[480px]">
                 <thead>
-                    <tr className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest border-b border-editorial-border dark:border-[#27272F]">
+                    <tr className="text-[10px] font-bold text-muted uppercase tracking-widest border-b border-editorial-border">
                     <th className="pb-3 pl-2">Date</th>
                     <th className="pb-3">Description</th>
                     <th className="pb-3">Amount</th>
@@ -123,12 +123,12 @@ export default function SettingsPage() {
                     <th className="pb-3 text-right pr-2">Receipt</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50 dark:divide-[#27272F]">
+                <tbody className="divide-y divide-editorial-divider">
                   {paymentHistory.map((row) => (
                     <tr key={row.date} className="hover:bg-gray-50 dark:hover:bg-[#1A1A1F] transition-colors">
-                      <td className="py-3.5 pl-2 text-sm text-gray-500 dark:text-gray-400 font-medium">{row.date}</td>
-                      <td className="py-3.5 text-sm text-gray-700 dark:text-gray-300 font-semibold">{row.desc}</td>
-                      <td className="py-3.5 text-sm text-gray-900 dark:text-gray-100 font-bold">{row.amount}</td>
+                      <td className="py-3.5 pl-2 text-sm text-muted font-medium">{row.date}</td>
+                      <td className="py-3.5 text-sm text-secondary font-semibold">{row.desc}</td>
+                      <td className="py-3.5 text-sm text-primary font-bold">{row.amount}</td>
                       <td className="py-3.5">
                         <span className="px-2.5 py-1 bg-green-50 dark:bg-[#0A2E1A] text-success rounded-lg text-xs font-bold border border-green-100 dark:border-[#1A4A2A]">
                           {row.status}
@@ -150,7 +150,7 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <p className="text-sm font-bold text-gray-700 dark:text-gray-200">Delete Account</p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">Permanently remove your account and all data</p>
+                <p className="text-xs text-muted font-medium mt-0.5">Permanently remove your account and all data</p>
               </div>
               <button className="px-4 py-2.5 rounded-lg text-sm font-bold text-danger border border-danger-200 hover:bg-danger-50 transition-all active:scale-95">
                 Delete Account
@@ -169,8 +169,8 @@ function ToggleRow({ label, desc, defaultOn }) {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-sm font-bold text-gray-800 dark:text-gray-200">{label}</p>
-        <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">{desc}</p>
+        <p className="text-sm font-bold text-primary">{label}</p>
+        <p className="text-xs text-muted font-medium mt-0.5">{desc}</p>
       </div>
       <button
         onClick={() => setOn((v) => !v)}

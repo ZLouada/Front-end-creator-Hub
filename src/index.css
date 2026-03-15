@@ -66,7 +66,7 @@ button, a, [role="button"] {
   /* ── Typography ── */
   --text-primary:   #F0F0F3;   /* primary text – soft white */
   --text-secondary: #9A9AAB;   /* secondary / muted text    */
-  --text-muted:     #6A6A78;   /* placeholder / caption     */
+  --text-muted:     #8B8B9E;   /* placeholder / caption     */
 
   /* ── Borders ── */
   --border-primary: #27272F;   /* subtle structure borders  */

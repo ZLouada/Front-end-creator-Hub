@@ -15,7 +15,7 @@ const SubscriptionManager = () => {
 
   return (
     <>
-      <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl border border-editorial-border dark:border-[#27272F] shadow-soft overflow-hidden">
+      <div className="bg-surface-card rounded-2xl border border-editorial-border shadow-soft overflow-hidden">
         <div className="flex items-center justify-between flex-wrap gap-4 p-6">
 
           <div className="flex items-center gap-4">
@@ -25,8 +25,8 @@ const SubscriptionManager = () => {
               C
             </div>
             <div>
-              <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">Creative Studio — Pro</p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 font-medium">$10.00 / month · renews Feb 28, 2026</p>
+              <p className="font-bold text-primary text-sm">Creative Studio — Pro</p>
+              <p className="text-xs text-muted font-medium">$10.00 / month · renews Feb 28, 2026</p>
             </div>
           </div>
 
@@ -45,10 +45,10 @@ const SubscriptionManager = () => {
               </>
             ) : (
               <>
-                <span className="px-3 py-1.5 bg-gray-100 dark:bg-[#27272F] text-gray-500 dark:text-gray-400 text-xs font-bold rounded-lg">
+                <span className="px-3 py-1.5 bg-gray-100 dark:bg-[#27272F] text-muted text-xs font-bold rounded-lg">
                   Cancelled
                 </span>
-                <span className="text-xs text-gray-400 dark:text-gray-500 font-medium">Access ends at billing cycle</span>
+                <span className="text-xs text-muted font-medium">Access ends at billing cycle</span>
               </>
             )}
           </div>
@@ -56,7 +56,7 @@ const SubscriptionManager = () => {
 
         {status === 'active' && (
           <div className="px-6 pb-5">
-            <div className="flex items-center justify-between text-xs font-bold text-gray-400 dark:text-gray-500 mb-1.5">
+            <div className="flex items-center justify-between text-xs font-bold text-muted mb-1.5">
               <span>Storage used</span><span>2.4 GB / 10 GB</span>
             </div>
             <div className="h-1.5 bg-gray-100 dark:bg-[#27272F] rounded-full overflow-hidden">
@@ -72,21 +72,21 @@ const SubscriptionManager = () => {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => !isCancelling && setIsModalOpen(false)}
           />
-          <div className="relative z-10 bg-surface-card dark:bg-[#1A1A1F] rounded-2xl shadow-soft-xl w-full max-w-sm p-7 animate-fade-up">
+          <div className="relative z-10 bg-surface-card rounded-2xl shadow-soft-xl w-full max-w-sm p-7 animate-fade-up">
             <div className="w-12 h-12 rounded-full bg-danger-50 flex items-center justify-center mb-4">
               <svg width="22" height="22" fill="none" stroke="#FF5C5C" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24">
                 <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
             </div>
-            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Cancel subscription?</h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
-              You'll lose access to <strong className="text-gray-800 dark:text-gray-200">Creative Studio Pro</strong> at the end of your current billing period. This action cannot be undone.
+            <h4 className="text-lg font-bold text-primary mb-2">Cancel subscription?</h4>
+            <p className="text-sm text-muted font-medium leading-relaxed">
+              You'll lose access to <strong className="text-primary">Creative Studio Pro</strong> at the end of your current billing period. This action cannot be undone.
             </p>
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setIsModalOpen(false)}
                 disabled={isCancelling}
-                className="flex-1 py-2.5 rounded-lg text-sm font-bold text-gray-700 dark:text-gray-300 border border-editorial-border dark:border-[#27272F] hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition-all disabled:opacity-50"
+                className="flex-1 py-2.5 rounded-lg text-sm font-bold text-secondary border border-editorial-border hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition-all disabled:opacity-50"
               >
                 Keep plan
               </button>

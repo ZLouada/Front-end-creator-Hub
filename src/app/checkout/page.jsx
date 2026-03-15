@@ -22,19 +22,19 @@ export default function CheckoutPage() {
   const { selectedGateway, setSelectedGateway, isProcessing, error, handlePaymentSubmit } = useCheckout(tierPrice);
 
   return (
-    <div className="min-h-full bg-surface dark:bg-[#0C0C0F] p-5 sm:p-8 flex items-start justify-center">
+    <div className="min-h-full bg-surface p-5 sm:p-8 flex items-start justify-center">
       <div className="w-full max-w-4xl">
 
         <div className="mb-6 animate-fade-up">
-          <h1 className="text-2xl sm:text-3xl font-semibold font-serif text-gray-900 dark:text-gray-100 tracking-tight">Checkout</h1>
-          <p className="text-gray-500 dark:text-gray-400 font-medium mt-1 text-sm">Complete your subscription</p>
+          <h1 className="text-2xl sm:text-3xl font-semibold font-serif text-primary tracking-tight">Checkout</h1>
+          <p className="text-muted font-medium mt-1 text-sm">Complete your subscription</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
           <div className="lg:col-span-3 space-y-5">
 
-            <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-6 border border-editorial-border dark:border-[#27272F] shadow-soft animate-fade-up" style={{ animationDelay: '0.06s' }}>
+            <div className="bg-surface-card rounded-2xl p-6 border border-editorial-border shadow-soft animate-fade-up" style={{ animationDelay: '0.06s' }}>
               <div className="flex items-center gap-4">
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shrink-0 bg-brand-900 shadow-soft-sm"
@@ -42,17 +42,17 @@ export default function CheckoutPage() {
 
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Creative Studio</h2>
+                  <h2 className="text-lg font-bold text-primary">Creative Studio</h2>
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-                    <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">Pro Tier — ${tierPrice.toFixed(2)}/month</span>
+                    <span className="text-sm font-semibold text-muted">Pro Tier — ${tierPrice.toFixed(2)}/month</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-6 border border-editorial-border dark:border-[#27272F] shadow-soft animate-fade-up" style={{ animationDelay: '0.10s' }}>
-              <p className="text-xs font-bold text-gray-400 dark:text-gray-500 tracking-widest mb-4">Payment Method</p>
+            <div className="bg-surface-card rounded-2xl p-6 border border-editorial-border shadow-soft animate-fade-up" style={{ animationDelay: '0.10s' }}>
+              <p className="text-xs font-bold text-muted tracking-widest mb-4">Payment Method</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {gateways.map((gw) => (
                   <button
@@ -61,8 +61,8 @@ export default function CheckoutPage() {
                     onClick={() => setSelectedGateway(gw.id)}
                     className={`relative flex flex-col items-center gap-1.5 p-4 rounded-lg border text-sm font-bold transition-all duration-200 hover:-translate-y-0.5
                       ${selectedGateway === gw.id
-                        ? 'border-brand-900 bg-gray-50 dark:bg-[#1A1A1F] text-gray-900 dark:text-gray-100 shadow-soft'
-                        : 'border-editorial-border dark:border-[#27272F] bg-surface dark:bg-[#111115] text-gray-500 dark:text-gray-400 hover:border-editorial-border'
+                        ? 'border-brand-900 bg-gray-50 bg-surface-card text-primary shadow-soft'
+                        : 'border-editorial-border bg-surface dark:bg-[#111115] text-muted hover:border-editorial-border'
                       }`}
                   >
                     {selectedGateway === gw.id && (
@@ -72,7 +72,7 @@ export default function CheckoutPage() {
                     )}
                     <span className="text-2xl">{gw.icon}</span>
                     <span>{gw.name}</span>
-                    <span className="text-[10px] font-medium text-gray-400 dark:text-gray-500">{gw.sub}</span>
+                    <span className="text-[10px] font-medium text-muted">{gw.sub}</span>
                   </button>
                 ))}
               </div>
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
                         <button
                           type="button"
                           onClick={() => setSelectedGateway('stripe')}
-                          className="px-3 py-1.5 bg-white dark:bg-[#1A1A1F] text-gray-700 dark:text-gray-300 text-xs font-bold rounded-lg border border-editorial-border hover:bg-gray-50 dark:hover:bg-[#22222A] transition-colors"
+                          className="px-3 py-1.5 bg-white bg-surface-card text-secondary text-xs font-bold rounded-lg border border-editorial-border hover:bg-gray-50 dark:hover:bg-[#22222A] transition-colors"
                         >
                           Try Card instead
                         </button>
@@ -128,32 +128,32 @@ export default function CheckoutPage() {
                   <> Subscribe for ${tierPrice.toFixed(2)}/mo</>
                 )}
               </button>
-              <p className="text-center text-xs font-bold text-gray-400 dark:text-gray-500 mt-3 flex items-center justify-center gap-1.5">
+              <p className="text-center text-xs font-bold text-muted mt-3 flex items-center justify-center gap-1.5">
                 <span>🔒</span> Secure payment · Cancel anytime
               </p>
             </form>
           </div>
 
           <div className="lg:col-span-2 space-y-5">
-            <div className="bg-surface-card dark:bg-[#1A1A1F] rounded-2xl p-6 border border-editorial-border dark:border-[#27272F] shadow-soft animate-fade-up" style={{ animationDelay: '0.14s' }}>
-              <p className="text-xs font-bold text-gray-400 dark:text-gray-500 tracking-widest mb-4">Order Summary</p>
+            <div className="bg-surface-card rounded-2xl p-6 border border-editorial-border shadow-soft animate-fade-up" style={{ animationDelay: '0.14s' }}>
+              <p className="text-xs font-bold text-muted tracking-widest mb-4">Order Summary</p>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 font-medium">Plan</span>
-                  <span className="font-bold text-gray-900 dark:text-gray-100">Pro Tier</span>
+                  <span className="text-muted font-medium">Plan</span>
+                  <span className="font-bold text-primary">Pro Tier</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 font-medium">Billing</span>
-                  <span className="font-bold text-gray-900 dark:text-gray-100">Monthly</span>
+                  <span className="text-muted font-medium">Billing</span>
+                  <span className="font-bold text-primary">Monthly</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 font-medium">Trial</span>
+                  <span className="text-muted font-medium">Trial</span>
                   <span className="font-bold text-success">7 days free</span>
                 </div>
-                <div className="h-px bg-gray-200 dark:bg-gray-700 my-2" />
+                <div className="h-px bg-editorial-strong my-2" />
                 <div className="flex justify-between">
-                  <span className="font-bold text-gray-900 dark:text-gray-100">Total today</span>
-                  <span className="font-bold text-gray-900 dark:text-gray-100 text-base">${tierPrice.toFixed(2)}</span>
+                  <span className="font-bold text-primary">Total today</span>
+                  <span className="font-bold text-primary text-base">${tierPrice.toFixed(2)}</span>
                 </div>
               </div>
             </div>

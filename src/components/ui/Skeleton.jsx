@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Skeleton = ({ className = '', ...props }) => (
-  <div className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg ${className}`} {...props} />
+  <div className={`animate-pulse bg-editorial-strong rounded-lg ${className}`} {...props} />
 );
 
 export default Skeleton;

@@ -86,7 +86,7 @@ export default function SubscriberFeed() {
       <Header /> 
       
       {/* TOP BAR: Creator Switcher */}
-      <div className="sticky top-[72px] z-40 bg-white dark:bg-[#111115] border-b border-gray-100 dark:border-[#27272F]">
+      <div className="sticky top-[72px] z-40 bg-white dark:bg-[#111115] border-b border-editorial-border">
         <CreatorSwitcher 
           creators={mockCreators} 
           onSelectCreator={handleCreatorSelect} 
@@ -99,7 +99,7 @@ export default function SubscriberFeed() {
         <main className="flex-1 py-6 px-4 sm:py-12 sm:px-6">
           <header className="mb-6 sm:mb-10">
             <h1 className="text-2xl sm:text-4xl font-serif font-semibold">Your Feed</h1>
-            <p className="font-bold text-gray-500 dark:text-gray-400">Updates from the creators you support.</p>
+            <p className="font-bold text-muted">Updates from the creators you support.</p>
           </header>
 
           <div className="space-y-12">
