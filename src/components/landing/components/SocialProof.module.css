@@ -185,6 +185,10 @@
   color: #FFDD00;
 }
 
+:global(.dark) .serifQuote {
+  color: #dadada;
+}
+
 :global(.dark) .testimonialCard {
   background: #1A1A1F;
   border-color: #27272F;

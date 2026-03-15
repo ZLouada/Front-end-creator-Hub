@@ -179,6 +179,10 @@
   font-weight: 500;
 }
 
+.globalLabel {
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .serifTitle { font-size: 2.2rem; }
   .gridHead, .row { grid-template-columns: 1fr; gap: 16px; text-align: left; }
@@ -197,6 +201,10 @@
 
 :global(.dark) .subtitle {
   color: #9A9AAB;
+}
+
+:global(.dark) .boldValue {
+  color: #ececec;
 }
 
 :global(.dark) .tableWrapper {
