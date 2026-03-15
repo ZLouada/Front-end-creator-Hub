@@ -221,6 +221,10 @@
   background-color: #111115;
 }
 
+:global(.dark) .summaryBox {
+  background: #1A1A1A;
+}
+
 :global(.dark) .serifTitle {
   color: #F0F0F3;
 }

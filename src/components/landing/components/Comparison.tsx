@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, MessageSquare, CreditCard, Percent, ArrowRight } from 'lucide-react';
 import styles from './Comparison.module.css';
 
@@ -32,6 +33,7 @@ const comparisonData = [
 ];
 
 const Comparison = () => {
+  const navigate = useNavigate();
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -112,7 +114,9 @@ const Comparison = () => {
           transition={{ delay: 1 }}
           className={styles.ctaArea}
         >
-          <button className={styles.editorialButton}>
+          <button 
+            className={styles.editorialButton}
+            onClick={() => navigate('/')}>
             Switch to CreatorHub <ArrowRight size={18} />
           </button>
           <p className={styles.trustText}>Transfer your subscribers in one click.</p>
