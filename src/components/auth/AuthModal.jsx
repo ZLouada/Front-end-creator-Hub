@@ -114,7 +114,7 @@ const AuthModal = () => {
     await new Promise(r => setTimeout(r, 900));
     login({ name: name || 'Creator', email });
     setLoading(false);
-    navigate('/');
+    navigate('/feed');
   };
 
   const fieldBorder = (field) => focusedField === field
