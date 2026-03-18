@@ -91,7 +91,7 @@ const AuthModal = () => {
   const [isLogin, setIsLogin] = useState(searchParams.get('mode') !== 'signup');
   const [formKey, setFormKey] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState(searchParams.get('username') || '');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -114,7 +114,7 @@ const AuthModal = () => {
     await new Promise(r => setTimeout(r, 900));
     login({ name: name || 'Creator', email });
     setLoading(false);
-    navigate('/home');
+    navigate('/');
   };
 
   const fieldBorder = (field) => focusedField === field
@@ -308,10 +308,10 @@ const AuthModal = () => {
 
             {!isLogin && (
               <div style={{ animation: 'authFadeUp 0.35s cubic-bezier(0.22,1,0.36,1) 0s both' }}>
-              <Field label="Full name" isDark={isDark}>
+              <Field label="Username" isDark={isDark}>
                 <input
                   type="text"
-                  placeholder="e.g. Ahmed Al-Rashid"
+                  placeholder="e.g. ahmed_rashid"
                   value={name}
                   onChange={e => setName(e.target.value)}
                   required

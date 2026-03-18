@@ -42,7 +42,7 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className={styles.claimContainer}
           >
-            <form className={styles.claimBar} onSubmit={(e) => { e.preventDefault(); navigate('/'); }}>
+            <form className={styles.claimBar} onSubmit={(e) => { e.preventDefault(); navigate(`/auth?mode=signup&username=${encodeURIComponent(username)}`); }}>
               <div className={styles.inputWrapper}>
                 <span className={styles.urlPrefix}>creatorhub.sa/</span>
                 <input

@@ -28,11 +28,11 @@ function App() {
       <ScrollToTopOnNav />
       <ScrollToTopBtn />
       <Routes>
-        <Route path="/" element={<IntroPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/intro" element={<IntroPage />} />
         <Route path="/auth" element={<AuthModal />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/home" element={<LandingPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/feed" element={<SubscriberFeed />} />
         <Route path="/profile" element={<ProfilePage />} />
