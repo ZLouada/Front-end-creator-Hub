@@ -14,7 +14,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { isDark, toggleTheme } = useTheme();
-  const { logout } = useAuthContext();
+  const { user, logout } = useAuthContext();
   
   // State for visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,52 +107,65 @@ export const Header = () => {
               >
                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              <button className={styles.themeToggle} aria-label="Notifications">
-                <Bell size={20} />
-              </button>
-            </div>
-
-            <button
-              onClick={() => navigate('/feed')}
-              className={styles.dashboardBtn}
-            >
-              My Feed
-            </button>
-
-            {/* Profile Section */}
-            <div className={styles.profileWrap} ref={profileRef}>
-              <button
-                onClick={() => setIsProfileOpen(v => !v)}
-                aria-label="Profile menu"
-                aria-expanded={isProfileOpen}
-                className={styles.avatarBtn}
-              >
-                <User size={22} />
-              </button>
-
-              {isProfileOpen && (
-                <div className={styles.dropdown} role="menu">
-                  <div className={styles.dropdownHeader}>
-                    <span className={styles.dropdownName}>Ahmed Al-Rashid</span>
-                    <span className={styles.dropdownEmail}>ahmed@creatorhub.sa</span>
-                  </div>
-                  <hr className={styles.dropdownDivider} />
-                  <button className={styles.dropdownItem} role="menuitem" onClick={() => { navigate('/profile'); setIsProfileOpen(false); }}>
-                    <User size={16} /> View Profile
-                  </button>
-                  <button className={styles.dropdownItem} role="menuitem" onClick={() => { navigate('/dashboard/settings'); setIsProfileOpen(false); }}>
-                    <Settings size={16} /> Settings
-                  </button>
-                  <button className={`${styles.dropdownItem} ${styles.dropdownItemCreator}`} role="menuitem" onClick={() => { navigate('/dashboard'); setIsProfileOpen(false); }}>
-                    <ShieldCheck size={16} /> Switch to Creator
-                  </button>
-                  <hr className={styles.dropdownDivider} />
-                  <button className={`${styles.dropdownItem} ${styles.dropdownItemDanger}`} role="menuitem" onClick={() => { logout(); setIsProfileOpen(false); navigate('/'); }}>
-                    <LogOut size={16} /> Logout
-                  </button>
-                </div>
+              {user && (
+                <button className={styles.themeToggle} aria-label="Notifications">
+                  <Bell size={20} />
+                </button>
               )}
             </div>
+
+            {user ? (
+              <button
+                onClick={() => navigate('/feed')}
+                className={styles.dashboardBtn}
+              >
+                My Feed
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate('/auth')}
+                className={styles.dashboardBtn}
+              >
+                Sign in
+              </button>
+            )}
+
+            {/* Profile Section — only shown when logged in */}
+            {user && (
+              <div className={styles.profileWrap} ref={profileRef}>
+                <button
+                  onClick={() => setIsProfileOpen(v => !v)}
+                  aria-label="Profile menu"
+                  aria-expanded={isProfileOpen}
+                  className={styles.avatarBtn}
+                >
+                  <User size={22} />
+                </button>
+
+                {isProfileOpen && (
+                  <div className={styles.dropdown} role="menu">
+                    <div className={styles.dropdownHeader}>
+                      <span className={styles.dropdownName}>{(user as any)?.name || 'Creator'}</span>
+                      <span className={styles.dropdownEmail}>{(user as any)?.email || ''}</span>
+                    </div>
+                    <hr className={styles.dropdownDivider} />
+                    <button className={styles.dropdownItem} role="menuitem" onClick={() => { navigate('/profile'); setIsProfileOpen(false); }}>
+                      <User size={16} /> View Profile
+                    </button>
+                    <button className={styles.dropdownItem} role="menuitem" onClick={() => { navigate('/dashboard/settings'); setIsProfileOpen(false); }}>
+                      <Settings size={16} /> Settings
+                    </button>
+                    <button className={`${styles.dropdownItem} ${styles.dropdownItemCreator}`} role="menuitem" onClick={() => { navigate('/dashboard'); setIsProfileOpen(false); }}>
+                      <ShieldCheck size={16} /> Switch to Creator
+                    </button>
+                    <hr className={styles.dropdownDivider} />
+                    <button className={`${styles.dropdownItem} ${styles.dropdownItemDanger}`} role="menuitem" onClick={() => { logout(); setIsProfileOpen(false); navigate('/'); }}>
+                      <LogOut size={16} /> Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Mobile Menu Toggle */}
             <button
